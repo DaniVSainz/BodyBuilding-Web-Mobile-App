@@ -4,7 +4,8 @@
       <a href="#">Something</a>
     </li>
     <li class='nav-href'><a href='#'>Home</a></li>
-    <li class='nav-href'><a href='#'>Sign Up</a></li>
-    <li class='nav-href'><a href='#'>Login</a></li>
+    <li class="nav-href"><a (click)="presentAuthDialog()">LOGIN</a></li>
+    <li class='nav-href'><a (click)="presentAuthDialog('register')">REGISTER</a></li>
+    <li class='nav-href'> <a [routerLink]="['/profile']">PROFILE</a></li>
   </ul>
 </div>
