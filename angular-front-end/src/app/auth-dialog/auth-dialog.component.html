@@ -13,15 +13,22 @@
       </div>
 
       <div class="row">
-        Current mode: {{authMode}}
+        <h3 class="grey-text text-darken-2">{{authMode}}</h3>
+
+        <app-login-form (onFormResult)="onLoginFormResult($event)" *ngIf="isLoginMode()">
+
+        </app-login-form>
+        <app-register-form (onFormResult)="onRegisterFormResult($event)" *ngIf="isRegisterMode()">
+
+        </app-register-form>
       </div>
 
 
       <div class="row">
-        <span *ngIf="isLoginMode()">
+        <span class="grey-text text-darken-2" *ngIf="isLoginMode()">
           Need an account? <a (click)="authMode='register'">Click here to register.</a>
         </span>
-        <span *ngIf="isRegisterMode()">
+        <span class="grey-text text-darken-2" *ngIf="isRegisterMode()">
           Already have an account? <a (click)="authMode='login'">Click here to login.</a>
         </span>
       </div>
