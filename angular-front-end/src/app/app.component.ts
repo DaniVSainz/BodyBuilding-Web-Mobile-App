@@ -12,7 +12,7 @@ export class AppComponent {
   constructor(private authToken: Angular2TokenService){
     this.authToken.init(environment.token_auth_config);
 
-    this.authToken.signIn({email: "user@example.com", password: "monkey67"}).subscribe(
+    this.authToken.signIn({email: "", password: ""}).subscribe(
 
         res => {
 
