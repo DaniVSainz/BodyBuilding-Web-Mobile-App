@@ -1,11 +1,24 @@
-<div class='navbar'>
-  <ul class='nav-ul'>
-    <li class='nav-href'>
-      <a href="#">Something</a>
-    </li>
-    <li class='nav-href'><a href='#'>Home</a></li>
-    <li class="nav-href"><a (click)="presentAuthDialog()">LOGIN</a></li>
-    <li class='nav-href'><a (click)="presentAuthDialog('register')">REGISTER</a></li>
-    <li class='nav-href'> <a [routerLink]="['/profile']">PROFILE</a></li>
-  </ul>
+<div class="navbar-fixed">
+
+  <nav role="navigation">
+
+    <div class="nav-wrapper  grey darken-4 ">
+      <a [routerLink]="['']" id="logo-container" class="brand-logo">Lift Tracker</a>
+
+      <ul class="right hide-on-med-and-down">
+
+        <li> <a (click)="presentAuthDialog()">LOGIN</a></li>
+        <li> <a (click)="presentAuthDialog('register')">REGISTER</a></li>
+
+        <li> <a [routerLink]="['/profile']">PROFILE</a></li>
+        <li> <a>LOGOUT</a></li>
+
+      </ul>
+
+    </div>
+
+  </nav>
+
 </div>
+
+<app-auth-dialog #authDialog></app-auth-dialog>
