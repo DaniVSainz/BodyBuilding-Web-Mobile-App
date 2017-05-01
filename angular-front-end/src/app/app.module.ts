@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
 import { Angular2TokenService } from 'angular2-token';
 import {AuthService} from "./services/auth.service";
+import {AuthGuard} from "./guards/auth.guard";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +34,7 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     MaterializeModule
   ],
-  providers: [ Angular2TokenService,AuthService ],
+  providers: [ Angular2TokenService,AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
