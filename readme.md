@@ -16,4 +16,4 @@ The next features coming up on the website are:
 -Alglorithms to detect overtraining by comparaing past workouts to current workouts 
 -Helpers to overcome plateaus 
 
-![alt]()
+![alt](https://github.com/DaniVSainz/bodybuilding-angular/blob/master/ang4bodybuilding.gif)
