@@ -1,5 +1,3 @@
-export class Workout{
-  constructor(
-    public name: string,
-  ){}
+export class Workout {
+  name: string;
 }

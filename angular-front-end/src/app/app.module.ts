@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { MaterializeModule } from 'angular2-materialize';
 import { Angular2TokenService } from 'angular2-token';
-import {AuthService} from "./services/auth.service";
 import {AuthGuard} from "./guards/auth.guard";
+
+import {AuthService} from "./services/auth.service";
+import { WorkoutService} from './services/workout.service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,10 +35,11 @@ import { WorkoutComponent } from './workout/workout.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     AppRoutingModule,
     MaterializeModule
   ],
-  providers: [ Angular2TokenService,AuthService, AuthGuard ],
+  providers: [ Angular2TokenService,AuthService, AuthGuard, WorkoutService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
