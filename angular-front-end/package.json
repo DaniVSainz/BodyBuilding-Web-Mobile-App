@@ -4,14 +4,16 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "1.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
@@ -23,6 +25,7 @@
     "angular2-materialize": "^15.0.1",
     "angular2-token": "^0.2.0-beta.11",
     "core-js": "^2.4.1",
+    "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "jquery": "^2.2.4",
@@ -51,5 +54,9 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"
+  },
+  "engines": {
+    "node": "7.8.0",
+    "npm": "4.5.0"
   }
 }
