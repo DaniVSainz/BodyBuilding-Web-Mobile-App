@@ -11,10 +11,19 @@
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()">LOGIN</a></li>
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')">REGISTER</a></li>
 
-        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/workout']">New Workout</a></li>
+        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/workout']">Workout History</a></li>
         <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">Profile</a></li>
         <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">Logout</a></li>
 
+      </ul>
+      <a class='dropdown-button btn right gray darken-4' [routerLink]="['']" data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+        <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+        <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
       </ul>
 
     </div>

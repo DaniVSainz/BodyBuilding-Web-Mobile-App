@@ -14,4 +14,41 @@ p
   border: none
   li
     margin: 0 auto
-    
+
+.new-workout
+  margin: 0 auto
+
+.a_demo_four
+  background-color: #4b3f39
+  font-family: 'Open Sans', sans-serif
+  font-size: 12px
+  text-decoration: none
+  color: #fff
+  position: relative
+  padding: 10px 20px
+  padding-right: 50px
+  background-image: linear-gradient(to bottom, rgb(62, 51, 46) 0%, rgb(101, 86, 78) 100%)
+  border-radius: 5px
+  box-shadow: inset 0px 1px 0px #9e8d84, 0px 5px 0px 0px #322620, 0px 10px 5px #999
+  &:active
+    top: 3px
+    background-image: linear-gradient(to bottom, rgb(62, 51, 46) 100%, rgb(101, 86, 78) 0%)
+    box-shadow: inset 0px 1px 0px #9e8d84, 0px 2px 0px 0px #322620, 0px 5px 3px #999
+  &::before
+    background-color: #322620
+    background-image: url('/assets/right_arrow.png')
+    background-repeat: no-repeat
+    background-position: center center
+    content: ""
+    width: 20px
+    height: 20px
+    position: absolute
+    right: 15px
+    top: 50%
+    margin-top: -9px
+    border-radius: 50%
+    box-shadow: inset 0px 1px 0px #19120f, 0px 1px 0px #827066
+  &:active::before
+    top: 50%
+    margin-top: -12px
+    box-shadow: inset 0px 1px 0px #827066, 0px 3px 0px #19120f, 0px 6px 3px #382e29
