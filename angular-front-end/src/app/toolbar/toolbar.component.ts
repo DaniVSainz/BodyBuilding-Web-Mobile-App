@@ -23,7 +23,8 @@ export class ToolbarComponent implements OnInit {
 
   presentAuthDialog(mode?: 'login'| 'register'){
     this.authDialog.openDialog(mode);
-
   }
+
+
 
 }

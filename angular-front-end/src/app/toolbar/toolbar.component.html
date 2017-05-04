@@ -1,12 +1,12 @@
 <!--Navigation-->
-<div class="navbar-fixed">
+<div class="navbar">
 
   <nav role="navigation">
 
     <div class="nav-wrapper grey darken-4 ">
-      <a [routerLink]="['']" id="logo-container" class="brand-logo"> Lift Tracker</a>
+      <a [routerLink]="['']" id="logo-container" class="brand-logo left"> Lift Tracker</a>
 
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()">LOGIN</a></li>
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')">REGISTER</a></li>
 
@@ -15,7 +15,7 @@
         <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">Logout</a></li>
       </ul>
 
-      <a class='dropdown-button btn right gray darken-4'  [routerLink]="['#']" data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>
+      <a class='dropdown-button btn right gray darken-4' [routerLink]="['#']" data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>
       <ul id='dropdown1' class='dropdown-content'>
         <li><a [routerLink]="['/workout']">Workout History</a></li>
         <li><a href="#!">two</a></li>
