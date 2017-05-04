@@ -6,7 +6,7 @@ import { Workout } from '../workout/workout';
 
 @Injectable()
 export class WorkoutService {
-  private workoutsUrl = 'http://localhost:3000/workouts';
+  private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
 
   constructor(private http:Http){}
 
