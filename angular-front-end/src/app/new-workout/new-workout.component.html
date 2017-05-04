@@ -12,13 +12,14 @@
           Customer name is required
         </div>
       </div>
+      <!--
       <div class="form-group">
         <label for="user_id">User id</label>
-        <input type="number" class='form-control' id="user_id" placeholder=2 required name="user_id" #user_id='ngModel' [(ngModel)]="workout.user_id">
+        <input type="number" class='form-control' id="user_id" value="{{authTokenService.currentUserData.id}}" required name="user_id" #user_id='ngModel' [(ngModel)]="workout.user_id">
         <div [hidden]="user_id.valid || user_id.pristine" class='alert alert-danger'>
           Customer name is required
         </div>
-      </div>
+      </div>-->
 
       <button type='submit' class="btn btn-outline-primary btn-lg" [disabled]='!workoutForm.form.valid' [hidden]='submitted'>
             Generate workout
