@@ -19,6 +19,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WorkoutComponent } from './workout/workout.component';
+import { NewWorkoutComponent } from './new-workout/new-workout.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { WorkoutComponent } from './workout/workout.component';
     LoginFormComponent,
     RegisterFormComponent,
     ProfileComponent,
-    WorkoutComponent
+    WorkoutComponent,
+    NewWorkoutComponent
   ],
   imports: [
     BrowserModule,

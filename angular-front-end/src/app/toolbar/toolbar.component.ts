@@ -4,6 +4,7 @@ import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
 import {Angular2TokenService} from "angular2-token";
 
+
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
