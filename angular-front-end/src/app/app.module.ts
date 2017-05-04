@@ -19,7 +19,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WorkoutComponent } from './workout/workout.component';
-import { NewWorkoutComponent } from './new-workout/new-workout.component';
+import { NewWorkoutComponent } from './workout/new-workout/new-workout.component';
+import { ShowWorkoutComponent } from './workout/show-workout/show-workout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NewWorkoutComponent } from './new-workout/new-workout.component';
     RegisterFormComponent,
     ProfileComponent,
     WorkoutComponent,
-    NewWorkoutComponent
+    NewWorkoutComponent,
+    ShowWorkoutComponent
   ],
   imports: [
     BrowserModule,

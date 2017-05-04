@@ -6,7 +6,8 @@ import {AuthGuard} from "./guards/auth.guard";
 import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import { WorkoutComponent } from './workout/workout.component';
-import { NewWorkoutComponent } from './new-workout/new-workout.component';
+import { NewWorkoutComponent } from './workout/new-workout/new-workout.component';
+import { ShowWorkoutComponent } from './workout/show-workout/show-workout.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
       {
     path: 'new-workout',
     component: NewWorkoutComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'show-workout',
+    component: ShowWorkoutComponent,
     canActivate: [AuthGuard]
   }
 ];

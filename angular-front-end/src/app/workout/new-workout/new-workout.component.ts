@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { WorkoutService } from '../services/workout.service';
+import { WorkoutService } from '../../services/workout.service';
 import { Observable } from 'rxjs/Rx';
-import { Workout } from '../workout/workout';
+import { Workout } from '../workout';
 import {Router} from "@angular/router";
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../../services/auth.service";
 import {Angular2TokenService} from "angular2-token";
 
 @Component({
