@@ -12,4 +12,6 @@ export class NewWorkoutComponent implements OnInit {
   ngOnInit() {
   }
 
+  d = new Date();
+
 }
