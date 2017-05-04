@@ -11,7 +11,7 @@ import {Angular2TokenService} from "angular2-token";
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(protected authTokenService:Angular2TokenService,
+  constructor(public authTokenService:Angular2TokenService,
               protected authService:AuthService,
               private router:Router) {}
 
