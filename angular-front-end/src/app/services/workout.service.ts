@@ -13,6 +13,14 @@ export class WorkoutService {
   getWorkouts(): Observable<Workout[]> {
     return this.http.get(this.workoutsUrl).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
   }
+
+  createWorkout(workout) {
+  let headers = new Headers({'Content-Type': 'application/json' });
+  let options = new RequestOptions({headers: headers});
+  return this.http.post(this.workoutsUrl, JSON.stringify(workout), {
+    headers: headers}).map((res: Response)=> res.json());
+  }
+
   private handleError (error: Response | any) {
   // In a real world app, we might use a remote logging infrastructure
   let errMsg: string;

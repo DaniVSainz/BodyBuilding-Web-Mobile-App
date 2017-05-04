@@ -1,3 +1,32 @@
-<p>
-  new-workout works! {{d | date}}
-</p>
+<div class='container white darken-4'>
+  <p class='center-align'>
+    new-workout works! {{d | date}}
+  </p>
+
+  <div>
+    <form (ngSubmit)='createWorkout(workout)' #workoutForm="ngForm">
+      <div class="form-group">
+        <label for="name">Workout Name</label>
+        <input type="text" class='form-control' id="name" placeholder="Upper/Lower" required name="name" #name='ngModel' [(ngModel)]="workout.name">
+        <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
+          Customer name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="user_id">User id</label>
+        <input type="number" class='form-control' id="user_id" placeholder=2 required name="user_id" #user_id='ngModel' [(ngModel)]="workout.user_id">
+        <div [hidden]="user_id.valid || user_id.pristine" class='alert alert-danger'>
+          Customer name is required
+        </div>
+      </div>
+
+      <button type='submit' class="btn btn-outline-primary btn-lg" [disabled]='!workoutForm.form.valid' [hidden]='submitted'>
+            Generate workout
+          </button>
+      <div class='alert alert-success' role='alert' [hidden]='!submitted'>
+        Your workout was successfully created! <a class='alert-link' routerLink='/workout'>View all workouts</a>
+      </div>
+
+    </form>
+  </div>
+</div>
