@@ -2,16 +2,28 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
+import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
+import {Angular2TokenService} from "angular2-token";
+
 import { Workout } from '../workout/workout';
 
 @Injectable()
 export class WorkoutService {
   private workoutsUrl = 'http://localhost:3000/workouts';
 
-  constructor(private http:Http){}
+  constructor(private http:Http,
+    public authTokenService:Angular2TokenService,
+    protected authService:AuthService,
+    private router:Router
+
+  ){    console.log(this.workoutsUrl+'/'+this.authTokenService.currentUserData.id);
+  }
+
 
   getWorkouts(): Observable<Workout[]> {
-    return this.http.get(this.workoutsUrl).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+    return this.http.get(this.workoutsUrl+'/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+
   }
 
   createWorkout(workout) {
