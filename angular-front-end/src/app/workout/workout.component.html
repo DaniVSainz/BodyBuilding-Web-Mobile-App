@@ -10,7 +10,7 @@
           {{workout.name}}
           <br> {{workout.created_at | date}}
         </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">View Workout Details</i></a>
+        <a [routerLink]="['/show-workout']"><i class="material-icons">View Workout Details</i></a>
       </li>
     </ul>
   </div>

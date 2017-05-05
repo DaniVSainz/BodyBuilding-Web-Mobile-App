@@ -17,12 +17,16 @@ export class WorkoutService {
     protected authService:AuthService,
     private router:Router
 
-  ){    console.log(this.workoutsUrl+'/'+this.authTokenService.currentUserData.id);
-  }
+  ){}
 
 
   getWorkouts(): Observable<Workout[]> {
     return this.http.get(this.workoutsUrl+'/user/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+
+  }
+
+  getShowWorkouts(): Observable<Workout[]> {
+    return this.http.get(this.workoutsUrl+'/3').map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
 
   }
 

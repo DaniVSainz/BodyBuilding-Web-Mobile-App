@@ -14,6 +14,7 @@ class WorkoutsController < ApplicationController
     render json: @workout
   end
 
+  # get /workouts/user/:id
   def userShow
     @workout = Workout.where user_id: workout_params['id']
     render json: @workout
