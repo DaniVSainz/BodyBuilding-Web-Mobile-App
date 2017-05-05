@@ -25,10 +25,14 @@ export class WorkoutService {
 
   }
 
-  getShowWorkouts(): Observable<Workout[]> {
-    return this.http.get(this.workoutsUrl+'/'+3).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+  // getShowWorkouts(id: number): Observable<Workout[]> {
+  //   return this.http.get(this.workoutsUrl+'/'+3).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+  // }
 
+  getShowWorkouts(id: number){
+    return this.http.get(this.workoutsUrl + "/" + id);
   }
+
 
   createWorkout(workout) {
   let headers = new Headers({'Content-Type': 'application/json' });

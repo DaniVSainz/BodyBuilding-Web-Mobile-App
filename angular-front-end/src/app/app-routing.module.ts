@@ -35,7 +35,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'show-workout',
+    path: 'show-workout/:id',
     component: ShowWorkoutComponent,
     canActivate: [AuthGuard]
   }
