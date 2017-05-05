@@ -26,7 +26,7 @@ export class WorkoutService {
   }
 
   getShowWorkouts(): Observable<Workout[]> {
-    return this.http.get(this.workoutsUrl+'/3').map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+    return this.http.get(this.workoutsUrl+'/'+3).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
 
   }
 

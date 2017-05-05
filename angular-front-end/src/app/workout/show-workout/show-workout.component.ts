@@ -15,7 +15,7 @@ export class ShowWorkoutComponent implements OnInit {
   errorMessage: string;
 
   constructor(
-    private workoutService: WorkoutService,
+    public workoutService: WorkoutService,
 
   ) {}
 

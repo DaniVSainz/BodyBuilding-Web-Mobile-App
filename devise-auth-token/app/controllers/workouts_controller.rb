@@ -10,7 +10,6 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/1
   def show
-    # @workout = Workout.where user_id: workout_params['id']
     render json: @workout
   end
 

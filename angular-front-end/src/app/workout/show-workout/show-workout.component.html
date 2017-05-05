@@ -1,8 +1,6 @@
 <div class='something'>
-  <p>
-    show-workout works!
-  </p>
+  <p *ngIf="workout">{{workout.id}}{{workout.name}}</p>
   <h1>
-    HI-show-workout {{workout.name}}
+    HI-show-workout
   </h1>
 </div>
