@@ -22,7 +22,7 @@ export class WorkoutService {
 
 
   getWorkouts(): Observable<Workout[]> {
-    return this.http.get(this.workoutsUrl+'/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+    return this.http.get(this.workoutsUrl+'/user/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
 
   }
 

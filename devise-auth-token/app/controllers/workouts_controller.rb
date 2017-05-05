@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [ :update, :destroy]
+  before_action :set_workout, only: [:show, :update, :destroy]
 
   # GET /workouts
   def index
@@ -10,6 +10,11 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/1
   def show
+    # @workout = Workout.where user_id: workout_params['id']
+    render json: @workout
+  end
+
+  def userShow
     @workout = Workout.where user_id: workout_params['id']
     render json: @workout
   end
