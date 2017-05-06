@@ -7,11 +7,13 @@ import {AuthService} from "../services/auth.service";
 import {Angular2TokenService} from "angular2-token";
 
 import { Workout } from '../workout/workout';
+import { Exercise } from '../workout/show-workout/exercise';
 
 @Injectable()
 export class WorkoutService {
-  // private workoutsUrl = 'http://localhost:3000/workouts';
-  private workoutsUrl = 'https://lift-tracker--api.herokuapp.com';
+  private workoutsUrl = 'http://localhost:3000/workouts';
+  private exerciseUrl = 'http://localhost:3000/exercises'
+  // private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
 
 
   constructor(private http:Http,
@@ -22,19 +24,18 @@ export class WorkoutService {
   ){}
 
 
+// =================
+//     WORKOUTS    |
+// =================
+
   getWorkouts(): Observable<Workout[]> {
     return this.http.get(this.workoutsUrl+'/user/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
 
   }
 
-  // getShowWorkouts(id: number): Observable<Workout[]> {
-  //   return this.http.get(this.workoutsUrl+'/'+3).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
-  // }
-
   getShowWorkouts(id: number){
     return this.http.get(this.workoutsUrl + "/" + id);
   }
-
 
   createWorkout(workout) {
   let headers = new Headers({'Content-Type': 'application/json' });
@@ -42,6 +43,23 @@ export class WorkoutService {
   return this.http.post(this.workoutsUrl, JSON.stringify(workout), {
     headers: headers}).map((res: Response)=> res.json());
   }
+
+// =================
+//   END  WORKOUTS    |
+// =================
+
+// =================
+//   EXERCISE      |
+// =================
+  createExercise(exercise) {
+  let headers = new Headers({'Content-Type': 'application/json' });
+  let options = new RequestOptions({headers: headers});
+  return this.http.post(this.exerciseUrl, JSON.stringify(exercise), {
+    headers: headers}).map((res: Response)=> res.json());
+  }
+
+
+
 
   private handleError (error: Response | any) {
   // In a real world app, we might use a remote logging infrastructure

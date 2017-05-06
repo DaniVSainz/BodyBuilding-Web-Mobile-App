@@ -2,9 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
+import {AuthService} from "../../services/auth.service";
 
 import { Workout } from '../workout';
 import { WorkoutService } from '../../services/workout.service';
+import {Angular2TokenService} from "angular2-token";
+import {Exercise} from './exercise';
 
 @Component({
   selector: 'app-show-workout',
@@ -13,25 +16,36 @@ import { WorkoutService } from '../../services/workout.service';
   providers: [WorkoutService]
 })
 export class ShowWorkoutComponent implements OnInit {
+  exercise = new Exercise;
+
+  submitted: boolean = false;
 
   errorMessage: string;
 
   constructor(
     private http: Http,
+    protected authService:AuthService,
     public workoutService: WorkoutService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public authTokenService:Angular2TokenService,
   ){}
 
  @Input()
   workout: Workout;
 
-  // ngOnInit(){
-  //   this.getShowWorkouts();
-  // }
-
-  // getShowWorkouts(){
-  //   this.workoutService.getShowWorkouts().subscribe(workout=> this.workout= workout,error=> this.errorMessage = <any>error );
-  // }
+  createExercise(exercise){
+    exercise.user_id = this.authTokenService.currentUserData.id
+    exercise.workout_id = this.workout.id
+    this.submitted = true;
+    this.workoutService.createExercise(exercise)
+        .subscribe(
+          data => { return true },
+          error => {
+            console.log("Error saving proposal");
+            return Observable.throw(error);
+          }
+        )
+  }
 
     ngOnInit(): void{
     let workoutRequest = this.route.params
