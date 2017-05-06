@@ -1,8 +1,9 @@
 <div class='container'>
-  <a [routerLink]="['/new-workout']">New Workout</a>
 
   <div class='row'>
+
     <ul class='collection workout-ul'>
+      <li><a [routerLink]="['/new-workout']" class='btn center-align'>New Workout</a></li>
       <li class="collection-item avatar col s6 center-align workout-link" *ngFor='let workout of workout'>
         <a (click)='goToShow(workout)'>
           <img src="http://cdn.cultofmac.com/wp-content/uploads/2016/09/workout-app.png" alt="" class="circle">

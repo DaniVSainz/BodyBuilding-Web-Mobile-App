@@ -17,7 +17,7 @@ import {Exercise} from './exercise';
 })
 export class ShowWorkoutComponent implements OnInit {
   exercise = new Exercise;
-
+  exercises: Exercise[];
   submitted: boolean = false;
 
   errorMessage: string;
@@ -33,6 +33,13 @@ export class ShowWorkoutComponent implements OnInit {
  @Input()
   workout: Workout;
 
+  ngOnInit(): void{
+    let workoutRequest = this.route.params
+        .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
+    workoutRequest.subscribe(response => this.workout = response.json());
+  }
+
+
   createExercise(exercise){
     exercise.user_id = this.authTokenService.currentUserData.id
     exercise.workout_id = this.workout.id
@@ -47,11 +54,14 @@ export class ShowWorkoutComponent implements OnInit {
         )
   }
 
-    ngOnInit(): void{
-    let workoutRequest = this.route.params
-        .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
-    workoutRequest.subscribe(response => this.workout = response.json());
-  }
+
+
+  // ngOnInit(){
+  //   let timer = Observable.timer(0, 5000)
+  //   timer.subscribe(() => this.getProposals());
+  // }
+
+
 
 }
 
