@@ -1,13 +1,16 @@
-<div class='something'>
+<div class='something row'>
   <p *ngIf="workout">{{workout.id}}{{workout.name}}</p>
-  <h1>
-    HI-show-workout
+  <h3 class='header-exercise col s6'>
+    Add Exercises to the Workout
     <a [routerLink]="['/workout']">Back</a>
-  </h1>
-  <div>
-    <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm">
+  </h3>
+  <h3 class='col s6'>
+    Exercises Done for Workout
+  </h3>
+  <div class='col s6'>
+    <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>
       <!--NAME-->
-      <div class="form-group">
+      <div class="form-group col s6">
         <label for="name">Exercise Name</label>
         <input type="text" class='form-control' id="name" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
         <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
@@ -15,37 +18,37 @@
         </div>
       </div>
       <!-- SET 1  -->
-      <div class="form-group">
+      <div class="form-group col s6">
         <label for="set1">Set 1:Reps</label>
-        <input type="text" class='form-control' id="name" placeholder="1-12.." name="name" #set1='ngModel' [(ngModel)]="exercise.set1">
+        <input type="text" class='form-control' id="name" placeholder="1-12.." name="name" required #set1='ngModel' [(ngModel)]="exercise.set1">
         <div [hidden]="set1.valid || set1.pristine" class='alert alert-danger'>
           Set 1 is required
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group col s6">
         <label for="weight1">Set 1:Weight</label>
-        <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="name" #weight1='ngModel' [(ngModel)]="exercise.weight1">
+        <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="name" required #weight1='ngModel' [(ngModel)]="exercise.weight1">
         <div [hidden]="weight1.valid || weight1.pristine" class='alert alert-danger'>
           Weight for first set is required
         </div>
       </div>
       <!-- SET 1  -->
       <!-- SET2 -->
-      <div class="form-group">
-        <label for="set1">Set 1:Reps</label>
-        <input type="text" class='form-control' id="name" placeholder="1-12.." name="name" #set1='ngModel' [(ngModel)]="exercise.set1">
+      <div class="form-group col s6">
+        <label for="set2">Set 2:Reps</label>
+        <input type="text" class='form-control' id="name" placeholder="1-12.." name="name" #set2='ngModel' [(ngModel)]="exercise.set2">
       </div>
 
-      <div class="form-group">
-        <label for="weight1">Set 1:Weight</label>
-        <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="name" #weight1='ngModel' [(ngModel)]="exercise.weight1">
+      <div class="form-group col s6">
+        <label for="weight2">Set 2:Weight</label>
+        <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="name" #weight2='ngModel' [(ngModel)]="exercise.weight2">
       </div>
       <!-- SET 2  -->
       <!-- SET 3 -->
 
 
-      <button type='submit' class="btn btn-outline-primary btn-lg" [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
+      <button type='submit' class="btn btn-outline-primary btn-lg col s3" [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
             Generate workout
           </button>
       <div class='alert alert-success' role='alert' [hidden]='!submitted'>
@@ -53,5 +56,8 @@
       </div>
 
     </form>
+  </div>
+  <div class='col s6'>
+
   </div>
 </div>
