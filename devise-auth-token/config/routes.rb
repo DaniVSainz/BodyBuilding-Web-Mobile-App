@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :exercises
   resources :workouts
   get '/workouts/user/:id' => 'workouts#userShow'
   mount_devise_token_auth_for 'User', at: 'auth'
