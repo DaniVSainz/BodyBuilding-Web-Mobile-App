@@ -11,10 +11,10 @@ import { Exercise } from '../workout/show-workout/exercise';
 
 @Injectable()
 export class WorkoutService {
-  // private workoutsUrl = 'http://localhost:3000/workouts';
+  private workoutsUrl = 'http://localhost:3000/workouts';
   // private exerciseUrl = 'http://localhost:3000/exercises'
-  private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
-  private exerciseUrl = 'http://localhost:3000/exercises/exercises'
+  // private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
+  private exerciseUrl = 'http://localhost:3000/exercises/'
 
   constructor(private http:Http,
     public authTokenService:Angular2TokenService,
@@ -58,9 +58,7 @@ export class WorkoutService {
     headers: headers}).map((res: Response)=> res.json());
   }
 
-  getShowExercises(id: number){
-    return this.http.get(this.exerciseUrl + "/" + id);
-  }
+
 
 
   private handleError (error: Response | any) {

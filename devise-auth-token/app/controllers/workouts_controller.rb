@@ -10,7 +10,8 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/1
   def show
-    @exercise = Exercise.find_by workout_id: @workout.id
+    @exercise = Exercise.where workout_id: @workout.id
+                        
     user_data = [@workout , @exercise ]
     render json: user_data
   end

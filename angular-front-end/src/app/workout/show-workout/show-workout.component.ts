@@ -17,10 +17,10 @@ import {Exercise} from './exercise';
 })
 export class ShowWorkoutComponent implements OnInit {
   exercise = new Exercise;
-  exercises: Exercise[];
-  submitted: boolean = false;
 
+  submitted: boolean = false;
   errorMessage: string;
+  workouts: Workout[];
 
   constructor(
     private http: Http,
@@ -36,13 +36,31 @@ export class ShowWorkoutComponent implements OnInit {
   ngOnInit(): void{
     let workoutRequest = this.route.params
         .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
-    workoutRequest.subscribe(response => this.workout = response.json());
+    workoutRequest.subscribe(response => this.workouts = response.json());
   }
 
+  // getShowWorkouts(workout) {
+  //   console.log(this.workout.id);
+  //   console.log('Potato');
+
+  //   this.workoutService.getShowWorkouts(this.workout.id)
+  //       .subscribe(
+  //         workouts => this.workouts = workouts,
+  //         error=> this.errorMessage = <any>error
+  //       );
+  // }
+
+  // getShowWorkouts(params: Params ) {
+  //   this.workoutService.getShowWorkouts(+params['id'])
+  //       .subscribe(
+  //         workouts => this.workouts = workouts,
+  //         error=> this.errorMessage = <any>error
+  //       );
+  // }
 
   createExercise(exercise){
     exercise.user_id = this.authTokenService.currentUserData.id
-    exercise.workout_id = this.workout.id
+    exercise.workout_id = this.workouts[0].id
     this.submitted = true;
     this.workoutService.createExercise(exercise)
         .subscribe(
@@ -53,15 +71,6 @@ export class ShowWorkoutComponent implements OnInit {
           }
         )
   }
-
-
-
-  // ngOnInit(){
-  //   let timer = Observable.timer(0, 5000)
-  //   timer.subscribe(() => this.getProposals());
-  // }
-
-
 
 }
 
