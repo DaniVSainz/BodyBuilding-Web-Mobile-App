@@ -2,8 +2,7 @@
 
   <div class='col s6'>
     <h3 class='header-exercise' *ngIf="workouts">
-      <!--Add Exercises to : {{workouts[0].name}}-->
-      {{workouts | json}}
+      Add Exercises to : {{workouts[0].name}}
     </h3>
   </div>
 
@@ -66,14 +65,13 @@
   </div>
   <div class='col s6'>
     <div>
-      <ul class="collection col s6">
-        <li class="collection-item avatar center-align">
+      <ul class="collection col s6" *ngIf="workouts">
+        <li class="collection-item avatar center-align" *ngFor='let exercise of workouts[1]'>
           <img src="" alt="" class="circle">
-          <span class="title">Title</span>
+          <span class="title">{{exercise.name}} </span>
           <p *ngIf="workouts">
-            {{workouts[1].set1}}
+            Reps: {{exercise.set1}} <br> Weight: {{exercise.weight1}} <br>
           </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
         </li>
       </ul>
     </div>

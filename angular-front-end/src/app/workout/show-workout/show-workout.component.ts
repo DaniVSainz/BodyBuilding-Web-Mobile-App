@@ -34,29 +34,14 @@ export class ShowWorkoutComponent implements OnInit {
   workout: Workout;
 
   ngOnInit(): void{
+    let timer = Observable.timer(0, 5000)
     let workoutRequest = this.route.params
         .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
     workoutRequest.subscribe(response => this.workouts = response.json());
+
   }
 
-  // getShowWorkouts(workout) {
-  //   console.log(this.workout.id);
-  //   console.log('Potato');
 
-  //   this.workoutService.getShowWorkouts(this.workout.id)
-  //       .subscribe(
-  //         workouts => this.workouts = workouts,
-  //         error=> this.errorMessage = <any>error
-  //       );
-  // }
-
-  // getShowWorkouts(params: Params ) {
-  //   this.workoutService.getShowWorkouts(+params['id'])
-  //       .subscribe(
-  //         workouts => this.workouts = workouts,
-  //         error=> this.errorMessage = <any>error
-  //       );
-  // }
 
   createExercise(exercise){
     exercise.user_id = this.authTokenService.currentUserData.id
