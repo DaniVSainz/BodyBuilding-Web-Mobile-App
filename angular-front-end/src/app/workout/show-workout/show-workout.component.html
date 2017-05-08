@@ -72,12 +72,13 @@
   <div class='col s6'>
     <div>
       <ul class="collection col s6 " *ngIf="workouts ">
-        <li class="collection-item avatar center-align " *ngFor='let exercise of workouts[1]'>
-          <img src=" " alt=" " class="circle ">
-          <span class="title ">{{exercise.name}} </span>
-          <p *ngIf="workouts ">
-            Reps: {{exercise.set1}} <br> Weight: {{exercise.weight1}} <br>
-          </p>
+        <li class="collection-item avatar valign-wrapper" *ngFor='let exercise of workouts[1]'>
+          <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
+          <div class='exercise-text'>
+            <p *ngIf="workouts">
+              {{exercise.name}} <br> Reps: {{exercise.set1}} <br> Weight: {{exercise.weight1}} <br>
+            </p>
+          </div>
         </li>
       </ul>
     </div>

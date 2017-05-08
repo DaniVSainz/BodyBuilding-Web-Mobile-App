@@ -14,7 +14,9 @@ import {Angular2TokenService} from "angular2-token";
 })
 export class NewWorkoutComponent implements OnInit {
   workout = new Workout;
-
+  workoutId: any;
+  errorMessage: string;
+  link: any;
   submitted: boolean = false;
 
   constructor(public authTokenService:Angular2TokenService,
@@ -28,7 +30,13 @@ export class NewWorkoutComponent implements OnInit {
 
   d = new Date();
 
+  getWorkouts(){
+
+    this.workoutService.getWorkouts().subscribe(workoutId=> this.workoutId= workoutId,error=> this.errorMessage = <any>error );
+  }
+
   createWorkout(workout){
+
     workout.user_id = this.authTokenService.currentUserData.id
     this.submitted = true;
     this.workoutService.createWorkout(workout)
@@ -39,6 +47,12 @@ export class NewWorkoutComponent implements OnInit {
             return Observable.throw(error);
           }
         )
+    setTimeout(() => {this.getWorkouts();console.log(1)}, 50)
+    setTimeout(() =>   {
+      console.log(2)
+      var link = ['/show-workout/', this.workoutId[this.workoutId.length - 1 ].id ]
+      this.router.navigate(link);
+    }, 90)
   }
 
 }
