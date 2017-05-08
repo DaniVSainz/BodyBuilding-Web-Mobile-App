@@ -47,12 +47,12 @@ export class NewWorkoutComponent implements OnInit {
             return Observable.throw(error);
           }
         )
-    setTimeout(() => {this.getWorkouts();console.log(1)}, 50)
+    setTimeout(() => {this.getWorkouts();console.log(1)}, 150)
     setTimeout(() =>   {
       console.log(2)
       var link = ['/show-workout/', this.workoutId[this.workoutId.length - 1 ].id ]
       this.router.navigate(link);
-    }, 90)
+    }, 190)
   }
 
 }
