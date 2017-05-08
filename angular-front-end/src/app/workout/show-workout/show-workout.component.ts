@@ -17,7 +17,6 @@ import {Exercise} from './exercise';
 })
 export class ShowWorkoutComponent implements OnInit {
   exercise = new Exercise;
-
   submitted: boolean = false;
   errorMessage: string;
   workouts: Workout[];
@@ -39,7 +38,9 @@ export class ShowWorkoutComponent implements OnInit {
         .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
     workoutRequest.subscribe(response => this.workouts = response.json());
 
+
   }
+
 
 
 

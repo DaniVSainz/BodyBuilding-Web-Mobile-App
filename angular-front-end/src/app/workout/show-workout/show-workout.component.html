@@ -53,23 +53,26 @@
       <!-- SET 3 -->
 
 
-      <button type='submit' class="btn btn-outline-primary btn-lg col s3" [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
+      <a class="nav-link" [routerLink]="['/show-workout/' + workouts[0].id ] " *ngIf="workouts">Test Refresh Link</a>
+
+      <button type='submit' class=" btn btn-outline-primary btn-lg col s3 " [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
             Add Exercise
-      </button>
+        </button>
       <div class='alert alert-success' role='alert' [hidden]='!submitted'>
         Your exercise was successfully added!
       </div>
+
 
     </form>
 
   </div>
   <div class='col s6'>
     <div>
-      <ul class="collection col s6" *ngIf="workouts">
-        <li class="collection-item avatar center-align" *ngFor='let exercise of workouts[1]'>
-          <img src="" alt="" class="circle">
-          <span class="title">{{exercise.name}} </span>
-          <p *ngIf="workouts">
+      <ul class="collection col s6 " *ngIf="workouts ">
+        <li class="collection-item avatar center-align " *ngFor='let exercise of workouts[1]'>
+          <img src=" " alt=" " class="circle ">
+          <span class="title ">{{exercise.name}} </span>
+          <p *ngIf="workouts ">
             Reps: {{exercise.set1}} <br> Weight: {{exercise.weight1}} <br>
           </p>
         </li>
@@ -78,5 +81,5 @@
   </div>
 </div>
 <div class='row'>
-  <a [routerLink]="['/workout']" class='btn'>Back</a>
+  <a [routerLink]="[ '/workout'] " class='btn'>Back</a>
 </div>
