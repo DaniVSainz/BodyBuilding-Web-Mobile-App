@@ -51,6 +51,8 @@ export class NewWorkoutComponent implements OnInit {
     setTimeout(() =>   {
       console.log(2)
       var link = ['/show-workout/', this.workoutId[this.workoutId.length - 1 ].id ]
+      console.log(link)
+      console.log(this.workoutId)
       this.router.navigate(link);
     }, 190)
   }
