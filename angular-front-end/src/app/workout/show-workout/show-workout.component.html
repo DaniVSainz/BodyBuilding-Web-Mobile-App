@@ -53,11 +53,14 @@
       <!-- SET 3 -->
 
 
-      <a class="nav-link" [routerLink]="['/show-workout/' + workouts[0].id ] " *ngIf="workouts">Test Refresh Link</a>
 
+      <!--<a (click)='reloadExercise(workouts[0].id)'>Test</a>-->
+
+      <!--<a (click)='reloadExercise(workouts[0].id)'>-->
       <button type='submit' class=" btn btn-outline-primary btn-lg col s3 " [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
             Add Exercise
         </button>
+      <!--</a>-->
       <div class='alert alert-success' role='alert' [hidden]='!submitted'>
         Your exercise was successfully added!
       </div>

@@ -19,7 +19,8 @@ export class ShowWorkoutComponent implements OnInit {
   exercise = new Exercise;
   submitted: boolean = false;
   errorMessage: string;
-  workouts: Workout[];
+  workouts: any;
+  reloadWorkouts: any;
 
   constructor(
     private http: Http,
@@ -37,14 +38,16 @@ export class ShowWorkoutComponent implements OnInit {
     let workoutRequest = this.route.params
         .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
     workoutRequest.subscribe(response => this.workouts = response.json());
-
-
   }
 
 
+  reloadExercise(workout){
+    this.workoutService.getShowWorkouts(workout).subscribe(response => this.workouts = response.json());;
+  }
 
 
   createExercise(exercise){
+    console.log('exercise created')
     exercise.user_id = this.authTokenService.currentUserData.id
     exercise.workout_id = this.workouts[0].id
     this.submitted = true;
@@ -56,6 +59,8 @@ export class ShowWorkoutComponent implements OnInit {
             return Observable.throw(error);
           }
         )
+    setTimeout(() =>  this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json()), 100)
+    // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json());
   }
 
 }
