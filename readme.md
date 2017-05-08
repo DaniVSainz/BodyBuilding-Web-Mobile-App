@@ -2,7 +2,8 @@ Currently the website is behind a few commits, it will be updated every few days
 https://lift-tracker-dvs.herokuapp.com/
 ![alt](https://github.com/DaniVSainz/bodybuilding-angular/blob/master/ang4bodybuilding.gif)  
 
-pushing to heroku using : ```git push angular-front-end `git subtree split --prefix angular-front-end`:master```
+pushing to heroku using : ```git push angular-front-end `git subtree split --prefix angular-front-end`:master```  
+pushing devise-auth-token folder with : ```git push heroku `git subtree split --prefix devise-auth-token`:master```
 
 This app is to implement some of my aquired knowledge in the past month into a application i would actually use.
 
