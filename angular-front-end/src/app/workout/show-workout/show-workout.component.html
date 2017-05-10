@@ -1,77 +1,78 @@
-<div class='something row'>
+<div class='show-workout'>
+  <div class='something row'>
 
-  <div class='col s6'>
-    <h3 class='header-exercise' *ngIf="workouts">
-      Add Exercises to : {{workouts[0].name}}
-    </h3>
-  </div>
 
-  <div class='col s6'>
-    <h3 class='center-align'>
-      Exercises Done for Workout
-    </h3>
-  </div>
 
-  <div class='col s6 center-align'>
-    <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>
-      <!--NAME-->
-      <div class="form-group col s6">
-        <label for="name">Exercise Name</label>
-        <input type="text" class='form-control' id="name" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
-        <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
-          Exercise is Required
+    <div class='col s6'>
+      <h3 class='header-exercise' *ngIf="workouts">
+        Add Exercises to : {{workouts[0].name}}
+      </h3>
+      <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>
+        <!--NAME-->
+        <div class="form-group col s5">
+          <label for="name">Exercise Name</label>
+          <input type="text" class='form-control' id="name" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
+          <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
+            Exercise is Required
+          </div>
         </div>
-      </div>
-      <!-- SET 1  -->
-      <div class="form-group col s6">
-        <label for="set1">Set 1:Reps</label>
-        <input type="text" class='form-control' id="name" placeholder="1-12.." name="set1" required #set1='ngModel' [(ngModel)]="exercise.set1">
-        <div [hidden]="set1.valid || set1.pristine" class='alert alert-danger'>
-          Set 1 is required
+        <!-- SET 1  -->
+        <div class="form-group col s3">
+          <label for="set1">Set 1:Reps</label>
+          <input type="text" class='form-control' id="name" placeholder="1-12.." name="set1" required #set1='ngModel' [(ngModel)]="exercise.set1">
+          <div [hidden]="set1.valid || set1.pristine" class='alert alert-danger'>
+            Set 1 is required
+          </div>
         </div>
-      </div>
 
-      <div class="form-group col s6">
-        <label for="weight1">Set 1:Weight</label>
-        <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="weight1" required #weight1='ngModel' [(ngModel)]="exercise.weight1">
-        <div [hidden]="weight1.valid || weight1.pristine" class='alert alert-danger'>
-          Weight for first set is required
+        <div class="form-group col s3">
+          <label for="weight1">Set 1:Weight</label>
+          <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="weight1" required #weight1='ngModel' [(ngModel)]="exercise.weight1">
+          <div [hidden]="weight1.valid || weight1.pristine" class='alert alert-danger'>
+            Weight for first set is required
+          </div>
         </div>
-      </div>
-      <!-- SET 1  -->
-      <!-- SET2 -->
-      <div class="form-group col s6">
-        <label for="set2">Set 2:Reps</label>
-        <input type="text" class='form-control' id="name" placeholder="1-12.." name="set2" #set2='ngModel' [(ngModel)]="exercise.set2">
-      </div>
+        <!-- SET 1  -->
+        <!-- SET2 -->
+        <div class="form-group col s3">
+          <label for="set2">Set 2:Reps</label>
+          <input type="text" class='form-control' id="name" placeholder="1-12.." name="set2" #set2='ngModel' [(ngModel)]="exercise.set2">
+        </div>
 
-      <div class="form-group col s6">
-        <label for="weight2">Set 2:Weight</label>
-        <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="weight2" #weight2='ngModel' [(ngModel)]="exercise.weight2">
-      </div>
-      <!-- SET 2  -->
-      <!-- SET 3 -->
-
+        <div class="form-group col s3">
+          <label for="weight2">Set 2:Weight</label>
+          <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="weight2" #weight2='ngModel' [(ngModel)]="exercise.weight2">
+        </div>
+        <!-- SET 2  -->
+        <!-- SET 3 -->
 
 
-      <!--<a (click)='reloadExercise(workouts[0].id)'>Test</a>-->
 
-      <!--<a (click)='reloadExercise(workouts[0].id)'>-->
-      <button type='submit' class=" btn btn-outline-primary btn-lg col s3 " [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
+        <!--<a (click)='reloadExercise(workouts[0].id)'>Test</a>-->
+
+        <!--<a (click)='reloadExercise(workouts[0].id)'>-->
+        <div class='col s6'>
+          <button type='submit' class=" btn btn-outline-primary btn-lg submit-button" [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
             Add Exercise
         </button>
-      <!--</a>-->
-      <div class='alert alert-success' role='alert' [hidden]='!submitted'>
-        Your exercise was successfully added!
-      </div>
+          <a [routerLink]="[ '/workout'] " class='btn right'>Back</a>
+          <!--</a>-->
+          <div class='alert alert-success' role='alert' [hidden]='!submitted'>
+            Your exercise was successfully added!
+          </div>
+        </div>
 
 
-    </form>
 
-  </div>
-  <div class='col s6'>
-    <div>
-      <ul class="collection col s6 " *ngIf="workouts ">
+      </form>
+
+    </div>
+    <div class='col s6 exercise-div'>
+
+      <h3 class='center-align'>
+        Exercises Done for Workout
+      </h3>
+      <ul class="collection col s6 exercise-ul" *ngIf="workouts ">
         <li class="collection-item avatar valign-wrapper" *ngFor='let exercise of workouts[1]'>
           <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
           <div class='exercise-text'>
@@ -81,9 +82,7 @@
           </div>
         </li>
       </ul>
+
     </div>
   </div>
-</div>
-<div class='row'>
-  <a [routerLink]="[ '/workout'] " class='btn'>Back</a>
 </div>
