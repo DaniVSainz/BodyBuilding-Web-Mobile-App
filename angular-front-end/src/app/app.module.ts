@@ -21,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { NewWorkoutComponent } from './workout/new-workout/new-workout.component';
 import { ShowWorkoutComponent } from './workout/show-workout/show-workout.component';
+import { ExerciseShowComponent } from './workout/exercise-show/exercise-show.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { ShowWorkoutComponent } from './workout/show-workout/show-workout.compon
     ProfileComponent,
     WorkoutComponent,
     NewWorkoutComponent,
-    ShowWorkoutComponent
+    ShowWorkoutComponent,
+    ExerciseShowComponent,
+
   ],
   imports: [
     BrowserModule,
