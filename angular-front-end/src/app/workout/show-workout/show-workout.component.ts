@@ -21,6 +21,18 @@ export class ShowWorkoutComponent implements OnInit {
   errorMessage: string;
   workouts: any;
   reloadWorkouts: any;
+  private _trialEndsAt;
+
+  private _diff: number;
+
+  private _days: number;
+
+  private _hours: number;
+
+  private _minutes: number;
+
+  private _seconds: number;
+
 
   constructor(
     private http: Http,
@@ -38,6 +50,17 @@ export class ShowWorkoutComponent implements OnInit {
     let workoutRequest = this.route.params
         .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
     workoutRequest.subscribe(response => this.workouts = response.json());
+
+    this._trialEndsAt = "2017-02-28";
+
+    Observable.interval(1000).map((x) => {
+            this._diff = Date.parse(this._trialEndsAt) - Date.parse(new Date().toString());
+        }).subscribe((x) => {
+            this._days = this.getDays(this._diff);
+            this._hours = this.getHours(this._diff);
+            this._minutes = this.getMinutes(this._diff);
+            this._seconds = this.getSeconds(this._diff);
+        });
   }
 
 
@@ -62,6 +85,23 @@ export class ShowWorkoutComponent implements OnInit {
     setTimeout(() =>  this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json()), 100)
     // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json());
   }
+
+
+  getDays(t){
+    return Math.floor( t/(1000*60*60*24) );
+}
+
+getHours(t){
+    return Math.floor( (t/(1000*60*60)) % 24 );
+}
+
+getMinutes(t){
+    return Math.floor( (t/1000/60) % 60 );
+}
+
+getSeconds(t){
+    return Math.floor( (t/1000) % 60 );
+}
 
 }
 
