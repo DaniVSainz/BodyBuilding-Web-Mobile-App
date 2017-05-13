@@ -18,8 +18,8 @@ import { TimerService } from '../services/timer.service';
 })
 export class ButtonsComponent implements OnInit, OnDestroy {
 
-    private playPauseStopUnsubscribe: any;
-    private play: boolean;
+     playPauseStopUnsubscribe: any;
+     play: boolean;
 
     constructor(private timerService: TimerService) {
     }
