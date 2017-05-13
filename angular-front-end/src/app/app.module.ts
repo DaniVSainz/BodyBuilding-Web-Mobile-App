@@ -8,6 +8,7 @@ import {AuthGuard} from "./guards/auth.guard";
 
 import {AuthService} from "./services/auth.service";
 import { WorkoutService} from './services/workout.service';
+import {TimerService} from './services/timer.service';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,7 +49,7 @@ import { TimerComponent } from './timer/timer.component';
     AppRoutingModule,
     MaterializeModule
   ],
-  providers: [ Angular2TokenService,AuthService, AuthGuard, WorkoutService ],
+  providers: [ Angular2TokenService,AuthService, AuthGuard, WorkoutService, TimerService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
