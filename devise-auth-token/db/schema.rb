@@ -10,27 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506171923) do
+ActiveRecord::Schema.define(version: 20170513074347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "exercise_sets", force: :cascade do |t|
+    t.integer  "reps"
+    t.integer  "weight"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "exercise_id"
+    t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id", using: :btree
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.integer  "workout_id"
-    t.integer  "set1"
-    t.integer  "weight1"
-    t.integer  "set2"
-    t.integer  "weight2"
-    t.integer  "set3"
-    t.integer  "weight3"
-    t.integer  "set4"
-    t.integer  "weight4"
-    t.integer  "set5"
-    t.integer  "weight5"
-    t.integer  "set6"
-    t.integer  "weight6"
-    t.integer  "set7"
-    t.integer  "weight7"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
@@ -76,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170506171923) do
     t.index ["user_id"], name: "index_workouts_on_user_id", using: :btree
   end
 
+  add_foreign_key "exercise_sets", "exercises"
   add_foreign_key "exercises", "users"
   add_foreign_key "exercises", "workouts"
   add_foreign_key "workouts", "users"

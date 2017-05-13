@@ -1,0 +1,2 @@
+class ExerciseSet < ApplicationRecord
+end
