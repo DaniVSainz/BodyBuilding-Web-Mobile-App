@@ -9,6 +9,7 @@ import { WorkoutComponent } from './workout/workout.component';
 import { NewWorkoutComponent } from './workout/new-workout/new-workout.component';
 import { ShowWorkoutComponent } from './workout/show-workout/show-workout.component';
 import { TimerComponent } from './timer/timer.component';
+import { ExerciseShowComponent } from './workout/exercise-show/exercise-show.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,11 @@ const routes: Routes = [
   {
     path: 'apptimer',
     component: TimerComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'exercise-show/:id',
+    component: ExerciseShowComponent,
     canActivate: [AuthGuard]
   }
 

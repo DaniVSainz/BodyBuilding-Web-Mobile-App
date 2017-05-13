@@ -1,3 +1,21 @@
-<p>
-  exercise-show works!
-</p>
+<div class='col s6 exercise-div'>
+
+  <h3 class='center-align'>
+    Exercises Done for Workout
+  </h3>
+  <ul class="collection col s6 exercise-ul" *ngIf="workouts ">
+    <li class="collection-item avatar valign-wrapper" *ngFor='let exercise of workouts[1]'>
+      <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
+      <div class='exercise-text center-align'>
+        <p *ngIf="workouts">
+          {{exercise.name}} <br> Reps: {{exercise.set1}} <br> Weight: {{exercise.weight1}} <br>
+        </p>
+        <div class="row center-align exercise-buttons">
+          <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+          <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+</div>

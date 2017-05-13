@@ -29,7 +29,7 @@ export class WorkoutComponent implements OnInit {
     this.workoutService.getWorkouts().subscribe(workout=> this.workout= workout,error=> this.errorMessage = <any>error );
   }
 
-    goToShow(workout: Workout): void{
+  goToShow(workout: Workout): void{
     let link = ['/show-workout', workout.id ]
     this.router.navigate(link);
   }

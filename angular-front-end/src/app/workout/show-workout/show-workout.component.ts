@@ -3,6 +3,8 @@ import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import {AuthService} from "../../services/auth.service";
+import { Router } from '@angular/router';
+
 
 import { Workout } from '../workout';
 import { WorkoutService } from '../../services/workout.service';
@@ -29,6 +31,7 @@ export class ShowWorkoutComponent implements OnInit {
     public workoutService: WorkoutService,
     private route: ActivatedRoute,
     public authTokenService:Angular2TokenService,
+    private router: Router
   ){}
 
  @Input()
@@ -63,6 +66,11 @@ export class ShowWorkoutComponent implements OnInit {
         )
     setTimeout(() =>  this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json()), 100)
     // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json());
+  }
+
+  goToShowExercise(exercise: Exercise): void{
+    let link = ['/exercise-show', exercise.id ]
+    this.router.navigate(link);
   }
 
 }
