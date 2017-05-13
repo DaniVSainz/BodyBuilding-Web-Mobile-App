@@ -8,6 +8,8 @@ import {ProfileComponent} from "./profile/profile.component";
 import { WorkoutComponent } from './workout/workout.component';
 import { NewWorkoutComponent } from './workout/new-workout/new-workout.component';
 import { ShowWorkoutComponent } from './workout/show-workout/show-workout.component';
+import { TimerComponent } from './timer/timer.component';
+
 
 const routes: Routes = [
   {
@@ -38,7 +40,13 @@ const routes: Routes = [
     path: 'show-workout/:id',
     component: ShowWorkoutComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'apptimer',
+    component: TimerComponent,
+    canActivate: [AuthGuard]
   }
+
 ];
 
 @NgModule({
