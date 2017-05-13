@@ -13,6 +13,7 @@ import { Exercise } from '../workout/show-workout/exercise';
 export class WorkoutService {
   private workoutsUrl = 'http://localhost:3000/workouts';
   private exerciseUrl = 'http://localhost:3000/exercises/';
+  private exerciseSetUrl = 'http://localhost:3000/exercise_sets/';
 
   // private exerciseUrl = 'https://lift-tracker--api.herokuapp.com/exercises/'
   // private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
@@ -70,6 +71,16 @@ export class WorkoutService {
 // =================
 //  END  EXERCISE  |
 // =================
+// =================
+//   EXERCISE  SETs|
+// =================
+
+  createExerciseSet(exerciseSet) {
+    let headers = new Headers({'Content-Type': 'application/json' });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(this.exerciseSetUrl, JSON.stringify(exerciseSet), {
+      headers: headers}).map((res: Response)=> res.json());
+  }
 
 
 

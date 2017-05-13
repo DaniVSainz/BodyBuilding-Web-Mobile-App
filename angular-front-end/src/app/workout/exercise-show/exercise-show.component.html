@@ -1,66 +1,46 @@
-<!--<div class='col s6 exercise-div'>
-
-  <h3 class='center-align'>
-    Exercises Done for Workout
-  </h3>
-  <ul class="collection col s6 exercise-ul" *ngIf="exercise ">
-    <li class="collection-item avatar valign-wrapper">
-      <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
-      <div class='exercise-text center-align'>
-        <p *ngIf="exercise">
-          {{exercise.name}} <br> Reps: {{exercise.set1}} <br> Weight: {{exercise.weight1}} <br>
-        </p>
-        <div class="row center-align exercise-buttons">
-          <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
-          <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-        </div>
-      </div>
-    </li>
-  </ul>
-
-</div>-->
-<!--<timer></timer>-->
+<!---->
+<!---->
+<!---->
 <div class="container exercise-container">
 
   <div class="row">
     <timer></timer>
     <div class='col s6'>
       <h3 class='header-exercise' *ngIf="exercise">
-        Add Sets to : {{exercise}}
+        Add Sets to : {{exercise.name}}
       </h3>
-      <!--<form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>
+
+      <form (ngSubmit)='createExerciseSet(exerciseSet)' #exerciseSetForm="ngForm" class='exerciseSet-form'>
 
         <div class="form-group col s5">
-          <label for="name">Exercise Name</label>
-          <input type="text" class='form-control' id="name" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
-          <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
-            Exercise is Required
+          <label for="reps">Reps:</label>
+          <input type="text" class='form-control' id="name" placeholder="1..15" required name="reps" #reps='ngModel' [(ngModel)]="exerciseSet.reps">
+          <div [hidden]="reps.valid || reps.pristine" class='alert alert-danger'>
+            Reps are required
           </div>
         </div>
 
         <div class="form-group col s3">
-          <label for="set1">Rest Time</label>
-          <input type="text" class='form-control' id="name" placeholder="60s" name="rest" required #rest='ngModel' [(ngModel)]="exercise.rest">
-          <div [hidden]="rest.valid || rest.pristine" class='alert alert-danger'>
-            Rest Time is required
+          <label for="weight">Weight is required</label>
+          <input type="text" class='form-control' id="name" placeholder="150lbs" name="weight" required #weight='ngModel' [(ngModel)]="exerciseSet.weight">
+          <div [hidden]="weight.valid || weight.pristine" class='alert alert-danger'>
+            Weight is required
           </div>
         </div>
 
 
         <div class='col s6'>
-          <button type='submit' class=" btn btn-outline-primary btn-lg submit-button" [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
-            Add Exercise
+          <button type='submit' class=" btn btn-outline-primary btn-lg submit-button" [disabled]='!exerciseSetForm.form.valid' [hidden]='submitted'>
+            Add Set to exercise
         </button>
           <a [routerLink]="[ '/workout'] " class='btn right'>Back</a>
 
           <div class='alert alert-success' role='alert' [hidden]='!submitted'>
-            Your exercise was successfully added!
+            Your Set was successfully added!
           </div>
         </div>
 
-
-
-      </form>-->
+      </form>
     </div>
     <div class="col s6">
       <h3 class="center-align">

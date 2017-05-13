@@ -68,7 +68,7 @@ export class ShowWorkoutComponent implements OnInit {
     // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json());
   }
 
-  goToShowExercise(exercise: Exercise): void{
+  goToShowExerciseSet(exercise: Exercise): void{
     let link = ['/exercise-show', exercise.id ]
     this.router.navigate(link);
   }

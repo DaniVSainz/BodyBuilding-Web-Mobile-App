@@ -18,7 +18,7 @@
         </div>
         <!-- SET 1  -->
         <div class="form-group col s3">
-          <label for="set1">Rest Time</label>
+          <label for="rest">Rest Time</label>
           <input type="text" class='form-control' id="name" placeholder="60s" name="rest" required #rest='ngModel' [(ngModel)]="exercise.rest">
           <div [hidden]="rest.valid || rest.pristine" class='alert alert-danger'>
             Rest Time is required
@@ -49,7 +49,7 @@
       </h3>
       <ul class="collection col s6 exercise-ul" *ngIf="workouts ">
         <li class="collection-item avatar valign-wrapper" *ngFor='let exercise of workouts[1]'>
-          <a (click)='goToShowExercise(exercise)'>
+          <a (click)='goToShowExerciseSet(exercise)'>
             <div class="exercise-a">
               <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
               <div class='exercise-text center-align'>
