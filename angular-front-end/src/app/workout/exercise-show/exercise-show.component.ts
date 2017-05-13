@@ -17,7 +17,7 @@ import {Exercise} from '../show-workout/exercise';
 })
 
 export class ExerciseShowComponent implements OnInit {
-  workouts: Workout;
+  exercise: Exercise;
 
   constructor(
     private http: Http,
@@ -29,8 +29,8 @@ export class ExerciseShowComponent implements OnInit {
 
   ngOnInit() {
     let workoutRequest = this.route.params
-        .flatMap((params: Params)=> this.workoutService.getShowWorkouts(+params['id']));
-    workoutRequest.subscribe(response => this.workouts = response.json());
+        .flatMap((params: Params)=> this.workoutService.getShowExercise(+params['id']));
+    workoutRequest.subscribe(response => this.exercise = response.json());
   }
 
 }
