@@ -63,7 +63,7 @@ export class WorkoutService {
 
 
   getShowExercise(id: number){
-    return this.http.get(this.exerciseUrl + "/" + id);
+    return this.http.get(this.exerciseUrl  + id);
   }
 
 

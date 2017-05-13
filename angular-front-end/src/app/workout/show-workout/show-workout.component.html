@@ -2,7 +2,7 @@
   <div class='something row'>
 
 
-    <timer></timer>
+    <!--<timer></timer>-->
     <div class='col s6'>
       <h3 class='header-exercise' *ngIf="workouts">
         Add Exercises to : {{workouts[0].name}}
@@ -18,37 +18,12 @@
         </div>
         <!-- SET 1  -->
         <div class="form-group col s3">
-          <label for="set1">Set 1:Reps</label>
-          <input type="text" class='form-control' id="name" placeholder="1-12.." name="set1" required #set1='ngModel' [(ngModel)]="exercise.set1">
-          <div [hidden]="set1.valid || set1.pristine" class='alert alert-danger'>
-            Set 1 is required
+          <label for="set1">Rest Time</label>
+          <input type="text" class='form-control' id="name" placeholder="60s" name="rest" required #rest='ngModel' [(ngModel)]="exercise.rest">
+          <div [hidden]="rest.valid || rest.pristine" class='alert alert-danger'>
+            Rest Time is required
           </div>
         </div>
-
-        <div class="form-group col s3">
-          <label for="weight1">Set 1:Weight</label>
-          <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="weight1" required #weight1='ngModel' [(ngModel)]="exercise.weight1">
-          <div [hidden]="weight1.valid || weight1.pristine" class='alert alert-danger'>
-            Weight for first set is required
-          </div>
-        </div>
-        <!-- SET 1  -->
-        <!-- SET2 -->
-        <div class="form-group col s3">
-          <label for="set2">Set 2:Reps</label>
-          <input type="text" class='form-control' id="name" placeholder="1-12.." name="set2" #set2='ngModel' [(ngModel)]="exercise.set2">
-        </div>
-
-        <div class="form-group col s3">
-          <label for="weight2">Set 2:Weight</label>
-          <input type="text" class='form-control' id="name" placeholder="10-500lbs" name="weight2" #weight2='ngModel' [(ngModel)]="exercise.weight2">
-        </div>
-        <!-- SET 2  -->
-        <!-- SET 3 -->
-
-
-
-        <!--<a (click)='reloadExercise(workouts[0].id)'>Test</a>-->
 
         <!--<a (click)='reloadExercise(workouts[0].id)'>-->
         <div class='col s6'>
@@ -79,7 +54,7 @@
               <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
               <div class='exercise-text center-align'>
                 <p *ngIf="workouts">
-                  {{exercise.name}} <br> Reps: {{exercise.set1}} <br> Weight: {{exercise.weight1}} <br>
+                  {{exercise.name}} <br> Rest: {{exercise.rest}} <br> Weight: {{exercise.weight1}} <br>
                 </p>
                 <div class="row center-align exercise-buttons">
                   <i class="fa fa-plus fa-lg add-exercise" aria-hidden="true"></i>

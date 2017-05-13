@@ -31,6 +31,7 @@ export class ExerciseShowComponent implements OnInit {
     let workoutRequest = this.route.params
         .flatMap((params: Params)=> this.workoutService.getShowExercise(+params['id']));
     workoutRequest.subscribe(response => this.exercise = response.json());
+
   }
 
 }
