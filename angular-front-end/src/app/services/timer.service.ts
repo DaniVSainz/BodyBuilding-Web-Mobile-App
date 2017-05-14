@@ -18,6 +18,8 @@ export class TimerService {
       this.playPauseStop$.emit({
           play: this.play
       });
+    var audio = new Audio('/assets/clock-start.mp3');
+    audio.play();
   }
 
   public pauseTimer() {
@@ -30,7 +32,7 @@ export class TimerService {
       });
   }
 
-  public stopTimer() {
+  public resetTimer() {
       this.play = false;
       this.pause = false;
       this.stop = true;

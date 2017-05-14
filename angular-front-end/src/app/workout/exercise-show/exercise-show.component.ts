@@ -2,19 +2,22 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
-import {AuthService} from "../../services/auth.service";
 
 import { Workout } from '../workout';
-import { WorkoutService } from '../../services/workout.service';
 import {Angular2TokenService} from "angular2-token";
 import {Exercise} from '../show-workout/exercise';
 import {Exercise_set} from './exercise_set';
+
+import { WorkoutService } from '../../services/workout.service';
+import {AuthService} from "../../services/auth.service";
+import {TimerService} from "../../services/timer.service";
+
 
 @Component({
   selector: 'app-exercise-show',
   templateUrl: './exercise-show.component.html',
   styleUrls: ['./exercise-show.component.sass'],
-  providers: [WorkoutService]
+  providers: [WorkoutService,TimerService]
 })
 
 export class ExerciseShowComponent implements OnInit {
@@ -30,6 +33,7 @@ export class ExerciseShowComponent implements OnInit {
     public workoutService: WorkoutService,
     private route: ActivatedRoute,
     public authTokenService:Angular2TokenService,
+    public timerService: TimerService
   ){}
 
   ngOnInit() {
@@ -38,7 +42,7 @@ export class ExerciseShowComponent implements OnInit {
     workoutRequest.subscribe(response => this.exercise = response.json());
 
    setTimeout(() => {this.getShowExerciseSet(this.exercise.id)} ,100);
-   setTimeout(() =>{console.log(this.exerciseSets)}, 150);
+
   }
 
 
@@ -59,6 +63,9 @@ export class ExerciseShowComponent implements OnInit {
             return Observable.throw(error);
           }
         )
+    this.timerService.resetTimer();
+    this.timerService.playTimer();
+
     setTimeout(() =>  this.workoutService.getShowExerciseSet(this.exercise.id).subscribe(response => this.exerciseSets = response.json()), 100)
 
   }

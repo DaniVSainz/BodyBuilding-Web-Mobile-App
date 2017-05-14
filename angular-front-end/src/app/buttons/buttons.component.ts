@@ -7,7 +7,7 @@ import { TimerService } from '../services/timer.service';
         <div>
             <button [disabled]="play" (click)="playTimer()">Play</button>
             <button [disabled]="!play" (click)="pauseTimer()">Pause</button>
-            <button (click)="stopTimer()">Stop</button>
+            <button (click)="resetTimer()">Reset</button>
         </div>
     `,
     styles: [`
@@ -44,8 +44,8 @@ export class ButtonsComponent implements OnInit, OnDestroy {
         this.timerService.pauseTimer();
     }
 
-    stopTimer() {
-        this.timerService.stopTimer();
+    resetTimer() {
+        this.timerService.resetTimer();
     }
 
 }
