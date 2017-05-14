@@ -1,6 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { TimerService } from '../services/timer.service';
+import {WorkoutService} from  '../services/workout.service';
+import {Exercise} from '../workout/show-workout/exercise';
+import { ActivatedRoute, Params } from '@angular/router';
 
 // @Component({
 //   selector: 'app-timer',
@@ -13,6 +16,7 @@ import { TimerService } from '../services/timer.service';
         <h1>
           {{(minutesDisplay) && (minutesDisplay <= 59) ? minutesDisplay : '00'}} : {{(secondsDisplay) && (secondsDisplay <= 59) ? secondsDisplay : '00'}} <br/>
         </h1>
+        <h1 *ngIf='exercise'>{{exercise.rest}}</h1>
         <buttons></buttons>
     `,
     styles: [ `
@@ -21,10 +25,13 @@ import { TimerService } from '../services/timer.service';
             margin-top: 24px;
             text-align: center;
         }
-    `]
+    `],
+    providers: [WorkoutService]
 })
+
 export class TimerComponent implements OnInit, OnDestroy {
     private playPauseStopUnsubscribe: any;
+    exercise: Exercise;
 
     start = 0;
     ticks = 0;
@@ -35,11 +42,16 @@ export class TimerComponent implements OnInit, OnDestroy {
 
     sub: Subscription;
 
-    constructor(private timerService: TimerService) {
-    }
+    constructor(private timerService: TimerService,
+                private route: ActivatedRoute,
+                public workoutService: WorkoutService,
+              ) {}
 
     ngOnInit() {
-        this.playPauseStopUnsubscribe = this.timerService.playPauseStop$.subscribe((res: any) => this.playPauseStop(res));
+      this.playPauseStopUnsubscribe = this.timerService.playPauseStop$.subscribe((res: any) => this.playPauseStop(res));
+
+      let workoutRequest = this.route.params.flatMap((params: Params)=> this.workoutService.getShowExercise(+params['id']));
+      workoutRequest.subscribe(response => this.exercise = response.json());
     }
 
     ngOnDestroy() {
@@ -66,6 +78,10 @@ export class TimerComponent implements OnInit, OnDestroy {
                 this.secondsDisplay = this.getSeconds(this.ticks);
                 this.minutesDisplay = this.getMinutes(this.ticks);
                 this.hoursDisplay = this.getHours(this.ticks);
+                if (this.ticks == this.exercise.rest){
+                    var audio = new Audio('/assets/ding.mp3');
+                    audio.play();
+                }
             }
         );
     }

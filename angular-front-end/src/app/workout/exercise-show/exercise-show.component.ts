@@ -13,6 +13,7 @@ import {AuthService} from "../../services/auth.service";
 import {TimerService} from "../../services/timer.service";
 
 
+
 @Component({
   selector: 'app-exercise-show',
   templateUrl: './exercise-show.component.html',
@@ -26,6 +27,7 @@ export class ExerciseShowComponent implements OnInit {
   exerciseSets: any;
   submitted: boolean = false;
   errorMessage: string;
+
 
   constructor(
     private http: Http,
@@ -42,8 +44,8 @@ export class ExerciseShowComponent implements OnInit {
     workoutRequest.subscribe(response => this.exercise = response.json());
 
    setTimeout(() => {this.getShowExerciseSet(this.exercise.id)} ,100);
-
   }
+
 
 
   getShowExerciseSet(exercise){
@@ -70,5 +72,9 @@ export class ExerciseShowComponent implements OnInit {
 
   }
 
+  // alarm(){
+  //   var audio = new Audio('/assets/ding.mp3');
+  //   audio.play();
+  // }
 
 }

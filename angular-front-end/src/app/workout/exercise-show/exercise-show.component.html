@@ -3,7 +3,7 @@
 <!---->
 <div class="container exercise-container">
 
-  <div class="row">
+  <div class="row exercise-row">
     <timer></timer>
     <div class='col s6'>
       <h3 class='header-exercise' *ngIf="exercise">
@@ -55,7 +55,7 @@
             <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
             <div class='exercise-text center-align'>
 
-              <p *ngIf="exerciseSets">
+              <p *ngIf="exerciseSets" id="exerciseSets">
                 Reps: {{sets.reps}} <br> Weight: {{sets.weight}} <br>
               </p>
             </div>
