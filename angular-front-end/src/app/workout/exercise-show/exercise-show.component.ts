@@ -20,9 +20,9 @@ import {Exercise_set} from './exercise_set';
 export class ExerciseShowComponent implements OnInit {
   exercise: Exercise;
   exerciseSet = new Exercise_set;
+  exerciseSets: any;
   submitted: boolean = false;
   errorMessage: string;
-  workouts: any;
 
   constructor(
     private http: Http,
@@ -37,12 +37,19 @@ export class ExerciseShowComponent implements OnInit {
         .flatMap((params: Params)=> this.workoutService.getShowExercise(+params['id']));
     workoutRequest.subscribe(response => this.exercise = response.json());
 
+   setTimeout(() => {this.getShowExerciseSet(this.exercise.id)} ,100);
+   setTimeout(() =>{console.log(this.exerciseSets)}, 150);
+  }
+
+
+  getShowExerciseSet(exercise){
+    this.workoutService.getShowExerciseSet(exercise).subscribe(response => this.exerciseSets = response.json());;
   }
 
   createExerciseSet(exerciseSet){
-    console.log('exercise created')
+
     // exerciseSet.user_id = this.authTokenService.currentUserData.id
-    exerciseSet.workout_id = this.workouts[0].id
+    exerciseSet.exercise_id = this.exercise.id
     this.submitted = true;
     this.workoutService.createExerciseSet(exerciseSet)
         .subscribe(
@@ -52,8 +59,8 @@ export class ExerciseShowComponent implements OnInit {
             return Observable.throw(error);
           }
         )
-    setTimeout(() =>  this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json()), 100)
-    // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json());
+    setTimeout(() =>  this.workoutService.getShowExerciseSet(this.exercise.id).subscribe(response => this.exerciseSets = response.json()), 100)
+
   }
 
 

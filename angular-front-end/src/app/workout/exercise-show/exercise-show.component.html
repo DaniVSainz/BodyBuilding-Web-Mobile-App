@@ -30,8 +30,8 @@
 
 
         <div class='col s6'>
-          <button type='submit' class=" btn btn-outline-primary btn-lg submit-button" [disabled]='!exerciseSetForm.form.valid' [hidden]='submitted'>
-            Add Set to exercise
+          <button type='submit' class=" btn btn-outline-primary submit-button" [disabled]='!exerciseSetForm.form.valid' [hidden]='submitted'>
+            Add Set
         </button>
           <a [routerLink]="[ '/workout'] " class='btn right'>Back</a>
 
@@ -42,10 +42,28 @@
 
       </form>
     </div>
-    <div class="col s6">
-      <h3 class="center-align">
-        Sets Done
+    <div class='col s6 exercise-div'>
+
+      <h3 class='center-align'>
+        Exercises Done for Workout
       </h3>
+
+      <ul class="collection col s6 exercise-ul" *ngIf="exerciseSets">
+        <li class="collection-item avatar valign-wrapper" *ngFor='let sets of exerciseSets'>
+
+          <div class="exercise-a">
+            <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
+            <div class='exercise-text center-align'>
+
+              <p *ngIf="exerciseSets">
+                Reps: {{sets.reps}} <br> Weight: {{sets.weight}} <br>
+              </p>
+            </div>
+          </div>
+
+        </li>
+      </ul>
+
     </div>
   </div>
 </div>

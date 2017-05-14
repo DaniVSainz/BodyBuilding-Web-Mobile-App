@@ -13,6 +13,12 @@ class ExerciseSetsController < ApplicationController
     render json: @exercise_set
   end
 
+
+  def showSets
+    @exercise_set = ExerciseSet.where exercise_id: params[:id]
+    render json: @exercise_set
+  end
+
   # POST /exercise_sets
   def create
     @exercise_set = ExerciseSet.new(exercise_set_params)
@@ -46,6 +52,6 @@ class ExerciseSetsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def exercise_set_params
-      params.require(:exercise_set).permit(:reps, :weight)
+      params.require(:exercise_set).permit(:reps, :weight, :exercise_id)
     end
 end
