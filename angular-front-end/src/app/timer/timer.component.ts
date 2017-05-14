@@ -16,7 +16,7 @@ import { ActivatedRoute, Params } from '@angular/router';
         <h1>
           {{(minutesDisplay) && (minutesDisplay <= 59) ? minutesDisplay : '00'}} : {{(secondsDisplay) && (secondsDisplay <= 59) ? secondsDisplay : '00'}} <br/>
         </h1>
-        <h1 *ngIf='exercise'>{{exercise.rest}}</h1>
+        <p *ngIf='exercise'>Rest Time:{{exercise.rest}} seconds</p>
         <buttons></buttons>
     `,
     styles: [ `
@@ -24,6 +24,9 @@ import { ActivatedRoute, Params } from '@angular/router';
             color: #57acec;
             margin-top: 24px;
             text-align: center;
+        }
+        p {
+          text-align: center;
         }
     `],
     providers: [WorkoutService]
