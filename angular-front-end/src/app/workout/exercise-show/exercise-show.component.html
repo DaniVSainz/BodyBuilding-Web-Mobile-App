@@ -33,7 +33,7 @@
           <button type='submit' class=" btn btn-outline-primary submit-button" [disabled]='!exerciseSetForm.form.valid' [hidden]='submitted'>
             Add Set
         </button>
-          <a [routerLink]="[ '/workout'] " class='btn right'>Back</a>
+          <a [routerLink]="[ '/show-workout/' + exercise.workout_id] " class='btn right' *ngIf='exercise'>Back</a>
 
           <div class='alert alert-success' role='alert' [hidden]='!submitted'>
             Your Set was successfully added!
