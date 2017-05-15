@@ -3,23 +3,23 @@
 
   <nav role="navigation">
 
-    <div class="nav-wrapper grey darken-4 ">
+    <div class="nav-wrapper">
       <a [routerLink]="['/home']" id="logo-container" class="brand-logo left"> Lift Tracker</a>
 
       <ul class="right">
-        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()">LOGIN</a></li>
-        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')">REGISTER</a></li>
+        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()" class='no-drop'>LOGIN</a></li>
+        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')" class='no-drop'>REGISTER</a></li>
 
         <!-- <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/workout']">Workout History</a></li> -->
-        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']">{{authTokenService.currentUserData.email}}</a></li>
-        <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()">Logout</a></li>
+        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']" class='no-drop'>{{authTokenService.currentUserData.email}}</a></li>
+        <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()" class='no-drop'>Logout</a></li>
       </ul>
 
       <a class='dropdown-button btn right gray darken-4' data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>
       <ul id='dropdown1' class='dropdown-content'>
-        <li><a [routerLink]="['/workout']">Workout History</a></li>
+        <li><a [routerLink]="['/workout']" class="dropdown-a">Workout History</a></li>
         <li class="divider"></li>
-        <li><a [routerLink]="['/new-workout']">New Workout</a></li>
+        <li><a [routerLink]="['/new-workout']" class="dropdown-a">New Workout</a></li>
       </ul>
 
     </div>
