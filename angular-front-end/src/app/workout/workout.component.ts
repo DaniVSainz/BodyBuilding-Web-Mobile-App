@@ -11,6 +11,7 @@ import { WorkoutService } from '../services/workout.service';
   templateUrl: './workout.component.html',
   styleUrls: ['./workout.component.sass'],
   providers: [WorkoutService]
+
 })
 export class WorkoutComponent implements OnInit {
   workout: Workout[];
@@ -19,6 +20,7 @@ export class WorkoutComponent implements OnInit {
   constructor(
     private workoutService: WorkoutService,
     private router: Router,
+
   ) {}
 
   ngOnInit(){
