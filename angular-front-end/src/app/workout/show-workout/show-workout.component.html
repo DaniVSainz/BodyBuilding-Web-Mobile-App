@@ -4,7 +4,7 @@
 
     <!--<timer></timer>-->
     <div class='col s6'>
-      <h3 class='header-exercise' *ngIf="workouts">
+      <h3 class='header-exercise center-align' *ngIf="workouts">
         Add Exercises to : {{workouts[0].name}}
       </h3>
       <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>

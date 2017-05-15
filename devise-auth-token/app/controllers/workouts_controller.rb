@@ -10,8 +10,7 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/1
   def show
-    @exercise = Exercise.where workout_id: @workout.id
-                        
+    @exercise = Exercise.where workout_id: @workout.id     
     user_data = [@workout , @exercise ]
     render json: user_data
   end
@@ -19,6 +18,7 @@ class WorkoutsController < ApplicationController
   # get /workouts/user/:id
   def userShow
     @workout = Workout.where user_id: workout_params['id']
+    @workout = @workout.reverse
     render json: @workout
   end
 
