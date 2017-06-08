@@ -15,10 +15,11 @@
           <div *ngIf="authTokenService.currentUserData" class="col l8 s12">
 
             <ul class="collection grey-text text-darken-2">
-              <li class="collection-item">User Id: <b>{{authTokenService.currentUserData.id}}</b></li>
-              <li class="collection-item">Email: <b>{{authTokenService.currentUserData.email}}</b></li>
-              <li class="collection-item">Name: <b>{{authTokenService.currentUserData.name}}</b></li>
-              <li class="collection-item">Username: <b>@{{authTokenService.currentUserData.nickname}}</b></li>
+              <li class="collection-item"><b>User Id: </b> {{authTokenService.currentUserData.id}}</li>
+              <li class="collection-item"><b>Email: </b>{{authTokenService.currentUserData.email}}</li>
+              <!--<li class="collection-item">Name: {{authTokenService.currentUserData.name}}</li>-->
+              <li class="collection-item" *ngIf="!authTokenService.currentUserData.nickname"><b>Name:</b> <b id="noName">Customize Your profile and add a name!!!</b></li>
+              <li class="collection-item" *ngIf="authTokenService.currentUserData.nickname">Username: @{{authTokenService.currentUserData.nickname}}</li>
 
             </ul>
           </div>
