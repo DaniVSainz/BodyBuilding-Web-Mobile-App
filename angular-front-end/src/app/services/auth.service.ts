@@ -20,9 +20,11 @@ export class AuthService {
     return this.authService.signOut().map(
         res => {
           this.userSignedIn$.next(false);
+          // this.router.navigate(['profile']);
           return res;
         }
     );
+
   }
 
   registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
