@@ -30,6 +30,8 @@ export class RegisterFormComponent implements OnInit {
 
           if (res.status == 200){
             this.onFormResult.emit({signedUp: true, res})
+            location.reload();
+
           }
 
         },

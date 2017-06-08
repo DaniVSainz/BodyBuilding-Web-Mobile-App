@@ -25,8 +25,8 @@ export class LoginFormComponent implements OnInit {
         res => {
           if(res.status == 200){
             this.onFormResult.emit({signedIn: true, res});
-          }
-          location.reload();
+            location.reload();
+            }
         },
         err => {
           console.log('err:', err);
