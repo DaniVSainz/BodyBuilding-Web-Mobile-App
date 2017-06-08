@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(){}
 
   logOut(){
-    this.authService.logOutUser().subscribe(() => this.router.navigate(['/home']));
+    this.authService.logOutUser().subscribe(() => this.router.navigate(['home']));
     // window.location.reload();
     location.reload();
   }
