@@ -10,8 +10,12 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { AuthService } from '../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -24,7 +28,10 @@ import { Angular2TokenService } from 'angular2-token';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    JsonpModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +45,7 @@ import { Angular2TokenService } from 'angular2-token';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider,
+    AuthService,
     Angular2TokenService
   ]
 })
