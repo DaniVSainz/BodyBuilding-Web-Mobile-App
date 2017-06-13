@@ -26,8 +26,6 @@ export class WorkoutService {
   constructor(private http:Http,
     public authTokenService:Angular2TokenService,
     protected authService:AuthService,
-    private router:Router
-
   ){}
 
 

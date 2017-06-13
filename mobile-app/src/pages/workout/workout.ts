@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {AuthGuard} from '../../guards/auth.guard';
 import { HomePage } from '../../pages/home/home';
 import {WorkoutService} from '../../providers/workout-service/workout-service'
+import {Workout} from '../../interfaces/workout';
 
 
 
@@ -12,8 +13,10 @@ import {WorkoutService} from '../../providers/workout-service/workout-service'
   providers: [AuthGuard,HomePage]
 })
 export class WorkoutPage {
+  workout: Workout[];
+  errorMessage: string;
 
-  constructor(public navCtrl: NavController,public authGuard: AuthGuard) {
+  constructor(public navCtrl: NavController,public authGuard: AuthGuard, public workoutService: WorkoutService) {
 
   }
 

@@ -26,6 +26,7 @@ export class AboutPage {
           if(res.status == 200){
             this.onFormResult.emit({signedIn: true, res});
             location.reload();
+
             }
         },
         err => {

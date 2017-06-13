@@ -7,5 +7,19 @@
 </ion-header>
 
 <ion-content color="primary">
-
+<ion-list>
+  <ion-item *ngFor='let workout of workout'>
+    <ion-avatar item-start>
+      <img src="http://cdn.cultofmac.com/wp-content/uploads/2016/09/workout-app.png">
+    </ion-avatar>
+    <span class="title">Workout #{{workout.id}}</span>
+    <p>
+      {{workout.name}} <br> User id: {{workout.user_id}}
+      <br> {{workout.created_at | date}}
+    </p>
+    <i class="material-icons">View Workout Details</i>
+  </ion-item>
+</ion-list>
 </ion-content>
+
+
