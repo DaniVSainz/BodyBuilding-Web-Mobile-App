@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+import { LoginPage } from '../pages/login/login';
 import { WorkoutPage } from '../pages/workout/workout';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -24,7 +24,7 @@ import { WorkoutService } from '../providers/workout-service/workout-service';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    LoginPage,
     WorkoutPage,
     HomePage,
     TabsPage
@@ -39,7 +39,7 @@ import { WorkoutService } from '../providers/workout-service/workout-service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    LoginPage,
     WorkoutPage,
     HomePage,
     TabsPage

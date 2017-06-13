@@ -3,10 +3,10 @@ import { NavController } from 'ionic-angular';
 import {AuthService} from '../../providers/auth-service/auth-service';
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-login',
+  templateUrl: 'login.html'
 })
-export class AboutPage {
+export class LoginPage {
 
   signInUser = {
     email: '',
