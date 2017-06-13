@@ -15,6 +15,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import {AuthGuard} from "../guards/auth.guard";
+import { WorkoutService } from '../providers/workout-service/workout-service';
 
 
 
@@ -49,7 +50,8 @@ import {AuthGuard} from "../guards/auth.guard";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     Angular2TokenService,
-    AuthGuard
+    AuthGuard,
+    WorkoutService
 
   ]
 })

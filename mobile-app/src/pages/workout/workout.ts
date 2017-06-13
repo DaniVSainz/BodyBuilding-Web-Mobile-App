@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AuthGuard} from '../../guards/auth.guard';
 import { HomePage } from '../../pages/home/home';
+import {WorkoutService} from '../../providers/workout-service/workout-service'
 
 
 
@@ -26,5 +27,13 @@ export class WorkoutPage {
 
   ionViewDidEnter(){
     this.authGuard.printLoginStatus();
+  }
+
+    ngOnInit(){
+    this.getWorkouts();
+  }
+
+  getWorkouts(){
+    this.workoutService.getWorkouts().subscribe(workout=> this.workout= workout,error=> this.errorMessage = <any>error );
   }
 }
