@@ -14,6 +14,8 @@ import { AuthService } from '../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import {AuthGuard} from "../guards/auth.guard";
+
 
 
 
@@ -46,7 +48,9 @@ import { FormsModule } from '@angular/forms';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    Angular2TokenService
+    Angular2TokenService,
+    AuthGuard
+
   ]
 })
 export class AppModule {}
