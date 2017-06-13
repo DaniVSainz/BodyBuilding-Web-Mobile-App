@@ -21,6 +21,7 @@ export class AuthService {
         res => {
           this.userSignedIn$.next(false);
           // this.router.navigate(['profile']);
+          console.log("Am I working??")
           return res;
         }
     );
