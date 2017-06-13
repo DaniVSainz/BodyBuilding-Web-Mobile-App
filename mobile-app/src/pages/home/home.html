@@ -2,8 +2,8 @@
   <ion-toolbar color="dark">
     <ion-title>Lift Tracker</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="primary">
-        <ion-icon name="person-add"></ion-icon>
+      <button ion-button icon-only color="primary" *ngIf="(authService.userSignedIn$ | async)">
+        {{authTokenService.currentUserData.email}}
       </button>
     </ion-buttons>
   </ion-toolbar>

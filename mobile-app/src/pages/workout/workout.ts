@@ -6,11 +6,11 @@ import { HomePage } from '../../pages/home/home';
 
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html',
+  selector: 'page-workout',
+  templateUrl: 'workout.html',
   providers: [AuthGuard,HomePage]
 })
-export class ContactPage {
+export class WorkoutPage {
 
   constructor(public navCtrl: NavController,public authGuard: AuthGuard) {
 

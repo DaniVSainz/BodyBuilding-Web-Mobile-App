@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { WorkoutPage } from '../pages/workout/workout';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -24,7 +24,7 @@ import {AuthGuard} from "../guards/auth.guard";
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    WorkoutPage,
     HomePage,
     TabsPage
   ],
@@ -39,7 +39,7 @@ import {AuthGuard} from "../guards/auth.guard";
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    WorkoutPage,
     HomePage,
     TabsPage
   ],
