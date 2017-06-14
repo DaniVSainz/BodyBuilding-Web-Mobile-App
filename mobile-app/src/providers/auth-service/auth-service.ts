@@ -10,10 +10,20 @@ export class AuthService {
 
   constructor(private authService:Angular2TokenService) {
 
-    this.authService.validateToken().subscribe(
+    // this.authService.validateToken().subscribe(
+    //     res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
+    // )
+  }
+
+
+// MOVED CODE FROM CONSTRUCTOR INTO IONVIEWCANENTER
+// Reason: had a issue constucting angular2tokenserv and auth serv at the same time this spaced it out works fine no known issues currently
+//  Maybe take a look when you have more knowledge in the future
+ionViewCanEnter(){
+      this.authService.validateToken().subscribe(
         res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
     )
-  }
+}
 
   logOutUser():Observable<Response>{
 

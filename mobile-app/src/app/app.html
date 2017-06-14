@@ -1,6 +1,7 @@
 <ion-menu [content]="mycontent" color="dark">
     <ion-content color="dark" class="ion-content">
-        <button ion-item (click)="goToLogin()" menuClose>Login Page</button>
+        <button ion-item *ngIf="!isUserLoggedIn()" (click)="goToLogin()" menuClose>Login Page</button>
+        <button ion-item *ngIf="isUserLoggedIn()" (click)="logoutAndGoToHomePage()" menuClose>Log Out</button>
         <button *ngIf="isUserLoggedIn()" ion-item (click)="goToPage()" menuClose>WorkOut Center</button>
     </ion-content>
 </ion-menu>

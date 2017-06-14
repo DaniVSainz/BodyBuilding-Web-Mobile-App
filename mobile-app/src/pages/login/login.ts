@@ -41,7 +41,7 @@ export class LoginPage {
     );
   }
 
-    logUserOut(){
+  logUserOut(){
     this.authService.logOutUser();
     console.log("Sup mom, im not logging out")
     window.location.reload();

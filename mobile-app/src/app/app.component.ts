@@ -8,6 +8,7 @@ import {HomePage} from '../pages/home/home';
 import {ViewChild} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AuthGuard} from '../guards/auth.guard';
+import {AuthService} from '../providers/auth-service/auth-service';
 
 
 import {LoginPage} from "../pages/login/login";
@@ -28,8 +29,9 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar,
                splashScreen: SplashScreen,
-               private authToken: Angular2TokenService,
-               private authGuard: AuthGuard
+               public authToken: Angular2TokenService,
+               public authGuard: AuthGuard,
+               public authService: AuthService
               ) {
     this.authToken.init(environment.token_auth_config);
     platform.ready().then(() => {
@@ -55,6 +57,12 @@ export class MyApp {
   goToLogin(){
     this.nav.push(LoginPage);
   }
+
+  // logoutAndGoToHomePage(){
+  //   // this.authService.logOutUser();
+  //   window.location.reload();
+  // }
+
 }
 
 
