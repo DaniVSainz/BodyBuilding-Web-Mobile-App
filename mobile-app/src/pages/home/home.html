@@ -1,4 +1,4 @@
-<ion-header>
+<!--<ion-header>
   <ion-toolbar color="dark">
     <ion-title>Lift Tracker</ion-title>
     <ion-buttons end>
@@ -7,8 +7,27 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 
+<ion-header>
+
+  <ion-navbar color="dark">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      Lift Tracker
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
 
 <ion-content >
   <div class="background">
