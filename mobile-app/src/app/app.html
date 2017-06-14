@@ -1,19 +1,19 @@
-<ion-menu [content]="mycontent">
-
-    <ion-content>
-        <ion-list>
-             <button ion-item menuClose (click)="openPage(homePage)">
-                Home
+<ion-menu [content]="mycontent" color="dark">
+    <ion-content color="dark" class="ion-content">
+        <!--<ion-list>
+            <button ion-button>
+              <ion-item>
+                <ion-icon name="leaf"></ion-icon>
+                Herbology
+            </ion-item>
             </button>
-            <button ion-item menuClose (click)="openPage(catsPage)">
-                Cats
-            </button>
-            <button ion-item menuClose (click)="openPage(dogsPage)">
-                Dogs
-            </button>
-        </ion-list>
+            <ion-item>
+                <ion-icon name="leaf"></ion-icon>
+                Herbology
+            </ion-item>
+        </ion-list>-->
+        <button ion-item (click)="goToPage()">WorkOut Center</button>
     </ion-content>
-
 </ion-menu>
 
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
