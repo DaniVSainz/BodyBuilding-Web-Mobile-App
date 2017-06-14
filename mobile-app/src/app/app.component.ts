@@ -4,15 +4,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {Angular2TokenService} from "angular2-token";
 import {environment} from "../enviroments/enviroment";
+import {HomePage} from '../pages/home/home';
 
 
-import { TabsPage } from '../pages/tabs/tabs';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private authToken: Angular2TokenService) {
     this.authToken.init(environment.token_auth_config);

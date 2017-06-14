@@ -1,0 +1,51 @@
+
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<style type="text/css">
+::-webkit-input-placeholder {
+  color: white !important;
+}
+:-moz-placeholder {
+  color: white !important;
+}
+:-ms-input-placeholder {
+  color: white !important;
+}
+</style>
+
+<ion-content *ngIf="isUserLoggedIn" padding class="login" style="background-image:url('http://i.imgur.com/bshfOAr.jpg');background-repeat: no-repeat;background-size: 100% 100%">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col col-4 style="margin-left: auto;margin-right: auto;display: block;">
+        <img src="http://cdn.cultofmac.com/wp-content/uploads/2016/09/workout-app.png"   style="width:100%;height:auto;border-radius: 100%">
+      </ion-col>
+      <ion-col col-4></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list class="list-form" style="margin-top:30px;margin-bottom: 30px">
+
+  	<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+	    <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="text" placeholder="Username"></ion-input>
+  	</ion-item>
+  	<ion-item style="padding:0px !important; font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+	    <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" type="password" placeholder="Password"></ion-input>
+  	</ion-item>
+
+  </ion-list>
+
+  <!--<button style="margin-top: 15px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block  (click)="login()">Login</button>-->
+  <button type="submit" style="margin-top: 15px;height: 35px;font-size: 14px;background: #10ABF4;" ion-button  block
+   class="waves-effect waves-light btn blue right">Login</button>
+
+  <div text-center style="text-decoration: underline;margin-top:20px;color:white;font-size: 14px;"  (click)="forgotPwd()">Forgot Password</div>
+  <button ion-button style="background-color: transparent;color:white;border-color:white;border:1px solid white;margin-top:20px;height: 35px;font-size: 14px;"  block  (click)="signUp()">Register</button>
+  <button ion-button (click)="logUserOut()">LogMeTheFuckOutPlease</button>
+</ion-content>
+
+<ion-content *ngIf="!isUserLoggedIn">Fuck You disabled</ion-content>

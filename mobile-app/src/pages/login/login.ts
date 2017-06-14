@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AuthService} from '../../providers/auth-service/auth-service';
+import {AuthGuard} from '../../guards/auth.guard';
 
 @Component({
   selector: 'page-login',
@@ -15,9 +16,13 @@ export class LoginPage {
 
   @Output() onFormResult = new EventEmitter<any>();
 
-  constructor(private authService:AuthService,public navCtrl: NavController) {}
+  constructor(private authService:AuthService,public navCtrl: NavController,private authGuard: AuthGuard) {}
 
   ngOnInit() {}
+
+  isUserLoggedIn(){
+    this.authGuard.canActivate();
+  }
 
   onSignInSubmit(){
 
@@ -25,8 +30,7 @@ export class LoginPage {
         res => {
           if(res.status == 200){
             this.onFormResult.emit({signedIn: true, res});
-            location.reload();
-
+            window.location.reload();
             }
         },
         err => {
@@ -35,7 +39,12 @@ export class LoginPage {
         }
 
     );
+  }
 
+    logUserOut(){
+    this.authService.logOutUser();
+    console.log("Sup mom, im not logging out")
+    window.location.reload();
   }
 
 }

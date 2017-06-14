@@ -1,6 +1,6 @@
 <ion-tabs color="dark">
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" color="primary"></ion-tab>
-  <ion-tab *ngIf="isUserLoggedIn()" [root]="tab2Root" tabTitle="Login" tabIcon="ios-contact" md="md-contact"></ion-tab>
-  <ion-tab *ngIf="!isUserLoggedIn()" [root]="tab4Root" tabTitle="Logout" tabIcon="ios-contact" md="md-contact" ></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Workout" tabIcon="contacts" color="danger"></ion-tab>
+  <ion-tab *ngIf="!isUserLoggedIn()" [root]="tab2Root" tabTitle="Login" tabIcon="ios-contact" md="md-contact"></ion-tab>
+  <ion-tab *ngIf="isUserLoggedIn()" [root]="tab4Root" tabTitle="Logout" tabIcon="ios-contact" md="md-contact" ></ion-tab>
+  <ion-tab *ngIf="isUserLoggedIn()" [root]="tab3Root" tabTitle="Workout" tabIcon="contacts" color="danger"></ion-tab>
 </ion-tabs>
