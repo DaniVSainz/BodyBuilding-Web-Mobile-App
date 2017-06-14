@@ -28,11 +28,7 @@ export class WorkoutPage {
     }
   }
 
-  ionViewDidEnter(){
-    this.authGuard.printLoginStatus();
-  }
-
-    ngOnInit(){
+  ngOnInit(){
     this.getWorkouts();
   }
 

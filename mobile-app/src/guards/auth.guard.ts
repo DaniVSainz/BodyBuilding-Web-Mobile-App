@@ -16,8 +16,4 @@ export class AuthGuard implements CanActivate {
     }
   }
 
-  printLoginStatus(){
-    console.log(this.authTokenService.userSignedIn());
-  }
-
 }
