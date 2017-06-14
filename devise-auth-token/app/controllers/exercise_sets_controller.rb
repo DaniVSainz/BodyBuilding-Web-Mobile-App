@@ -22,8 +22,15 @@ class ExerciseSetsController < ApplicationController
   # POST /exercise_sets
   def create
     @exercise_set = ExerciseSet.new(exercise_set_params)
-
     if @exercise_set.save
+      puts "Hello"
+       @exercise = Exercise.find_by id: @exercise_set.exercise_id
+       if @exercise.sets == nil 
+          @exercise.sets = 1 
+        else 
+          @exercise.sets += 1 
+       end 
+      @exercise.save
       render json: @exercise_set, status: :created, location: @exercise_set
     else
       render json: @exercise_set.errors, status: :unprocessable_entity

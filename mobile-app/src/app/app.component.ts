@@ -58,10 +58,11 @@ export class MyApp {
     this.nav.push(LoginPage);
   }
 
-  // logoutAndGoToHomePage(){
-  //   // this.authService.logOutUser();
-  //   window.location.reload();
-  // }
+  logoutAndGoToHomePage(){
+    this.authService.logOutUser();
+    // window.location.reload();
+    this.nav.popToRoot();
+  }
 
 }
 
