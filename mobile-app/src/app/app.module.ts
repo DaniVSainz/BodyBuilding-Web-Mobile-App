@@ -17,6 +17,9 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import {AuthGuard} from "../guards/auth.guard";
 import { WorkoutService } from '../providers/workout-service/workout-service';
+import { TimerServiceProvider } from '../providers/timer-service/timer-service';
+import { TimerComponent } from '../components/timer/timer';
+import { ButtonsComponent } from '../components/buttons/buttons';
 
 
 
@@ -29,7 +32,9 @@ import { WorkoutService } from '../providers/workout-service/workout-service';
     WorkoutPage,
     HomePage,
     ShowWorkoutPage,
-    ExerciseShowPage
+    ExerciseShowPage,
+    TimerComponent,
+    ButtonsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ import { WorkoutService } from '../providers/workout-service/workout-service';
     AuthService,
     Angular2TokenService,
     AuthGuard,
-    WorkoutService
+    WorkoutService,
+    TimerServiceProvider
 
   ]
 })
