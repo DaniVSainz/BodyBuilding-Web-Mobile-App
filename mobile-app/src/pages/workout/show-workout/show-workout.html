@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>showWorkout</ion-title>
+  <ion-navbar color="dark">
+    <ion-title *ngIf="workouts" text-center color="dark">{{workouts[0].name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,46 @@
 
 <ion-content padding>
   <ion-list *ngIf="workouts">
-    <ion-item *ngFor='let exercises of workouts[1]' >
+ <div class='col s6'>
+      <h3 class='header-exercise center-align' >
+        Add Exercises to : {{workouts[0].name}}
+      </h3>
+      <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>
+        <!--NAME-->
+        <div class="form-group col s5">
+          <label for="name">Exercise Name</label>
+          <input type="text" class='form-control' id="name" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
+          <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
+            Exercise is Required
+          </div>
+        </div>
+        <!-- SET 1  -->
+        <div class="form-group col s3">
+          <label for="rest">Rest Time</label>
+          <input type="text" class='form-control' id="name" placeholder="60s" name="rest" required #rest='ngModel' [(ngModel)]="exercise.rest">
+          <div [hidden]="rest.valid || rest.pristine" class='alert alert-danger'>
+            Rest Time is required
+          </div>
+        </div>
+
+        <!--<a (click)='reloadExercise(workouts[0].id)'>-->
+        <div class='col s6'>
+          <button type='submit' class=" btn btn-outline-primary btn-lg submit-button" [disabled]='!exerciseForm.form.valid'  >
+            Add Exercise
+        </button>
+          <!--</a>-->
+          <div class='alert alert-success' role='alert' [hidden]='!submitted' >
+            Your exercise was successfully added!
+          </div>
+        </div>
+
+
+
+      </form>
+
+    </div>
+
+    <ion-item *ngFor='let exercises of workouts[1]' (click)="goToShowExercise()">
       <ion-avatar item-start>
         <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png">
       </ion-avatar>
