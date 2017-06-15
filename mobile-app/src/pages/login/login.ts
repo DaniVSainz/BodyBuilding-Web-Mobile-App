@@ -5,7 +5,7 @@ import {AuthGuard} from '../../guards/auth.guard';
 
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'ksdhjjaksd.template.html'
 })
 export class LoginPage {
 

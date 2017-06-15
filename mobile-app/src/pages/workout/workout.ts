@@ -4,7 +4,7 @@ import {AuthGuard} from '../../guards/auth.guard';
 import { HomePage } from '../../pages/home/home';
 import {WorkoutService} from '../../providers/workout-service/workout-service'
 import {Workout} from '../../interfaces/workout';
-
+import {ShowWorkoutPage} from './show-workout/show-workout';
 
 
 @Component({
@@ -34,5 +34,9 @@ export class WorkoutPage {
 
   getWorkouts(){
     this.workoutService.getWorkouts().subscribe(workout=> this.workout= workout,error=> this.errorMessage = <any>error );
+  }
+
+  goToWorkout(workout: Workout): void{
+    this.navCtrl.push(ShowWorkoutPage,workout);
   }
 }

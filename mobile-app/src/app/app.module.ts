@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { WorkoutPage } from '../pages/workout/workout';
 import { HomePage } from '../pages/home/home';
+import {ShowWorkoutPage} from '../pages/workout/show-workout/show-workout';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,7 +27,7 @@ import { WorkoutService } from '../providers/workout-service/workout-service';
     LoginPage,
     WorkoutPage,
     HomePage,
-
+    ShowWorkoutPage
   ],
   imports: [
     BrowserModule,
@@ -41,6 +42,7 @@ import { WorkoutService } from '../providers/workout-service/workout-service';
     LoginPage,
     WorkoutPage,
     HomePage,
+    ShowWorkoutPage
 
   ],
   providers: [
