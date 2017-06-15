@@ -60,7 +60,7 @@ export class ShowWorkoutPage implements OnInit {
     // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json())
         .subscribe(
           data => {
-            this.exerciseForm.reset()
+            // this.exerciseForm.reset()
             this.navCtrl.pop();
             this.navCtrl.push(ShowWorkoutPage, this.workout)
             return true},
