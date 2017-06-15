@@ -14,5 +14,17 @@
 
 
 <ion-content padding>
-
+  <ion-list *ngIf="workouts">
+    <ion-item *ngFor='let exercises of workouts[1]' >
+      <ion-avatar item-start>
+        <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png">
+      </ion-avatar>
+      <span class="title">Title: {{exercises.name}}</span>
+      <p>
+        Sets: {{exercises.sets}} <br>
+        Rest Time: {{exercises.rest}}
+      </p>
+      <!--<i class="material-icons">View Workout Details</i>-->
+    </ion-item>
+  </ion-list>
 </ion-content>

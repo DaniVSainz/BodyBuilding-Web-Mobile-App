@@ -32,13 +32,21 @@ export class ShowWorkoutPage implements OnInit {
               public workoutService: WorkoutService,
               public authTokenService:Angular2TokenService,
     ) {
-    //   let workoutRequest = this.workoutService.getShowWorkouts(+params['id']));
+    // let workoutRequest = this.workoutService.getShowWorkouts(+params['id']));
     // workoutRequest.subscribe(response => this.workouts = response.json());
+    this.workout = this.navParams.data;
+    console.log(this.workout.id);
+    this.workoutService.getShowWorkouts(this.workout.id).subscribe(response => this.workouts = response.json());;
   }
 
   ngOnInit(){
-    this.workout = this.navParams.data;
-    console.log(this.workout.id);
+    // this.workout = this.navParams.data;
+    // console.log(this.workout.id);
+    // let workoutRequest = this.workoutService.getShowWorkouts(this.workout.id);
+    // workoutRequest.subscribe(response => this.workouts = response.json());
+    // console.log(this.workouts);
+    console.log(this.workouts);
+
   }
 
   reloadExercise(workout){

@@ -39,4 +39,5 @@ export class WorkoutPage {
   goToWorkout(workout: Workout): void{
     this.navCtrl.push(ShowWorkoutPage,workout);
   }
+
 }
