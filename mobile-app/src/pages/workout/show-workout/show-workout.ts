@@ -38,6 +38,7 @@ export class ShowWorkoutPage implements OnInit {
 
   ngOnInit(){
     this.workout = this.navParams.data;
+    console.log(this.workout)
     this.workoutService.getShowWorkouts(this.workout.id).subscribe(response => this.workouts = response.json());;
   }
 
@@ -72,7 +73,7 @@ export class ShowWorkoutPage implements OnInit {
     // setTimeout(() =>  this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json()), 100)
   }
 
-  goToShowExercise(exercise: Exercise): void{
+  goToShowExercise(exercise: any){
     this.navCtrl.push(ExerciseShowPage, exercise);
   }
 

@@ -21,6 +21,7 @@
 
 // }
 
+import {NavController, NavParams } from 'ionic-angular';
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { TimerServiceProvider } from '../../providers/timer-service/timer-service';
@@ -58,7 +59,7 @@ import {Exercise} from '../../interfaces/exercise';
 export class TimerComponent implements OnInit, OnDestroy {
     private playPauseStopUnsubscribe: any;
     exercise: Exercise;
-
+    exerciseId:number ;
     start = 0;
     ticks = 0;
 
@@ -70,13 +71,16 @@ export class TimerComponent implements OnInit, OnDestroy {
 
     constructor(private timerService: TimerServiceProvider,
                 public workoutService: WorkoutService,
-              ) {}
+                public navCtrl:NavController,
+                public navParmas:NavParams
+              ) {
+
+              }
 
     ngOnInit() {
       this.playPauseStopUnsubscribe = this.timerService.playPauseStop$.subscribe((res: any) => this.playPauseStop(res));
-
-      // let workoutRequest = this.route.params.flatMap((params: Params)=> this.workoutService.getShowExercise(+params['id']));
-      // workoutRequest.subscribe(response => this.exercise = response.json());
+      let workoutRequest =  this.workoutService.getShowExercise(this.navParmas.data.id);
+      workoutRequest.subscribe(response => this.exercise = response.json());
     }
 
     ngOnDestroy() {
@@ -104,7 +108,7 @@ export class TimerComponent implements OnInit, OnDestroy {
                 this.minutesDisplay = this.getMinutes(this.ticks);
                 this.hoursDisplay = this.getHours(this.ticks);
                 if (this.ticks == this.exercise.rest){
-                    var audio = new Audio('/assets/ding.mp3');
+                    var audio = new Audio('/assets/sound/ding.mp3');
                     audio.play();
                 }
             }
