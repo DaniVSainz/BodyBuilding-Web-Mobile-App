@@ -32,11 +32,7 @@ export class ExerciseShowPage {
 
 
   ngOnInit() {
-  //   let workoutRequest = this.route.params
-  //       .flatMap((params: Params)=> this.workoutService.getShowExercise(+params['id']));
-  //   workoutRequest.subscribe(response => this.exercise = response.json());
-
-  //  setTimeout(() => {this.getShowExerciseSet(this.exercise.id)} ,100);
+    this.getShowExerciseSet(this.navParams.data.id);
   }
 
 
@@ -52,7 +48,9 @@ export class ExerciseShowPage {
     this.submitted = true;
     this.workoutService.createExerciseSet(exerciseSet)
         .subscribe(
-          data => { return true },
+          data => {
+            this.workoutService.getShowExerciseSet(this.exercise.id).subscribe(response => this.exerciseSets = response.json());
+            return true },
           error => {
             console.log("Error saving proposal");
             return Observable.throw(error);
@@ -60,9 +58,6 @@ export class ExerciseShowPage {
         )
     this.timerService.resetTimer();
     this.timerService.playTimer();
-
-    setTimeout(() =>  this.workoutService.getShowExerciseSet(this.exercise.id).subscribe(response => this.exerciseSets = response.json()), 100)
-
   }
 
   // alarm(){

@@ -108,7 +108,7 @@ export class TimerComponent implements OnInit, OnDestroy {
                 this.minutesDisplay = this.getMinutes(this.ticks);
                 this.hoursDisplay = this.getHours(this.ticks);
                 if (this.ticks == this.exercise.rest){
-                    var audio = new Audio('/assets/sound/ding.mp3');
+                    var audio = new Audio('assets/sound/ding.mp3');
                     audio.play();
                 }
             }
