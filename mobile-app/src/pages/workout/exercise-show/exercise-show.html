@@ -14,10 +14,14 @@
 
 
 <ion-content padding>
+<ion-list class="collection col s6 exercise-ul" *ngIf="exerciseSets">
 <div class="container exercise-container">
 
   <div class="row exercise-row">
-    <timer></timer>
+
+    <ion-item>
+     <timer></timer>
+    </ion-item>
     <div class='col s6'>
       <h3 class='header-exercise' *ngIf="exercise">
         Add Sets to : {{exercise.name}}
@@ -61,19 +65,19 @@
         Exercises Done for Workout
       </h3>
 
-      <ion-list class="collection col s6 exercise-ul" *ngIf="exerciseSets">
         <ion-item  class="collection-item avatar valign-wrapper" *ngFor='let sets of exerciseSets'>
-          <ion-avatar>
+          <ion-avatar item-start>
             <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
           </ion-avatar>
-          <span ngIf="exerciseSets" class="title">Title: {{sets.set}}</span>
+          <span class="title">Title: {{sets.set}}</span>
           <p *ngIf="exerciseSets" id="exerciseSets">
             Reps: {{sets.reps}} <br> Weight: {{sets.weight}} <br>
           </p>
         </ion-item>
-      </ion-list>
 
     </div>
   </div>
 </div>
+</ion-list>
+
 </ion-content>

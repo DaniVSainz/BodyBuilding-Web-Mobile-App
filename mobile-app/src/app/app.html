@@ -1,21 +1,23 @@
 <ion-menu [content]="mycontent" color="dark">
     <ion-content color="dark" class="ion-content">
         <ion-list>
-            <ion-item *ngIf="!isUserLoggedIn()" (click)="goToLogin()" menuClose>
+            <ion-item  *ngIf="!isUserLoggedIn()" (click)="goToLogin()" menuClose>
                 <ion-icon item-left name="contact"></ion-icon>
                 Login
             </ion-item>
-
-            <ion-item *ngIf="isUserLoggedIn()" (click)="logoutAndGoToHomePage()" menuClose>
-                <ion-icon item-left name="add"></ion-icon>
-                Sign Out
-            </ion-item>
-
 
             <ion-item *ngIf="isUserLoggedIn()" ion-item (click)="goToPage()" menuClose>
                 <ion-icon name="contact" item-left></ion-icon>
                 Workout Centre
             </ion-item>
+
+            <ion-footer>
+              <ion-item *ngIf="isUserLoggedIn()" (click)="logoutAndGoToHomePage()" menuClose>
+                <ion-icon item-left name="close-circle"></ion-icon>
+                Sign Out
+              </ion-item>
+            </ion-footer>
+
         </ion-list>
     </ion-content>
 </ion-menu>
