@@ -62,10 +62,11 @@
       </h3>
 
       <ion-list class="collection col s6 exercise-ul" *ngIf="exerciseSets">
-        <ion-item class="collection-item avatar valign-wrapper" *ngFor='let sets of exerciseSets'>
+        <ion-item  class="collection-item avatar valign-wrapper" *ngFor='let sets of exerciseSets'>
           <ion-avatar>
             <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
           </ion-avatar>
+          <span ngIf="exerciseSets" class="title">Title: {{sets.set}}</span>
           <p *ngIf="exerciseSets" id="exerciseSets">
             Reps: {{sets.reps}} <br> Weight: {{sets.weight}} <br>
           </p>

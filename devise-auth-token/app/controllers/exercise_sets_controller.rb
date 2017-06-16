@@ -32,7 +32,8 @@ class ExerciseSetsController < ApplicationController
           @exercise.sets += 1 
        end 
       @exercise.save
-      @exercise_sets.sets = @exrcise.sets
+      @exercise_set.set = @exercise.sets
+      @exercise_set.save
       render json: @exercise_set, status: :created, location: @exercise_set
     else
       render json: @exercise_set.errors, status: :unprocessable_entity
