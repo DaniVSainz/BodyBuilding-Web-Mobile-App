@@ -1,4 +1,4 @@
-<ion-menu [content]="mycontent" color="dark">
+<ion-menu side="right" [content]="mycontent" color="dark">
     <ion-content color="dark" class="dark-content">
         <ion-list>
             <ion-item  *ngIf="!isUserLoggedIn()" (click)="goToLogin()" menuClose>

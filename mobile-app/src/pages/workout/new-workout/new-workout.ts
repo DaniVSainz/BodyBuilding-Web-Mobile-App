@@ -36,11 +36,6 @@ workout = new Workout;
 
   d = new Date();
 
-  // getWorkouts(){
-
-  //   this.workoutService.getWorkouts().subscribe(workoutId=> this.workoutId= workoutId,error=> this.errorMessage = <any>error );
-  // }
-
   createWorkout(workout){
 
     workout.user_id = this.authTokenService.currentUserData.id
@@ -55,14 +50,6 @@ workout = new Workout;
             return Observable.throw(error);
           }
         )
-    // setTimeout(() => {this.getWorkouts();console.log(1)}, 100)
-    // setTimeout(() =>   {
-    //   console.log(this.workoutId)
-    //   var link = ['/show-workout/', this.workoutId[this.workoutId.length - 1 ].id ]
-    //   console.log(link)
-    //   console.log(this.workoutId)
-    //   this.router.navigate(link);
-    // },235)
   }
 
 }
