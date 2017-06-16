@@ -32,6 +32,7 @@ export class ExerciseShowPage {
 
 
   ngOnInit() {
+    this.exercise = this.navParams.data
     this.getShowExerciseSet(this.navParams.data.id);
   }
 

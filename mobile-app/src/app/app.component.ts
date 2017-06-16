@@ -13,6 +13,7 @@ import {AuthService} from '../providers/auth-service/auth-service';
 
 import {LoginPage} from "../pages/login/login";
 import{WorkoutPage} from '../pages/workout/workout';
+import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout'
 
 
 
@@ -50,8 +51,12 @@ export class MyApp {
     return this.authGuard.canActivate();
   }
 
-  goToPage(){
+  goToWorkoutHistory(){
     this.nav.push(WorkoutPage);
+  }
+
+  goToNewWorkout(){
+    this.nav.push(NewWorkoutPage);
   }
 
   goToLogin(){

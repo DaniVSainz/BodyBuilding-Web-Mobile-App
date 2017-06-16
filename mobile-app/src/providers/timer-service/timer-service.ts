@@ -18,7 +18,7 @@ export class TimerServiceProvider {
       this.playPauseStop$.emit({
           play: this.play
       });
-    var audio = new Audio('/assets/sound/clock-start.mp3');
+    var audio = new Audio('assets/sound/clock-start.mp3');
     audio.play();
   }
 

@@ -4,10 +4,12 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { LoginPage } from '../pages/login/login';
-import { WorkoutPage } from '../pages/workout/workout';
 import { HomePage } from '../pages/home/home';
+
+import { WorkoutPage } from '../pages/workout/workout';
 import {ShowWorkoutPage} from '../pages/workout/show-workout/show-workout';
 import {ExerciseShowPage} from '../pages/workout/exercise-show/exercise-show';
+import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +36,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     ShowWorkoutPage,
     ExerciseShowPage,
     TimerComponent,
-    ButtonsComponent
+    ButtonsComponent,
+    NewWorkoutPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     WorkoutPage,
     HomePage,
     ShowWorkoutPage,
-    ExerciseShowPage
+    ExerciseShowPage,
+    NewWorkoutPage
 
   ],
   providers: [
