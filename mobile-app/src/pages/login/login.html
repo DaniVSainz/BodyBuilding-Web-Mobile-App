@@ -1,33 +1,28 @@
-<ion-header color="dark">
-  <ion-navbar color="dark">
-    <ion-title>
-      About
-    </ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content id="about-content" padding>
-  <form (ngSubmit)="onSignInSubmit()" #f="ngForm">
-    <div class="row">
+<ion-content *ngIf="isUserLoggedIn" padding class="login" style="background-image:url('assets/img/rsz_1.jpg');background-repeat: no-repeat;background-size: 100% 100%">
 
-      <div class="input-field col s12">
-        <input id="email" type="email" required name='email' [(ngModel)]="signInUser.email" class="validate">
+  <form (ngSubmit)="onSignInSubmit()" #f="ngForm" class="one">
+    <ion-list class="dos" style="margin-top:30px;margin-bottom: 30px">
 
-        <label for="email">Email</label>
-      </div>
+      <ion-item class="login-iItem " style="border-bottom: none !important;">
+      <!--<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">-->
+        <ion-label style="color:white" for="email" text-center>Email</ion-label>
+        <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" id="email" type="email" required name='email' [(ngModel)]="signInUser.email" class="validate">Username</ion-input>
+      </ion-item>
 
+      <!--<ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">-->
+      <ion-item class="login-iItem">
+        <ion-label style="color:white" for="password" text-center>Password</ion-label>
+        <ion-input style="color:white;border-bottom-color:white;box-shadow:none;" id="password" type="password" required name='password' [(ngModel)]="signInUser.password" class="validate">PassWord</ion-input>
+      </ion-item>
 
-      <div class="input-field col s12">
-        <input id="password" type="password" required name='password' [(ngModel)]="signInUser.password" class="validate">
+    </ion-list>
 
-        <label for="password">Password</label>
-      </div>
-
-      <div class="col s12 ">
-        <button type="submit" [disabled]="!(f.valid)" [ngClass]="{'disabled': !(f.valid)}" class="waves-effect waves-light btn blue right">
-          Login </button>
-      </div>
-
-    </div>
+    <button type="submit" [disabled]="!(f.valid)" class="login-button" [ngClass]="{'disabled': !(f.valid)}" ion-button block>Login</button>
+    <!--<div text-center style="text-decoration: underline;margin-top:20px;color:black;font-size: 14px;" (click)="forgotPwd()">Forgot Password</div>-->
+    <button ion-button class="login-button" block (click)="signUp()">Register</button>
   </form>
 </ion-content>
+
+
+
