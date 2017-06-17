@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color="dark">
-    <ion-title *ngIf="workouts" text-center color="dark">{{workouts[0].name}}</ion-title>
+    <ion-title *ngIf="workouts" style="color: #4389fe;" text-center color="dark">{{workouts[0].name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,14 +16,14 @@
 <ion-content padding class="dark-content">
   <ion-list *ngIf="workouts">
  <div class='col s6'>
-      <h3 class='header-exercise center-align' >
+      <h3 class='header-exercise center-align' style="color: white;">
         Add Exercises to : {{workouts[0].name}}
       </h3>
-      <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>
+      <form (ngSubmit)='createExercise(exercise)' style="color: white;" #exerciseForm="ngForm" class='exercise-form'>
         <!--NAME-->
         <div class="form-group col s5">
           <label for="name">Exercise Name</label>
-          <input type="text" class='form-control' id="name" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
+          <input type="text" class='form-control' id="name" style="color:black;" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
           <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
             Exercise is Required
           </div>
@@ -31,7 +31,7 @@
         <!-- SET 1  -->
         <div class="form-group col s3">
           <label for="rest">Rest Time</label>
-          <input type="text" class='form-control' id="name" placeholder="60s" name="rest" required #rest='ngModel' [(ngModel)]="exercise.rest">
+          <input type="text" class='form-control' id="name" style="color:black;" placeholder="60s" name="rest" required #rest='ngModel' [(ngModel)]="exercise.rest">
           <div [hidden]="rest.valid || rest.pristine" class='alert alert-danger'>
             Rest Time is required
           </div>
