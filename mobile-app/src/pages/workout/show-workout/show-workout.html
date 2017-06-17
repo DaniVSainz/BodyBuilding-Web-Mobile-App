@@ -39,8 +39,8 @@
 
         <!--<a (click)='reloadExercise(workouts[0].id)'>-->
         <div class='col s6'>
-          <button type='submit' class=" btn btn-outline-primary btn-lg submit-button" [disabled]='!exerciseForm.form.valid'  >
-            Add Exercise
+        <button ion-button type='submit' class="submit-button center-this" [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
+          Add Exercise
         </button>
           <!--</a>-->
           <div class='alert alert-success' role='alert' [hidden]='!submitted' >

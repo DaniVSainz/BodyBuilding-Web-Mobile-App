@@ -23,14 +23,14 @@
      <timer></timer>
     </ion-item>
     <div class='col s6'>
-      <h3 class='header-exercise' *ngIf="exercise">
+      <h3 class='header-exercise' style="color:white;" *ngIf="exercise">
         Add Sets to : {{exercise.name}}
       </h3>
 
       <form (ngSubmit)='createExerciseSet(exerciseSet)' #exerciseSetForm="ngForm" class='exerciseSet-form'>
 
         <div class="form-group col s5">
-          <label for="reps">Reps:</label>
+          <label for="reps" style="color:white;">Reps:</label>
           <input type="text" class='form-control' id="name" placeholder="1..15" required name="reps" #reps='ngModel' [(ngModel)]="exerciseSet.reps">
           <div [hidden]="reps.valid || reps.pristine" class='alert alert-danger'>
             Reps are required
@@ -38,17 +38,18 @@
         </div>
 
         <div class="form-group col s3">
-          <label for="weight">Weight is required</label>
+          <label style="color:white;" for="weight">Weight is required</label>
           <input type="text" class='form-control' id="name" placeholder="150lbs" name="weight" required #weight='ngModel' [(ngModel)]="exerciseSet.weight">
-          <div [hidden]="weight.valid || weight.pristine" class='alert alert-danger'>
+          <div style="color:white;" [hidden]="weight.valid || weight.pristine" class='alert alert-danger'>
             Weight is required
           </div>
         </div>
 
 
         <div class='col s6'>
-          <button type='submit' class=" btn btn-outline-primary submit-button" [disabled]='!exerciseSetForm.form.valid' >
-            Add Set
+
+        <button ion-button type='submit' class="center-this new-workout-button" [disabled]='!exerciseSetForm.form.valid' [hidden]='submitted'>
+          Add Set
         </button>
           <!--<a [routerLink]="[ '/show-workout/' + exercise.workout_id] " class='btn right' *ngIf='exercise'>Back</a>-->
 
@@ -61,7 +62,7 @@
     </div>
     <div class='col s6 exercise-div'>
 
-      <h3 class='center-align'>
+      <h3 class='center-align' style="color:white;">
         Exercises Done for Workout
       </h3>
 
