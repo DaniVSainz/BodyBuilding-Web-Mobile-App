@@ -13,15 +13,15 @@ import { Workout } from '../../interfaces/workout';
 
 @Injectable()
 export class WorkoutService {
-//   private workoutsUrl = 'http://localhost:3000/workouts';
-//   private exerciseUrl = 'http://localhost:3000/exercises/';
-//   private exerciseSetUrl = 'http://localhost:3000/exercise_sets/';
-//   private exerciseSetsUrl = 'http://localhost:3000/exercisesets/';
+  private workoutsUrl = 'http://localhost:3000/workouts';
+  private exerciseUrl = 'http://localhost:3000/exercises/';
+  private exerciseSetUrl = 'http://localhost:3000/exercise_sets/';
+  private exerciseSetsUrl = 'http://localhost:3000/exercisesets/';
 
-  private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
-  private exerciseUrl = 'https://lift-tracker--api.herokuapp.com/exercises/'
-  private exerciseSetUrl = 'https://lift-tracker--api.herokuapp.com/exercise_sets/';
-  private exerciseSetsUrl = 'https://lift-tracker--api.herokuapp.com/exercisesets/';
+  // private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
+  // private exerciseUrl = 'https://lift-tracker--api.herokuapp.com/exercises/'
+  // private exerciseSetUrl = 'https://lift-tracker--api.herokuapp.com/exercise_sets/';
+  // private exerciseSetsUrl = 'https://lift-tracker--api.herokuapp.com/exercisesets/';
 
   constructor(private http:Http,
     public authTokenService:Angular2TokenService,

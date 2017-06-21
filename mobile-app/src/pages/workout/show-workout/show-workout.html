@@ -15,7 +15,8 @@
 
 <ion-content padding class="dark-content">
   <ion-list *ngIf="workouts">
- <div class='col s6'>
+  <!--<div class='col s6'>-->
+
       <h3 class='header-exercise center-align' style="color: white;">
         Add Exercises to : {{workouts[0].name}}
       </h3>
@@ -47,12 +48,8 @@
             Your exercise was successfully added!
           </div>
         </div>
-
-
-
       </form>
-
-    </div>
+    <!--</div>-->
 
     <ion-item *ngFor='let exercises of workouts[1]' (click)="goToShowExercise(exercises)">
       <ion-avatar item-start>

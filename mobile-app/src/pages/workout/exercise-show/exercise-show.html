@@ -70,7 +70,7 @@
           <ion-avatar item-start>
             <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
           </ion-avatar>
-          <span class="title">Title: {{sets.set}}</span>
+          <span class="title" *ngIf="sets">Set: {{sets.set}}</span>
           <p *ngIf="exerciseSets" id="exerciseSets">
             Reps: {{sets.reps}} <br> Weight: {{sets.weight}} <br>
           </p>
