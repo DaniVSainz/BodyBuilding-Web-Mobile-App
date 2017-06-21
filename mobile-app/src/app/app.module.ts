@@ -10,6 +10,7 @@ import { WorkoutPage } from '../pages/workout/workout';
 import {ShowWorkoutPage} from '../pages/workout/show-workout/show-workout';
 import {ExerciseShowPage} from '../pages/workout/exercise-show/exercise-show';
 import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout';
+import {CreateTemplatePage} from '../pages/template/create-template/create-template'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -54,7 +55,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     HomePage,
     ShowWorkoutPage,
     ExerciseShowPage,
-    NewWorkoutPage
+    NewWorkoutPage,
+    CreateTemplatePage
 
   ],
   providers: [

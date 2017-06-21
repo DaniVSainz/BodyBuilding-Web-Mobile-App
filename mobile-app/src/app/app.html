@@ -16,6 +16,11 @@
                 New Workout
             </ion-item>
 
+            <ion-item *ngIf="isUserLoggedIn()" ion-item (click)="goToNewWorkout()" menuClose>
+              <ion-icon name="create" item-left></ion-icon>
+                Create Template
+            </ion-item>
+
             <ion-footer>
               <ion-item *ngIf="isUserLoggedIn()" (click)="logoutAndGoToHomePage()" menuClose>
                 <ion-icon item-left name="close-circle"></ion-icon>
