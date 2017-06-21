@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616145949) do
+ActiveRecord::Schema.define(version: 20170621192829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 20170616145949) do
     t.index ["exercise_id"], name: "index_exercise_sets_on_exercise_id", using: :btree
   end
 
+  create_table "exercise_templates", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "isTemplate"
+    t.integer  "setCount"
+    t.integer  "restTime"
+    t.integer  "avgWeight"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "workout_templates_id"
+    t.index ["workout_templates_id"], name: "index_exercise_templates_on_workout_templates_id", using: :btree
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.integer  "workout_id"
     t.datetime "created_at", null: false
@@ -35,6 +47,17 @@ ActiveRecord::Schema.define(version: 20170616145949) do
     t.integer  "sets"
     t.index ["user_id"], name: "index_exercises_on_user_id", using: :btree
     t.index ["workout_id"], name: "index_exercises_on_workout_id", using: :btree
+  end
+
+  create_table "sets_templates", force: :cascade do |t|
+    t.integer  "setNum"
+    t.integer  "weight"
+    t.integer  "reps"
+    t.integer  "exercise_template_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "setsCount"
+    t.index ["exercise_template_id"], name: "index_sets_templates_on_exercise_template_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,6 +89,16 @@ ActiveRecord::Schema.define(version: 20170616145949) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  create_table "workout_templates", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "exerciseCount"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.boolean  "isTemplate"
+    t.index ["user_id"], name: "index_workout_templates_on_user_id", using: :btree
+  end
+
   create_table "workouts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,7 +109,10 @@ ActiveRecord::Schema.define(version: 20170616145949) do
   end
 
   add_foreign_key "exercise_sets", "exercises"
+  add_foreign_key "exercise_templates", "workout_templates", column: "workout_templates_id"
   add_foreign_key "exercises", "users"
   add_foreign_key "exercises", "workouts"
+  add_foreign_key "sets_templates", "exercise_templates"
+  add_foreign_key "workout_templates", "users"
   add_foreign_key "workouts", "users"
 end

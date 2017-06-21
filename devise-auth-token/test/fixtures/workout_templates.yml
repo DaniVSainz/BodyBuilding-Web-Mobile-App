@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  isTemplate: MyString
+  boolean: MyString
+  exerciseCount: 1
+  user: one
+
+two:
+  title: MyString
+  isTemplate: MyString
+  boolean: MyString
+  exerciseCount: 1
+  user: two

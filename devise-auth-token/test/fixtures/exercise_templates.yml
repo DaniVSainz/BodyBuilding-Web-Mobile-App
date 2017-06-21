@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  isTemplate: false
+  setCount: 1
+  restTime: 1
+  avgWeight: 1
+  setCount: 1
+
+two:
+  title: MyString
+  isTemplate: false
+  setCount: 1
+  restTime: 1
+  avgWeight: 1
+  setCount: 1
