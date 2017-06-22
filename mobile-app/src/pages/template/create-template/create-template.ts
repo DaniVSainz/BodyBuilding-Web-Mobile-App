@@ -2,7 +2,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { WorkoutService } from '../../../providers/workout-service/workout-service';
 import { Observable } from 'rxjs/Rx';
-import { Workout } from '../../../interfaces/workout';
+import { WorkoutTemplate } from '../../../interfaces/workoutTemplate';
 import {AuthService} from "../../../providers/auth-service/auth-service";
 import {Angular2TokenService} from "angular2-token";
 /**
@@ -18,7 +18,7 @@ import {Angular2TokenService} from "angular2-token";
 })
 export class CreateTemplatePage {
   submitted: boolean = false;
-
+  workoutTemplate= new WorkoutTemplate;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -28,14 +28,15 @@ export class CreateTemplatePage {
               ) {
   }
 
-  createWorkout(template){
-
-  template.user_id = this.authTokenService.currentUserData.id
+  createTemplate(workoutTemplate){
+    console.log(workoutTemplate);
+    workoutTemplate.user_id = this.authTokenService.currentUserData.id
     this.submitted = true;
-    this.workoutService.createTemplate(template)
+    this.workoutService.createTemplate(workoutTemplate)
         .subscribe(
           data => {
             // this.navCtrl.push(ShowWorkoutPage, data)
+            console.log(workoutTemplate)
             return true },
           error => {
             console.log("Error saving proposal");
