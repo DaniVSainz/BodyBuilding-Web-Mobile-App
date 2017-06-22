@@ -13,8 +13,8 @@ import {AuthService} from '../providers/auth-service/auth-service';
 
 import {LoginPage} from "../pages/login/login";
 import{WorkoutPage} from '../pages/workout/workout';
-import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout'
-
+import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout';
+import {CreateTemplatePage} from '../pages/template/create-template/create-template';
 
 
 
@@ -67,6 +67,10 @@ export class MyApp {
     this.authService.logOutUser();
     // window.location.reload();
     this.nav.popToRoot();
+  }
+
+  goToNewTemplate(){
+    this.nav.push(CreateTemplatePage);
   }
 
 }

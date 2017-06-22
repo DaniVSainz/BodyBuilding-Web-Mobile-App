@@ -38,7 +38,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     ExerciseShowPage,
     TimerComponent,
     ButtonsComponent,
-    NewWorkoutPage
+    NewWorkoutPage,
+    CreateTemplatePage
   ],
   imports: [
     BrowserModule,
