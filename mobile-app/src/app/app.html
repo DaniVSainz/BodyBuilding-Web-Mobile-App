@@ -21,6 +21,11 @@
                 Create Template
             </ion-item>
 
+            <ion-item *ngIf="isUserLoggedIn()" ion-item (click)="goToGetTemplates()" menuClose>
+              <ion-icon name="copy" item-left></ion-icon>
+                Templates
+            </ion-item>
+
             <ion-footer>
               <ion-item *ngIf="isUserLoggedIn()" (click)="logoutAndGoToHomePage()" menuClose>
                 <ion-icon item-left name="close-circle"></ion-icon>

@@ -15,6 +15,7 @@ import {LoginPage} from "../pages/login/login";
 import{WorkoutPage} from '../pages/workout/workout';
 import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout';
 import {CreateTemplatePage} from '../pages/template/create-template/create-template';
+import {GetTemplatesPage} from '../pages/template/get-templates/get-templates';
 
 
 
@@ -71,6 +72,10 @@ export class MyApp {
 
   goToNewTemplate(){
     this.nav.push(CreateTemplatePage);
+  }
+
+  goToGetTemplates(){
+    this.nav.push(GetTemplatesPage);
   }
 
 }
