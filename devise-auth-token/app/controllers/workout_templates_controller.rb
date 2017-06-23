@@ -13,6 +13,12 @@ class WorkoutTemplatesController < ApplicationController
     render json: @workout_template
   end
 
+  def userShow
+    @workout_Templates = WorkoutTemplate.where user_id: workout_template_params['id']
+    @workout_Templates = @workout_Templates.reverse
+    render json: @workout_Templates
+  end
+
   # POST /workout_templates
   def create
     @workout_template = WorkoutTemplate.new(workout_template_params)
@@ -46,6 +52,7 @@ class WorkoutTemplatesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def workout_template_params
-      params.require(:workout_template).permit(:title, :isTemplate, :boolean, :exerciseCount, :user_id)
+      # params.require(:workout_template).permit(:title, :isTemplate, :boolean, :exerciseCount, :user_id,:id)
+      params  .permit(:title, :isTemplate, :boolean, :exerciseCount, :user_id,:id)
     end
 end

@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import {AuthService} from '../auth-service/auth-service';
 
 import { Workout } from '../../interfaces/workout';
+import {WorkoutTemplate} from '../../interfaces/workoutTemplate'
 // import { Exercise } from '../workout/show-workout/exercise';
 // import {Exercise_set} from '../workout/exercise-show/exercise_set';
 
@@ -111,6 +112,10 @@ export class WorkoutService {
 // =================
 //   TEMPLATES      |
 // =================
+
+   getTemplates(): Observable<WorkoutTemplate[]> {
+    return this.http.get(this.templateUrl+'/user/'+this.authTokenService.currentUserData.id).map((response: Response) => <WorkoutTemplate[]>response.json()).catch(this.handleError);
+  }
 
 
   createTemplate(template) {

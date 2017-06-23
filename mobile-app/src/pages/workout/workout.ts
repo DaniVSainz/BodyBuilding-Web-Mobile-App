@@ -20,7 +20,7 @@ export class WorkoutPage {
 
   }
 
-   ionViewCanEnter() {
+  ionViewCanEnter() {
     this.authGuard.canActivate();
     if(this.authGuard.canActivate()){
     }else{

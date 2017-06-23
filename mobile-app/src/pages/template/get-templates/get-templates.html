@@ -4,15 +4,23 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header >
 
-  <ion-navbar>
-    <ion-title>getTemplates</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>Workout Templates</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding class="dark-content">
+  <ion-list color="dark">
+    <ion-item color="dark" *ngFor='let template of workoutTemplates' (click)="goToWorkout(template)">
+      <ion-avatar item-start>
+        <img src="http://cdn.cultofmac.com/wp-content/uploads/2016/09/workout-app.png">
+      </ion-avatar>
+      <span class="title">Title: {{template.title}}</span>
+      <!--<p>Date: {{temlate.created_at | date}}</p>-->
+    </ion-item>
+  </ion-list>
 </ion-content>
