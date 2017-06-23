@@ -1,6 +1,11 @@
 Currently the website is behind a few commits, it will be updated every few days.(Although it uses 2 free heroku apps which causes some issues with cross requests since the dynos sleep)
 https://lift-tracker-dvs.herokuapp.com/
+
+gif is old 
 ![alt](https://github.com/DaniVSainz/bodybuilding-angular/blob/master/ang4-bodybuilding.gif)  
+
+mobile phone app prog
+~[alt](https://github.com/DaniVSainz/bodybuilding-angular/blob/master/mobile.gif)
 
 pushing to heroku using : ```git push angular-front-end `git subtree split --prefix angular-front-end`:master```  
 pushing devise-auth-token folder with : ```git push heroku `git subtree split --prefix devise-auth-token`:master```
