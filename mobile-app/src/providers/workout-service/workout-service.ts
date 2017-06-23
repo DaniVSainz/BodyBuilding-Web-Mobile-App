@@ -19,6 +19,7 @@ export class WorkoutService {
   private exerciseSetUrl = 'http://localhost:3000/exercise_sets/';
   private exerciseSetsUrl = 'http://localhost:3000/exercisesets/';
   private templateUrl = 'http://localhost:3000/workout_templates';
+  private exerciseTemplateUrl = 'http://localhost:3000/exercise_templates';
 
   // private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
   // private exerciseUrl = 'https://lift-tracker--api.herokuapp.com/exercises/'
@@ -117,6 +118,9 @@ export class WorkoutService {
     return this.http.get(this.templateUrl+'/user/'+this.authTokenService.currentUserData.id).map((response: Response) => <WorkoutTemplate[]>response.json()).catch(this.handleError);
   }
 
+  getTemplate(id: number){
+    return this.http.get(this.templateUrl + "/" + id);
+  }
 
   createTemplate(template) {
     let headers = new Headers({'Content-Type': 'application/json' });
@@ -125,8 +129,9 @@ export class WorkoutService {
       headers: headers}).map((res: Response)=> res.json());
   }
 
-
-
+  getExerciseTemplates(id: number){
+    return this.http.get(this.templateUrl  + id);
+  }
 
 
 

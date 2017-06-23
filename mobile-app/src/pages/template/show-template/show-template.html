@@ -6,13 +6,13 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>showTemplate</ion-title>
+  <ion-navbar color='dark'>
+    <ion-title *ngIf="exerciseTemplates" style="color: #4389fe;" text-center color="dark">{{exerciseTemplates[0].title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="dark-content">
 
 </ion-content>

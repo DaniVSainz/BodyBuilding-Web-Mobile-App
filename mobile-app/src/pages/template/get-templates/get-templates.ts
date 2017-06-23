@@ -41,7 +41,7 @@ export class GetTemplatesPage {
     this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
   }
 
-  goToWorkout(template: WorkoutTemplate): void{
+  goToTemplate(template: WorkoutTemplate): void{
     this.navCtrl.push(ShowTemplatePage,template);
   }
 
