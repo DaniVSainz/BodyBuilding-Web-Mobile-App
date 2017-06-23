@@ -10,7 +10,10 @@ import { WorkoutPage } from '../pages/workout/workout';
 import {ShowWorkoutPage} from '../pages/workout/show-workout/show-workout';
 import {ExerciseShowPage} from '../pages/workout/exercise-show/exercise-show';
 import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout';
+
 import {CreateTemplatePage} from '../pages/template/create-template/create-template'
+import {GetTemplatesPage} from '../pages/template/get-templates/get-templates';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,10 +27,6 @@ import { TimerServiceProvider } from '../providers/timer-service/timer-service';
 import { TimerComponent } from '../components/timer/timer';
 import { ButtonsComponent } from '../components/buttons/buttons';
 
-
-
-
-
 @NgModule({
   declarations: [
     MyApp,
@@ -39,7 +38,9 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     TimerComponent,
     ButtonsComponent,
     NewWorkoutPage,
-    CreateTemplatePage
+    CreateTemplatePage,
+    GetTemplatesPage
+
   ],
   imports: [
     BrowserModule,
@@ -57,7 +58,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     ShowWorkoutPage,
     ExerciseShowPage,
     NewWorkoutPage,
-    CreateTemplatePage
+    CreateTemplatePage,
+    GetTemplatesPage
 
   ],
   providers: [

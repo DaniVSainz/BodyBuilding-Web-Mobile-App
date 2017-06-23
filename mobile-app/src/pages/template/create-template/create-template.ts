@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { WorkoutTemplate } from '../../../interfaces/workoutTemplate';
 import {AuthService} from "../../../providers/auth-service/auth-service";
 import {Angular2TokenService} from "angular2-token";
+import {GetTemplatesPage} from '../get-templates/get-templates';
 /**
  * Generated class for the CreateTemplatePage page.
  *
@@ -35,7 +36,7 @@ export class CreateTemplatePage {
     this.workoutService.createTemplate(workoutTemplate)
         .subscribe(
           data => {
-            // this.navCtrl.push(ShowWorkoutPage, data)
+            this.navCtrl.push(GetTemplatesPage)
             console.log(workoutTemplate)
             return true },
           error => {
