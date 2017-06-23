@@ -5,7 +5,7 @@ gif is old
 ![alt](https://github.com/DaniVSainz/bodybuilding-angular/blob/master/ang4-bodybuilding.gif)  
 
 mobile phone app prog
-~[alt](https://github.com/DaniVSainz/bodybuilding-angular/blob/master/mobile.gif)
+![alt](https://github.com/DaniVSainz/bodybuilding-angular/blob/master/mobile.gif)
 
 pushing to heroku using : ```git push angular-front-end `git subtree split --prefix angular-front-end`:master```  
 pushing devise-auth-token folder with : ```git push heroku `git subtree split --prefix devise-auth-token`:master```
