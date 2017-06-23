@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { WorkoutTemplate } from '../../../interfaces/workoutTemplate';
 import {AuthService} from "../../../providers/auth-service/auth-service";
 import {Angular2TokenService} from "angular2-token";
+import {ShowTemplatePage} from '../show-template/show-template';
 /**
  * Generated class for the GetTemplatesPage page.
  *
@@ -40,8 +41,8 @@ export class GetTemplatesPage {
     this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
   }
 
-  // goToWorkout(workout: Workout): void{
-  //   this.navCtrl.push(ShowWorkoutPage,workout);
-  // }
+  goToWorkout(template: WorkoutTemplate): void{
+    this.navCtrl.push(ShowTemplatePage,template);
+  }
 
 }

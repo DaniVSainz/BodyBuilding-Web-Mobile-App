@@ -13,6 +13,7 @@ import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout';
 
 import {CreateTemplatePage} from '../pages/template/create-template/create-template'
 import {GetTemplatesPage} from '../pages/template/get-templates/get-templates';
+import {ShowTemplatePage} from '../pages/template/show-template/show-template';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -39,7 +40,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     ButtonsComponent,
     NewWorkoutPage,
     CreateTemplatePage,
-    GetTemplatesPage
+    GetTemplatesPage,
+    ShowTemplatePage
 
   ],
   imports: [
@@ -59,7 +61,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     ExerciseShowPage,
     NewWorkoutPage,
     CreateTemplatePage,
-    GetTemplatesPage
+    GetTemplatesPage,
+    ShowTemplatePage
 
   ],
   providers: [
