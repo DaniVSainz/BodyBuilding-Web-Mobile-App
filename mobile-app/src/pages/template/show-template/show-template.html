@@ -7,12 +7,32 @@
 <ion-header>
 
   <ion-navbar color='dark'>
-    <ion-title *ngIf="exerciseTemplates" style="color: #4389fe;" text-center color="dark">{{exerciseTemplates[0].title}}</ion-title>
+    <ion-title  style="color: #4389fe;" text-center color="dark">Workout Template</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding class="dark-content">
+  <ion-list *ngIf="exerciseTemplates">
+  <!--<div class='col s6'>-->
 
+      <h3 class='header-exercise center-align' style="color: white;">
+        Add Exercises to : {{exerciseTemplates[0].title}}
+      </h3>
+
+    <!--</div>-->
+
+    <ion-item *ngFor='let template of exerciseTemplates[1]' (click)="goToExerciseTemplate(exercises)">
+      <ion-avatar item-start>
+        <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png">
+      </ion-avatar>
+      <span class="title">Title: {{template.title}}</span>
+      <p>
+        Sets: {{template.sets}} <br>
+        Rest Time: {{template.rest}}
+      </p>
+      <!--<i class="material-icons">View Workout Details</i>-->
+    </ion-item>
+  </ion-list>
 </ion-content>

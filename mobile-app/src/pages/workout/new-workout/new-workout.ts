@@ -6,19 +6,17 @@ import { Workout } from '../../../interfaces/workout';
 import {AuthService} from "../../../providers/auth-service/auth-service";
 import {Angular2TokenService} from "angular2-token";
 import {ShowWorkoutPage} from '../show-workout/show-workout';
-/**
- * Generated class for the NewWorkoutPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {WorkoutTemplate} from '../../../interfaces/workoutTemplate'
+
+
 @IonicPage()
 @Component({
   selector: 'page-new-workout',
   templateUrl: 'new-workout.html',
 })
 export class NewWorkoutPage {
-workout = new Workout;
+  workoutTemplates: WorkoutTemplate[];
+  workout = new Workout;
   workoutId: any;
   errorMessage: string;
   link: any;
@@ -32,6 +30,7 @@ workout = new Workout;
   ) {}
 
   ngOnInit() {
+    this.getTemplates
   }
 
   d = new Date();
@@ -50,6 +49,14 @@ workout = new Workout;
             return Observable.throw(error);
           }
         )
+  }
+
+  getTemplates(){
+    this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
+  }
+
+  createWorkoutFromTemplate(template){
+
   }
 
 }
