@@ -130,7 +130,7 @@ export class WorkoutService {
   }
 
   getExerciseTemplates(id: number){
-    return this.http.get(this.templateUrl  + id);
+    return this.http.get(this.templateUrl  + '/' + id);
   }
 
 
