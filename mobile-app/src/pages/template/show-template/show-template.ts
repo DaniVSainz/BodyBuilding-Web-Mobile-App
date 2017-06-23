@@ -29,7 +29,7 @@ export class ShowTemplatePage {
   ngOnInit(){
     this.template = this.navParams.data;
     console.log(this.template)
-    this.workoutService.getExerciseTemplates(this.template.id).subscribe(response => this.exerciseTemplates = response.json());;
+    this.workoutService.getTemplate(this.template.id).subscribe(response => this.exerciseTemplates = response.json());;
     console.log(this.exerciseTemplates);
   }
 

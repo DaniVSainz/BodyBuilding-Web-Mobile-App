@@ -129,9 +129,9 @@ export class WorkoutService {
       headers: headers}).map((res: Response)=> res.json());
   }
 
-  getExerciseTemplates(id: number){
-    return this.http.get(this.templateUrl  + '/' + id);
-  }
+  // getExerciseTemplates(id: number){
+  //   return this.http.get(this.templateUrl  + '/' + id);
+  // }
 
 
 

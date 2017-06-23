@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621192829) do
+ActiveRecord::Schema.define(version: 20170623190619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20170621192829) do
     t.integer  "setCount"
     t.integer  "restTime"
     t.integer  "avgWeight"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "workout_templates_id"
-    t.index ["workout_templates_id"], name: "index_exercise_templates_on_workout_templates_id", using: :btree
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "workout_template_id"
+    t.index ["workout_template_id"], name: "index_exercise_templates_on_workout_template_id", using: :btree
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20170621192829) do
   end
 
   add_foreign_key "exercise_sets", "exercises"
-  add_foreign_key "exercise_templates", "workout_templates", column: "workout_templates_id"
+  add_foreign_key "exercise_templates", "workout_templates"
   add_foreign_key "exercises", "users"
   add_foreign_key "exercises", "workouts"
   add_foreign_key "sets_templates", "exercise_templates"

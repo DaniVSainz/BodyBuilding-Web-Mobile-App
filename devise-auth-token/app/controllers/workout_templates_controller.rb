@@ -10,8 +10,8 @@ class WorkoutTemplatesController < ApplicationController
 
   # GET /workout_templates/1
   def show
-    @exercise_templates = ExerciseTemplate.where workout_templates_id: @workout_template.id     
-    user_data = [@workout_Template , @exercise_templates ]
+    @exercise_templates = ExerciseTemplate.where workout_template_id: @workout_template.id     
+    user_data = [@workout_template , @exercise_templates ]
     render json: user_data
   end
 
