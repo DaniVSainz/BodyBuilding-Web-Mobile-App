@@ -14,19 +14,19 @@ import {WorkoutTemplate} from '../../interfaces/workoutTemplate'
 
 @Injectable()
 export class WorkoutService {
-  // private workoutsUrl = 'http://localhost:3000/workouts';
-  // private exerciseUrl = 'http://localhost:3000/exercises/';
-  // private exerciseSetUrl = 'http://localhost:3000/exercise_sets/';
-  // private exerciseSetsUrl = 'http://localhost:3000/exercisesets/';
-  // private templateUrl = 'http://localhost:3000/workout_templates';
-  // private exerciseTemplateUrl = 'http://localhost:3000/exercise_templates';
+  private workoutsUrl = 'http://localhost:3000/workouts';
+  private exerciseUrl = 'http://localhost:3000/exercises/';
+  private exerciseSetUrl = 'http://localhost:3000/exercise_sets/';
+  private exerciseSetsUrl = 'http://localhost:3000/exercisesets/';
+  private templateUrl = 'http://localhost:3000/workout_templates';
+  private exerciseTemplateUrl = 'http://localhost:3000/exercise_templates';
 
-  private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
-  private exerciseUrl = 'https://lift-tracker--api.herokuapp.com/exercises/'
-  private exerciseSetUrl = 'https://lift-tracker--api.herokuapp.com/exercise_sets/';
-  private exerciseSetsUrl = 'https://lift-tracker--api.herokuapp.com/exercisesets/';
-  private templateUrl = 'https://lift-tracker--api.com/workout_templates';
-  private exerciseTemplateUrl = 'https://lift-tracker--api.com/exercise_templates';
+  // private workoutsUrl = 'https://lift-tracker--api.herokuapp.com/workouts';
+  // private exerciseUrl = 'https://lift-tracker--api.herokuapp.com/exercises/'
+  // private exerciseSetUrl = 'https://lift-tracker--api.herokuapp.com/exercise_sets/';
+  // private exerciseSetsUrl = 'https://lift-tracker--api.herokuapp.com/exercisesets/';
+  // private templateUrl = 'https://lift-tracker--api.com/workout_templates';
+  // private exerciseTemplateUrl = 'https://lift-tracker--api.com/exercise_templates';
 
 
   constructor(private http:Http,

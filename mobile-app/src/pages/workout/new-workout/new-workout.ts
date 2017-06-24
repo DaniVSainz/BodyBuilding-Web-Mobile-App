@@ -14,7 +14,7 @@ import {WorkoutTemplate} from '../../../interfaces/workoutTemplate'
   selector: 'page-new-workout',
   templateUrl: 'new-workout.html',
 })
-export class NewWorkoutPage {
+export class NewWorkoutPage implements OnInit   {
   workoutTemplates: WorkoutTemplate[];
   workout = new Workout;
   workoutId: any;
@@ -30,7 +30,14 @@ export class NewWorkoutPage {
   ) {}
 
   ngOnInit() {
-    this.getTemplates
+    this.getTemplates();
+    console.log(this.workoutTemplates);
+  }
+
+
+
+  getTemplates(){
+    this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
   }
 
   d = new Date();
@@ -51,9 +58,7 @@ export class NewWorkoutPage {
         )
   }
 
-  getTemplates(){
-    this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
-  }
+
 
   createWorkoutFromTemplate(template){
 
