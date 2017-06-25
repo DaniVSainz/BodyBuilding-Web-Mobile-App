@@ -4,4 +4,5 @@ export class WorkoutTemplate {
   id: number;
   isTemplate: boolean;
   exerciseCount:number;
+  templateId: number;
 }

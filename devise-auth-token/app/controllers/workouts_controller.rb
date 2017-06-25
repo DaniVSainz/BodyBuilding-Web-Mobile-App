@@ -33,6 +33,21 @@ class WorkoutsController < ApplicationController
     end
   end
 
+  def createFromTemplate
+    @template = WorkoutTemplate.find_by id: workout_params['id']
+    @workout = Workout.new 
+    @workout.name = (@template.title)
+    @workout.user_id = @template.user_id
+    if @workout.save
+      p "*" * 150
+      @template.exercise_templates.each do |exerciseTemplate| 
+        @workout.exercises.create name: exerciseTemplate.title, rest: exerciseTemplate.restTime
+      end 
+    else
+      render json: @workout.errors, status: :unprocessable_entity
+    end
+  end 
+
   # PATCH/PUT /workouts/1
   def update
     if @workout.update(workout_params)
@@ -55,6 +70,6 @@ class WorkoutsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def workout_params
-      params.permit(:name,:user_id,:id,:template)
+      params.permit(:name,:user_id,:id,:template,)
     end
 end

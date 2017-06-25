@@ -26,7 +26,8 @@
     <h1>My Reactive Form</h1>
     <label for="name"> Single select: </label><br>
     <select name="name" formControlName="name">
-      <option value="{{template.title}}" *ngFor='let template of workoutTemplates'>{{template.title}}</option>
+      <option value="">Select Template</option>
+      <option value="{{template.id}}" *ngFor='let template of workoutTemplates'>{{template.title}}</option>
     </select>
 
     <button ion-button type='submit'[disabled]='!templateForm.valid' [hidden]='submitted'>

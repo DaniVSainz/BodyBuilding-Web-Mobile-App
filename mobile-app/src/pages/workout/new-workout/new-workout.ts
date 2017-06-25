@@ -34,7 +34,7 @@ export class NewWorkoutPage implements OnInit   {
     private formBuilder:FormBuilder
   ) {
     this.templateForm=formBuilder.group({
-      'name': ['']
+      'name': ['',Validators.required]
     })
   }
 

@@ -32,7 +32,7 @@ export class ShowTemplatePage {
   ngOnInit(){
     this.template = this.navParams.data;
     console.log(this.template)
-    this.workoutService.getTemplate(this.template.id).subscribe(response => this.exerciseTemplates = response.json());;
+    this.workoutService.getTemplate(this.template.workout_template_id).subscribe(response => this.exerciseTemplates = response.json());;
     console.log(this.exerciseTemplates);
   }
 
@@ -45,7 +45,6 @@ export class ShowTemplatePage {
     this.workoutService.createExerciseTemplate(exerciseTemplate)
         .subscribe(
           data => {
-            this.navCtrl.pop();
             this.navCtrl.push(ShowTemplatePage, this.exerciseTemplate)
             return true},
           error => {
