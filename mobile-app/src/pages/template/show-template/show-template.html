@@ -15,11 +15,11 @@
       Add Exercises to : {{exerciseTemplates[0].title}}
     </h3>
 
-    <form (ngSubmit)='createExerciseTemplate(template)' style="color: white;" #exerciseTemplateForm="ngForm" >
+    <form (ngSubmit)='createExerciseTemplate(exerciseTemplate)' style="color: white;" #exerciseTemplateForm="ngForm" >
       <!--NAME-->
       <div class="form-group col s5">
         <label for="title">ExerciseTemplate Name</label>
-        <input type="text" class='form-control' id="name" style="color:black;" placeholder="Squat,Deadlift,etc" required name="title" #title='ngModel' [(ngModel)]="exerciseTemplate.name">
+        <input type="text" class='form-control' id="name" style="color:black;" placeholder="Squat,Deadlift,etc" required name="title" #title='ngModel' [(ngModel)]="exerciseTemplate.title">
         <div [hidden]="title.valid || title.pristine" class='alert alert-danger'>
           Title is Required
         </div>
@@ -27,7 +27,7 @@
       <!-- SET 1  -->
       <div class="form-group col s3">
         <label for="restTime">Rest Time</label>
-        <input type="text" class='form-control' id="name" style="color:black;" placeholder="60s" name="restTime" required #restTime='ngModel' [(ngModel)]="exerciseTemplate.rest">
+        <input type="text" class='form-control' id="name" style="color:black;" placeholder="60s" name="restTime" required #restTime='ngModel' [(ngModel)]="exerciseTemplate.restTime">
         <div [hidden]="restTime.valid || restTime.pristine" class='alert alert-danger'>
           Rest Time is required
         </div>

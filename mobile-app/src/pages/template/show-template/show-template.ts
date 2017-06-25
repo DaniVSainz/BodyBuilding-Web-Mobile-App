@@ -37,17 +37,16 @@ export class ShowTemplatePage {
   }
 
 
-  createExerciseTemplate(template){
-    console.log('exercise created')
-    template.user_id = this.authTokenService.currentUserData.id
-    template.workout_template_id = this.exerciseTemplates[0].id
+  createExerciseTemplate(exerciseTemplate){
+    console.log(exerciseTemplate)
+    exerciseTemplate.user_id = this.authTokenService.currentUserData.id
+    exerciseTemplate.workout_template_id = this.exerciseTemplates[0].id
     this.submitted = true;
-    this.workoutService.createExerciseTemplate(template)
-    // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json())
+    this.workoutService.createExerciseTemplate(exerciseTemplate)
         .subscribe(
           data => {
             this.navCtrl.pop();
-            // this.navCtrl.push(ShowWorkoutPage, this.workout)
+            this.navCtrl.push(ShowTemplatePage, this.exerciseTemplate)
             return true},
           error => {
             console.log("Error saving proposal");
