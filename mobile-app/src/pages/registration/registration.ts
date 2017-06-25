@@ -56,7 +56,6 @@ export class RegistrationPage {
           if (res.status == 200){
             this.onFormResult.emit({signedUp: true, res})
             this.rForm.reset();
-            this.navCtrl.pop
             this.navCtrl.push(HomePage);
           }
 

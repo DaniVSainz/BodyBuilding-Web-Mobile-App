@@ -29,9 +29,6 @@ export class GetTemplatesPage {
               public authTokenService: Angular2TokenService,
               ) {
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GetTemplatesPage');
-  }
 
   ngOnInit(){
     this.getTemplates();

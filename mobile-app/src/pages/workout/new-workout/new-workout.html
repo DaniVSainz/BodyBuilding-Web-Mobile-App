@@ -8,22 +8,30 @@
 
 
 <ion-content padding class="dark-content">
-<!--<div class='container white darken-4 new-workout-container'>-->
-<!--<div>-->
-<form (ngSubmit)='createWorkout(workout)' #workoutForm="ngForm" class='row new-workout-form'>
-  <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
-    <ion-label for="name" style="color:white">Workout Name: </ion-label>
-    <ion-input style="color:white;" type="text" class='form-control' id="name" placeholder="Upper/Lower" required name="name" #name='ngModel' [(ngModel)]="workout.name"></ion-input>
-    <div style="color:white;" [hidden]="name.valid || name.pristine" class='alert alert-danger'>
-      Workout Name is required
-    </div>
-  </ion-item>
-  <button ion-button type='submit' class="center-this new-workout-button" [disabled]='!workoutForm.form.valid' [hidden]='submitted'>
-    Generate workout
-  </button>
-</form>
-<form (ngSubmit)="createTemplateFromWorkout(template)" #workoutFromTemplateForm="ngForm" >
 
-</form>
+  <form (ngSubmit)='createWorkout(workout)' #workoutForm="ngForm" class='row new-workout-form'>
+    <ion-item style="padding:0px !important; border-bottom:none !important;border-top:none;font-size: 14px;margin-top:10px;background:none;border-bottom:1px solid white;box-shadow:none;">
+      <ion-label for="name" style="color:white">Workout Name: </ion-label>
+      <ion-input style="color:white;" type="text" class='form-control' id="name" placeholder="Upper/Lower" required name="name" #name='ngModel' [(ngModel)]="workout.name"></ion-input>
+      <div style="color:white;" [hidden]="name.valid || name.pristine" class='alert alert-danger'>
+        Workout Name is required
+      </div>
+    </ion-item>
+    <button ion-button type='submit' class="center-this new-workout-button" [disabled]='!workoutForm.form.valid' [hidden]='submitted'>
+      Generate workout
+    </button>
+  </form>
+
+  <form [formGroup]="templateForm" (ngSubmit)="createWorkoutFromTemplate(templateForm.value)">
+    <h1>My Reactive Form</h1>
+    <label for="name"> Single select: </label><br>
+    <select name="name" formControlName="name">
+      <option value="{{template.title}}" *ngFor='let template of workoutTemplates'>{{template.title}}</option>
+    </select>
+
+    <button ion-button type='submit'[disabled]='!templateForm.valid' [hidden]='submitted'>
+      Generate workout
+    </button>
+  </form>
 
 </ion-content>

@@ -7,6 +7,7 @@ import {AuthService} from "../../../providers/auth-service/auth-service";
 import {Angular2TokenService} from "angular2-token";
 import {ShowWorkoutPage} from '../show-workout/show-workout';
 import {WorkoutTemplate} from '../../../interfaces/workoutTemplate'
+import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms';
 
 
 @IonicPage()
@@ -15,26 +16,36 @@ import {WorkoutTemplate} from '../../../interfaces/workoutTemplate'
   templateUrl: 'new-workout.html',
 })
 export class NewWorkoutPage implements OnInit   {
-  workoutTemplates: WorkoutTemplate[];
   workout = new Workout;
   workoutId: any;
+  workoutTemplates : WorkoutTemplate[];
   errorMessage: string;
   link: any;
   submitted: boolean = false;
+  title:string;
+
+  templateForm:FormGroup;
 
   constructor(public authTokenService:Angular2TokenService,
     protected authService:AuthService,
     public workoutService: WorkoutService,
     public navCtrl: NavController,
     public navParams: NavParams,
-  ) {}
-
-  ngOnInit() {
-    this.getTemplates();
-    console.log(this.workoutTemplates);
+    private formBuilder:FormBuilder
+  ) {
+    this.templateForm=formBuilder.group({
+      'name': ['']
+    })
   }
 
 
+
+  ngOnInit() {
+    this.getTemplates();
+  }
+  ionViewDidEnter(){
+    console.log(this.workoutTemplates)
+  }
 
   getTemplates(){
     this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
@@ -43,7 +54,6 @@ export class NewWorkoutPage implements OnInit   {
   d = new Date();
 
   createWorkout(workout){
-
     workout.user_id = this.authTokenService.currentUserData.id
     this.submitted = true;
     this.workoutService.createWorkout(workout)
@@ -58,10 +68,27 @@ export class NewWorkoutPage implements OnInit   {
         )
   }
 
+//
+//  Template Work Space, Form && CreateTemplate Func
+//
 
 
-  createWorkoutFromTemplate(template){
 
+
+  createWorkoutFromTemplate(workout){
+    console.log(workout)
+    workout.user_id = this.authTokenService.currentUserData.id
+    this.submitted = true;
+    this.workoutService.createWorkout(workout)
+        .subscribe(
+          data => {
+            this.navCtrl.push(ShowWorkoutPage, data)
+            return true },
+          error => {
+            console.log("Error saving proposal");
+            return Observable.throw(error);
+          }
+        )
   }
 
 }
