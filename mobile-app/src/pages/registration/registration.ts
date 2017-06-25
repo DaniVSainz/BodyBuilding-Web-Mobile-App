@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {FormBuilder,FormGroup,Validators} from '@angular/forms';
+import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms';
 
 
 @IonicPage()
@@ -14,17 +14,32 @@ export class RegistrationPage {
   registration:any;
   email: string;
   password: string;
-  titleAlert:string = 'This field is required';
+  passwordMatch: '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder:FormBuilder)
     {
       this.rForm=formBuilder.group({
-        'email': [null, Validators.required],
+        'email': [null, Validators.compose([Validators.required,Validators.email])],
         'password': [null, Validators.compose([Validators.required,Validators.minLength(8)])],
-        'validate' : ''
-      });
+        'confirmPassword':['',Validators.compose([Validators.minLength(8),Validators.required])]
+      }, {validator: matchingPasswords('password', 'confirmPassword')});
 
-  }
+        function matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+        return (group: FormGroup): {[key: string]: any} => {
+          let password = group.controls[passwordKey];
+          let confirmPassword = group.controls[confirmPasswordKey];
+
+          if (password.value !== confirmPassword.value) {
+            return {
+              mismatchedPasswords: true
+            };
+          }
+        }
+      }
+    }
+
+
+
 
   createRegistration(registration){
     this.email = registration.email;
