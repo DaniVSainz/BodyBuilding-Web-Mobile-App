@@ -20,8 +20,10 @@
 
     <button type="submit" [disabled]="!(f.valid)" class="login-button" [ngClass]="{'disabled': !(f.valid)}" ion-button block>Login</button>
     <!--<div text-center style="text-decoration: underline;margin-top:20px;color:black;font-size: 14px;" (click)="forgotPwd()">Forgot Password</div>-->
-    <button ion-button class="login-button" block (click)="signUp()">Register</button>
   </form>
+
+  <button ion-button class="login-button" block (click)="signUp()">Register</button>
+
 </ion-content>
 
 

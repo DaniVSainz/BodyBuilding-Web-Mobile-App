@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+// import {RegistrationPage} from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 
@@ -41,7 +42,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     NewWorkoutPage,
     CreateTemplatePage,
     GetTemplatesPage,
-    ShowTemplatePage
+    ShowTemplatePage,
+    // RegistrationPage
 
   ],
   imports: [
@@ -62,7 +64,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     NewWorkoutPage,
     CreateTemplatePage,
     GetTemplatesPage,
-    ShowTemplatePage
+    ShowTemplatePage,
+    // RegistrationPage,
 
   ],
   providers: [

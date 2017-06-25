@@ -16,6 +16,7 @@ import{WorkoutPage} from '../pages/workout/workout';
 import {NewWorkoutPage} from '../pages/workout/new-workout/new-workout';
 import {CreateTemplatePage} from '../pages/template/create-template/create-template';
 import {GetTemplatesPage} from '../pages/template/get-templates/get-templates';
+import {RegistrationPage} from '../pages/registration/registration';
 
 
 
@@ -62,6 +63,10 @@ export class MyApp {
 
   goToLogin(){
     this.nav.push(LoginPage);
+  }
+
+  goToRegistration(){
+    this.nav.push('RegistrationPage');
   }
 
   logoutAndGoToHomePage(){
