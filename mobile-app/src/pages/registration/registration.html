@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color='dark'>
-    <ion-title>registration</ion-title>
+    <ion-title text-center>Register</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,6 +15,40 @@
 
 <ion-content class="dark-content">
   <div class="background">
+    <div *ngIf=!name; else forminfo>
+      <form [formGroup]="rForm" (ngSubmit)="createRegistration(rForm.value)">
+        <div class="form-container">
+          <div class="row columns">
+            <h1>My Reactive Form</h1>
+            <label>Email
+              <input type="text" formControlName="email">
+            </label>
+            <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">{{ titleAlert }}</div>
 
+
+            <label>password
+              <textarea  formControlName="password"></textarea>
+            </label>
+            <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">Password must be atleast 8 chars.</div>
+
+
+            <label for="validate">Minimum of 8 Characters</label>
+            <input type="checkbox" name="validate" formControlName="validate" value="1"> On
+
+            <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <ng-template #forminfo>
+      <div class="form-container">
+        <div class="row columns">
+          <h1>{{ name }}</h1>
+
+          <p>{{ description }}</p>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </ion-content>

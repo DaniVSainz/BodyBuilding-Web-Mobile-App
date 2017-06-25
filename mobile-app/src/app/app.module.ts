@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-// import {RegistrationPage} from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 
@@ -22,7 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../providers/auth-service/auth-service';
 import { Angular2TokenService } from 'angular2-token';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {AuthGuard} from "../guards/auth.guard";
 import { WorkoutService } from '../providers/workout-service/workout-service';
 import { TimerServiceProvider } from '../providers/timer-service/timer-service';
@@ -43,7 +42,6 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     CreateTemplatePage,
     GetTemplatesPage,
     ShowTemplatePage,
-    // RegistrationPage
 
   ],
   imports: [
@@ -51,7 +49,8 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     IonicModule.forRoot(MyApp),
     HttpModule,
     JsonpModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,7 +64,6 @@ import { ButtonsComponent } from '../components/buttons/buttons';
     CreateTemplatePage,
     GetTemplatesPage,
     ShowTemplatePage,
-    // RegistrationPage,
 
   ],
   providers: [
