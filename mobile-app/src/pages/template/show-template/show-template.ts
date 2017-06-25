@@ -7,6 +7,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import { WorkoutService } from '../../../providers/workout-service/workout-service';
 import {Angular2TokenService} from "angular2-token";
 import { WorkoutTemplate } from '../../../interfaces/workoutTemplate';
+import {ExerciseTemplate} from '../../../interfaces/exerciseTemplate';
 
 
 @IonicPage()
@@ -15,8 +16,10 @@ import { WorkoutTemplate } from '../../../interfaces/workoutTemplate';
   templateUrl: 'show-template.html',
 })
 export class ShowTemplatePage {
+  exerciseTemplate = new ExerciseTemplate;
   template: any;
   exerciseTemplates:any;
+  submitted = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -33,5 +36,24 @@ export class ShowTemplatePage {
     console.log(this.exerciseTemplates);
   }
 
+
+  createExerciseTemplate(template){
+    console.log('exercise created')
+    template.user_id = this.authTokenService.currentUserData.id
+    template.workout_template_id = this.exerciseTemplates[0].id
+    this.submitted = true;
+    this.workoutService.createExerciseTemplate(template)
+    // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json())
+        .subscribe(
+          data => {
+            this.navCtrl.pop();
+            // this.navCtrl.push(ShowWorkoutPage, this.workout)
+            return true},
+          error => {
+            console.log("Error saving proposal");
+            return Observable.throw(error);
+          }
+        )
+  }
 
 }

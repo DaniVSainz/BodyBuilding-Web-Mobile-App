@@ -46,6 +46,6 @@ class ExerciseTemplatesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def exercise_template_params
-      params.require(:exercise_template).permit(:title, :isTemplate, :setCount, :restTime, :avgWeight, :setCount)
+      params.require(:exercise_template).permit(:title, :isTemplate, :setCount, :restTime, :avgWeight, :setCount,:created_at,:updated_at,:workout_template_id)
     end
 end
