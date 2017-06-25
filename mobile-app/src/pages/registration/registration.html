@@ -32,9 +32,9 @@
             <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">Password must be atleast 8 chars.</div>
 
             <label>password
-              <textarea  formControlName="confirmPassword"></textarea>
+              <textarea  formControlName="passwordConfirmation"></textarea>
             </label>
-            <div class="alert" *ngIf="! rForm.controls['confirmPassword'].valid && rForm.controls['password'].touched ">Passwords Must Match</div>
+            <div class="alert" *ngIf="! rForm.controls['passwordConfirmation'].valid && rForm.controls['password'].touched ">Passwords Must Match</div>
 
 
             <!--<input type="submit" class="button expanded" value="Submit Form" [disabled]="!(rForm.valid) || !(rForm.password == rForm.passwordMatch)">-->
