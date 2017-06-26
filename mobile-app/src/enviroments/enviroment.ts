@@ -1,6 +1,14 @@
+// export const environment = {
+//   production: false,
+//   token_auth_config: {
+//    apiBase: 'http://localhost:3000'
+//   }
+// };
+
+
 export const environment = {
-  production: false,
+  production: true,
   token_auth_config: {
-   apiBase: 'http://localhost:3000'
+    apiBase: 'https://lift-tracker--api.herokuapp.com'
   }
 };
