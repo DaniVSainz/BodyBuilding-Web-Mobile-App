@@ -6,19 +6,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content color="primary" class="dark-content">
+<ion-content no-divider color="primary" class="dark-content">
   <ion-list color="dark">
-    <ion-item-sliding *ngFor='let workout of workouts'>
-      <ion-item color="dark"  (click)="goToWorkout(workout)">
+    <ion-item-sliding *ngFor='let workout of workouts' >
+      <ion-item no-lines color="dark"  (click)="goToWorkout(workout)" class="workout-ion-item">
         <ion-avatar item-start>
           <img src="http://cdn.cultofmac.com/wp-content/uploads/2016/09/workout-app.png">
         </ion-avatar>
+        <ion-icon item-end name="arrow-back" color="color:gray;"></ion-icon>
         <span class="title">Title: {{workout.name}}</span>
         <p>Date: {{workout.created_at | date}}</p>
       </ion-item>
-      <ion-item-options>
-        <button ion-button color="danger" (click)="showConfirm(workout)">
-          <ion-icon name="trash" style="color:white;">Delete</ion-icon>
+      <ion-item-options no-lines class="dark-content" class="dark-content" class="dark-content workout-item-options">
+        <button ion-button no-lines color="danger" (click)="showConfirm(workout)" style="margin:0 !important;">
+          <ion-icon no-lines name="trash" style="color:white;margin:0;">Delete</ion-icon>
         </button>
       </ion-item-options>
     </ion-item-sliding>

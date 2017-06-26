@@ -2,5 +2,15 @@ page-workout {
   span{
     color: #4389fe
   }
+
+  .workout-ion-item{
+    border-right: white solid 2px !important;
+    // border-bottom: white solid 2px !important;
+  }
+  .workout-item-options{
+    margin:0 !important;
+    border-bottom: none;
+  }
+
 }
 

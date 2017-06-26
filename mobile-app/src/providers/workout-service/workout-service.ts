@@ -14,7 +14,7 @@ import {WorkoutTemplate} from '../../interfaces/workoutTemplate'
 
 @Injectable()
 export class WorkoutService {
-  private workoutsUrl = 'http://localhost:3000/workouts';
+  private workoutsUrl = 'http://localhost:3000/workouts/';
   private exerciseUrl = 'http://localhost:3000/exercises/';
   private exerciseSetUrl = 'http://localhost:3000/exercise_sets/';
   private exerciseSetsUrl = 'http://localhost:3000/exercisesets/';
@@ -39,12 +39,12 @@ export class WorkoutService {
 // =================
 
   getWorkouts(): Observable<Workout[]> {
-    return this.http.get(this.workoutsUrl+'/user/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+    return this.http.get(this.workoutsUrl+'user/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
 
   }
 
   getShowWorkouts(id: number){
-    return this.http.get(this.workoutsUrl + "/" + id);
+    return this.http.get(this.workoutsUrl + id);
   }
 
 
@@ -146,7 +146,12 @@ export class WorkoutService {
 // =================
 
 deleteWorkout(workout){
-  return this.http.delete(this.workoutsUrl+'/' + workout.id)
+  return this.http.delete(this.workoutsUrl + workout.id)
+  .map((response: Response) => response.json());
+}
+
+deleteExercise(exercise){
+  return this.http.delete(this.exerciseUrl + exercise.id)
   .map((response: Response) => response.json());
 }
 

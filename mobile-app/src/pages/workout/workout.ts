@@ -47,6 +47,7 @@ export class WorkoutPage {
           res => {
             console.log("deleted")
             this.navCtrl.pop();
+            this.navCtrl.push(WorkoutPage)
             return true},
           error => {
             console.log("Error deleting workout");
@@ -58,8 +59,8 @@ export class WorkoutPage {
 
   showConfirm(workout) {
     let confirm = this.alertCtrl.create({
-      title: 'Delete Workout.name',
-      message: 'Are you sure you want to delete Workout.name',
+      title: 'Delete' + "  " + workout.name,
+      message: 'This deletes all the exercises and sets aswell.',
       buttons: [
         {
           text: 'Disagree',
