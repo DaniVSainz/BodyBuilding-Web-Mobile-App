@@ -25,8 +25,8 @@ export class WorkoutService {
   private exerciseUrl = 'https://lift-tracker--api.herokuapp.com/exercises/'
   private exerciseSetUrl = 'https://lift-tracker--api.herokuapp.com/exercise_sets/';
   private exerciseSetsUrl = 'https://lift-tracker--api.herokuapp.com/exercisesets/';
-  private templateUrl = 'https://lift-tracker--api.com/workout_templates';
-  private exerciseTemplateUrl = 'https://lift-tracker--api.com/exercise_templates/';
+  private templateUrl = 'https://lift-tracker--api.herokuapp.com/workout_templates';
+  private exerciseTemplateUrl = 'https://lift-tracker--api.herokuapp.com/exercise_templates/';
 
   constructor(private http:Http,
     public authTokenService:Angular2TokenService,
