@@ -46,11 +46,7 @@ export class ShowWorkoutPage implements OnInit {
     this.workoutService.getShowWorkouts(workout).subscribe(response => this.workouts = response.json());;
   }
 
-  // unSubmit(){
-  //   setTimeout(function(){
-  //                          this.submitted = false;
-  //                         console.log(this.submitted); }, 3000);
-  // }
+
 
   createExercise(exercise){
     console.log('exercise created')

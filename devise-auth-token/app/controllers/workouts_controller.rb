@@ -39,7 +39,6 @@ class WorkoutsController < ApplicationController
     @workout.name = (@template.title)
     @workout.user_id = @template.user_id
     if @workout.save
-      p "*" * 150
       @template.exercise_templates.each do |exerciseTemplate| 
         @workout.exercises.create name: exerciseTemplate.title, rest: exerciseTemplate.restTime
       end 

@@ -32,10 +32,8 @@ export class ShowTemplatePage {
   ngOnInit(){
     this.template = this.navParams.data;
     console.log(this.template)
-    this.workoutService.getTemplate(this.template.workout_template_id).subscribe(response => this.exerciseTemplates = response.json());;
-    console.log(this.exerciseTemplates);
+    this.workoutService.getTemplate(this.template.id).subscribe(response => this.exerciseTemplates = response.json());;
   }
-
 
   createExerciseTemplate(exerciseTemplate){
     console.log(exerciseTemplate)
