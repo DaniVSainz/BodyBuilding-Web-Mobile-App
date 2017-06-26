@@ -16,6 +16,7 @@ import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms';
   templateUrl: 'new-workout.html',
 })
 export class NewWorkoutPage implements OnInit   {
+  myArray: any;
   workout = new Workout;
   workoutId: any;
   workoutTemplates : WorkoutTemplate[];
@@ -23,6 +24,7 @@ export class NewWorkoutPage implements OnInit   {
   link: any;
   submitted: boolean = false;
   title:string;
+  id: number;
 
   templateForm:FormGroup;
 
@@ -34,7 +36,8 @@ export class NewWorkoutPage implements OnInit   {
     private formBuilder:FormBuilder
   ) {
     this.templateForm=formBuilder.group({
-      'name': ['',Validators.required]
+      'id': ["",Validators.required],
+      // 'id': ['',Validators.required]
     })
   }
 
@@ -76,9 +79,19 @@ export class NewWorkoutPage implements OnInit   {
 
 
   createWorkoutFromTemplate(workout){
-    console.log(workout)
+
+    this.workoutTemplates.forEach(function (template) {
+      if (template.id == workout.id){
+        workout.name = template.title;
+        workout.id = null;
+      }
+    })
+
+
+
     workout.user_id = this.authTokenService.currentUserData.id
     this.submitted = true;
+    console.log(workout)
     this.workoutService.createWorkout(workout)
         .subscribe(
           data => {

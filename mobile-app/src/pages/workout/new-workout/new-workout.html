@@ -17,17 +17,18 @@
         Workout Name is required
       </div>
     </ion-item>
-    <button ion-button type='submit' class="center-this" [disabled]='!workoutForm.form.valid' [hidden]='submitted'>
+    <button ion-button type='submit' class="center-this new-workout-button" [disabled]='!workoutForm.form.valid' [hidden]='submitted'>
       Generate workout
     </button>
   </form>
-  <br>
+
   <form [formGroup]="templateForm" (ngSubmit)="createWorkoutFromTemplate(templateForm.value)">
     <h2 style="color:white;">New workout from template</h2>
 
     <ion-item>
-      <ion-label for="name" style="color:black;">Choose a template</ion-label>
-      <ion-select name="name" formControlName="name">
+      <ion-label for="id" style="color:black;">Choose a template</ion-label>
+      <ion-select name="id" formControlName="id">
+        <ion-option value='' >Templates</ion-option>
         <ion-option value="{{template.id}}" *ngFor='let template of workoutTemplates'>{{template.title}}</ion-option>
       </ion-select>
     </ion-item>
