@@ -22,9 +22,10 @@
     </button>
   </form>
 
-  <form [formGroup]="templateForm" (ngSubmit)="createWorkoutFromTemplate(templateForm.value)">
-    <h2 style="color:white;">New workout from template</h2>
+  <br>
 
+  <form [formGroup]="templateForm" (ngSubmit)="createWorkoutFromTemplate(templateForm.value)">
+    <h2 id="templateh2">New workout from template</h2>
     <ion-item>
       <ion-label for="id" style="color:black;">Choose a template</ion-label>
       <ion-select name="id" formControlName="id">
@@ -33,7 +34,7 @@
       </ion-select>
     </ion-item>
 
-    <button ion-button type='submit'[disabled]='!templateForm.valid' [hidden]='submitted' >
+    <button ion-button type='submit'[disabled]='!templateForm.valid' [hidden]='submitted'>
       Generate workout
     </button>
   </form>

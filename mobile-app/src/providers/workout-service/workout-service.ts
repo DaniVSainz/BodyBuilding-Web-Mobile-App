@@ -141,7 +141,14 @@ export class WorkoutService {
 
 
 
+// =================
+//   DELETE        |
+// =================
 
+deleteWorkout(workout){
+  return this.http.delete(this.workoutsUrl+'/' + workout.id)
+  .map((response: Response) => response.json());
+}
 
 
 

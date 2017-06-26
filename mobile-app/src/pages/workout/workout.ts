@@ -5,6 +5,7 @@ import { HomePage } from '../../pages/home/home';
 import {WorkoutService} from '../../providers/workout-service/workout-service'
 import {Workout} from '../../interfaces/workout';
 import {ShowWorkoutPage} from './show-workout/show-workout';
+import { Observable } from 'rxjs/Rx';
 
 
 @Component({
@@ -13,7 +14,7 @@ import {ShowWorkoutPage} from './show-workout/show-workout';
   providers: [AuthGuard,HomePage]
 })
 export class WorkoutPage {
-  workout: Workout[];
+  workouts: Workout[];
   errorMessage: string;
 
   constructor(public navCtrl: NavController,public authGuard: AuthGuard, public workoutService: WorkoutService) {
@@ -33,11 +34,24 @@ export class WorkoutPage {
   }
 
   getWorkouts(){
-    this.workoutService.getWorkouts().subscribe(workout=> this.workout= workout,error=> this.errorMessage = <any>error );
+    this.workoutService.getWorkouts().subscribe(workout=> this.workouts= workout,error=> this.errorMessage = <any>error );
   }
 
   goToWorkout(workout: Workout): void{
     this.navCtrl.push(ShowWorkoutPage,workout);
+  }
+
+  deleteWorkout(workout){
+    this.workoutService.deleteWorkout(workout).subscribe(
+          res => {
+            console.log("deleted")
+            this.navCtrl.pop();
+            return true},
+          error => {
+            console.log("Error deleting workout");
+            return Observable.throw(error);
+          }
+        )
   }
 
 }
