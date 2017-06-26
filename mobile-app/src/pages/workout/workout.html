@@ -17,7 +17,7 @@
         <p>Date: {{workout.created_at | date}}</p>
       </ion-item>
       <ion-item-options>
-        <button ion-button color="danger" (click)="deleteWorkout(workout)">
+        <button ion-button color="danger" (click)="showConfirm(workout)">
           <ion-icon name="trash" style="color:white;">Delete</ion-icon>
         </button>
       </ion-item-options>

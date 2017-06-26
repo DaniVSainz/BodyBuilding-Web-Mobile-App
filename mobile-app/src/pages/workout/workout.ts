@@ -6,6 +6,7 @@ import {WorkoutService} from '../../providers/workout-service/workout-service'
 import {Workout} from '../../interfaces/workout';
 import {ShowWorkoutPage} from './show-workout/show-workout';
 import { Observable } from 'rxjs/Rx';
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class WorkoutPage {
   workouts: Workout[];
   errorMessage: string;
 
-  constructor(public navCtrl: NavController,public authGuard: AuthGuard, public workoutService: WorkoutService) {
+  constructor(public navCtrl: NavController,public authGuard: AuthGuard, public workoutService: WorkoutService,private alertCtrl: AlertController) {
 
   }
 
@@ -51,7 +52,30 @@ export class WorkoutPage {
             console.log("Error deleting workout");
             return Observable.throw(error);
           }
-        )
+      )
+  }
+
+
+  showConfirm(workout) {
+    let confirm = this.alertCtrl.create({
+      title: 'Delete Workout.name',
+      message: 'Are you sure you want to delete Workout.name',
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.deleteWorkout(workout);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }

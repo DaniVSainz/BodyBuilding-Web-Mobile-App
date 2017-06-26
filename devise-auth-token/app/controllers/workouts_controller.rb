@@ -58,7 +58,20 @@ class WorkoutsController < ApplicationController
 
   # DELETE /workouts/1
   def destroy
+    if @workout.exercises.first != nil
+      @workout.exercises.each do |exercise|
+        if exercise.exercise_sets.first != nil 
+          exercise.exercise_sets.each do |sets|
+            sets.destroy
+          end
+          exercise.destroy
+        else
+          exercise.destroy
+        end 
+      end 
+    end 
     @workout.destroy
+
   end
 
   private
