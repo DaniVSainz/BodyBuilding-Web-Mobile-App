@@ -145,15 +145,15 @@ export class WorkoutService {
 //   DELETE        |
 // =================
 
-deleteWorkout(workout){
-  return this.http.delete(this.workoutsUrl + workout.id)
-  .map((response: Response) => response.json());
-}
+  deleteWorkout(workout){
+    return this.http.delete(this.workoutsUrl + workout.id)
+    .map((response: Response) => response.json());
+  }
 
-deleteExercise(exercise){
-  return this.http.delete(this.exerciseUrl + exercise.id)
-  .map((response: Response) => response.json());
-}
+  deleteExercise(exercise){
+    return this.http.delete(this.exerciseUrl + exercise.id)
+    .map((response: Response) => response.json());
+  }
 
 
 

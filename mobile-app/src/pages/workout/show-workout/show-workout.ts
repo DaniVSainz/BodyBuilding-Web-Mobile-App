@@ -69,6 +69,21 @@ export class ShowWorkoutPage implements OnInit {
     // setTimeout(() =>  this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json()), 100)
   }
 
+   deleteWorkout(exercise){
+    this.workoutService.deleteWorkout(exercise).subscribe(
+          res => {
+            console.log("deleted")
+            this.navCtrl.pop();
+            this.navCtrl.push(ShowWorkoutPage);
+            return true},
+          error => {
+            console.log("Error deleting workout");
+            return Observable.throw(error);
+          }
+      )
+  }
+
+
   goToShowExercise(exercise: any){
     this.navCtrl.push(ExerciseShowPage, exercise);
   }
