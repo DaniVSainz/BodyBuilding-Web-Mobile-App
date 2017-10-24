@@ -19,7 +19,9 @@
       <!--NAME-->
       <ion-item>
         <ion-label for="title">ExerciseTemplate Name</ion-label>
-        <ion-input type="text" class='form-control' id="name" style="color:black;" placeholder="Squat,Deadlift,etc" required name="title" #title='ngModel' [(ngModel)]="exerciseTemplate.title">
+        <ion-input type="text" class='form-control' id="name" style="color:black;" placeholder="Squat,Deadlift,etc"
+        required name="title" #title='ngModel' [(ngModel)]="exerciseTemplate.title">
+        </ion-input>
         <div [hidden]="title.valid || title.pristine" class='alert alert-danger'>
           Title is Required
         </div>
