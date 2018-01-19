@@ -85,7 +85,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var dialog_service_1 = __webpack_require__("../../../../../src/app/services/dialog.service.ts");
+var dialogs_module_1 = __webpack_require__("../../../../../src/app/components/dialogs/dialogs.module.ts");
 var platform_browser_1 = __webpack_require__("../../../platform-browser/esm5/platform-browser.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
@@ -103,9 +103,6 @@ var validate_service_1 = __webpack_require__("../../../../../src/app/services/va
 var auth_service_1 = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var angular2_flash_messages_1 = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
 var auth_guard_1 = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
-var auth_dialog_component_1 = __webpack_require__("../../../../../src/app/components/auth-dialog/auth-dialog.component.ts");
-var form_field_1 = __webpack_require__("../../../material/esm5/form-field.es5.js");
-var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
@@ -126,10 +123,6 @@ var AppModule = (function () {
                 home_component_1.HomeComponent,
                 dashboard_component_1.DashboardComponent,
                 profile_component_1.ProfileComponent,
-                auth_dialog_component_1.AuthDialogComponent
-            ],
-            exports: [
-                auth_dialog_component_1.AuthDialogComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -138,81 +131,15 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot(appRoutes),
                 angular2_flash_messages_1.FlashMessagesModule.forRoot(),
                 animations_1.BrowserAnimationsModule,
-                form_field_1.MatFormFieldModule,
-                material_1.MatDialogModule,
-                material_1.MatButtonModule,
+                dialogs_module_1.DialogsModule,
             ],
-            entryComponents: [
-                auth_dialog_component_1.AuthDialogComponent,
-            ],
-            providers: [validate_service_1.ValidateService, auth_service_1.AuthService, auth_guard_1.AuthGuard, dialog_service_1.DialogsService],
+            providers: [validate_service_1.ValidateService, auth_service_1.AuthService, auth_guard_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
     return AppModule;
 }());
 exports.AppModule = AppModule;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/auth-dialog/auth-dialog.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>{{ title }}</p>\r\n<p>{{ message }}</p>\r\n<button type=\"button\" md-raised-button \r\n    (click)=\"dialogRef.close(true)\">OK</button>\r\n<button type=\"button\" md-button \r\n    (click)=\"dialogRef.close()\">Cancel</button>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/auth-dialog/auth-dialog.component.scss":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/auth-dialog/auth-dialog.component.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
-var AuthDialogComponent = (function () {
-    function AuthDialogComponent(dialogRef) {
-        this.dialogRef = dialogRef;
-    }
-    AuthDialogComponent = __decorate([
-        core_1.Component({
-            selector: 'app-auth-dialog',
-            template: __webpack_require__("../../../../../src/app/components/auth-dialog/auth-dialog.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/auth-dialog/auth-dialog.component.scss")]
-        }),
-        __metadata("design:paramtypes", [material_1.MatDialogRef])
-    ], AuthDialogComponent);
-    return AuthDialogComponent;
-}());
-exports.AuthDialogComponent = AuthDialogComponent;
 
 
 /***/ }),
@@ -274,6 +201,148 @@ var DashboardComponent = (function () {
     return DashboardComponent;
 }());
 exports.DashboardComponent = DashboardComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>{{ title }}</p>\r\n<p>{{ message }}</p>\r\n<button type=\"button\" md-raised-button \r\n    (click)=\"dialogRef.close(true)\">OK</button>\r\n<button type=\"button\" md-button \r\n    (click)=\"dialogRef.close()\">Cancel</button>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var AuthDialogComponent = (function () {
+    function AuthDialogComponent(dialogRef) {
+        this.dialogRef = dialogRef;
+        this.title = "Hello";
+    }
+    AuthDialogComponent = __decorate([
+        core_1.Component({
+            selector: 'app-auth-dialog',
+            template: __webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.scss")]
+        }),
+        __metadata("design:paramtypes", [material_1.MatDialogRef])
+    ], AuthDialogComponent);
+    return AuthDialogComponent;
+}());
+exports.AuthDialogComponent = AuthDialogComponent;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/dialogs/dialog.service.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var auth_dialog_component_1 = __webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.ts");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var DialogsService = (function () {
+    function DialogsService(dialog) {
+        this.dialog = dialog;
+    }
+    DialogsService.prototype.confirm = function (title, message) {
+        var dialogRef;
+        dialogRef = this.dialog.open(auth_dialog_component_1.AuthDialogComponent);
+        dialogRef.componentInstance.title = title;
+        dialogRef.componentInstance.message = message;
+        return dialogRef.afterClosed();
+    };
+    DialogsService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [material_1.MatDialog])
+    ], DialogsService);
+    return DialogsService;
+}());
+exports.DialogsService = DialogsService;
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/dialogs/dialogs.module.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var dialog_service_1 = __webpack_require__("../../../../../src/app/components/dialogs/dialog.service.ts");
+var core_1 = __webpack_require__("../../../core/esm5/core.js");
+var common_1 = __webpack_require__("../../../common/esm5/common.js");
+var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
+var auth_dialog_component_1 = __webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.ts");
+var DialogsModule = (function () {
+    function DialogsModule() {
+    }
+    DialogsModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                common_1.CommonModule,
+                material_1.MatDialogModule,
+                material_1.MatButtonModule,
+            ],
+            declarations: [auth_dialog_component_1.AuthDialogComponent],
+            exports: [auth_dialog_component_1.AuthDialogComponent],
+            entryComponents: [auth_dialog_component_1.AuthDialogComponent],
+            providers: [dialog_service_1.DialogsService]
+        })
+    ], DialogsModule);
+    return DialogsModule;
+}());
+exports.DialogsModule = DialogsModule;
 
 
 /***/ }),
@@ -466,11 +535,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var dialog_service_1 = __webpack_require__("../../../../../src/app/components/dialogs/dialog.service.ts");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var auth_service_1 = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
 var angular2_flash_messages_1 = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
-var dialog_service_1 = __webpack_require__("../../../../../src/app/services/dialog.service.ts");
 var NavbarComponent = (function () {
     function NavbarComponent(authService, router, flashMessage, dialogsService) {
         this.authService = authService;
@@ -798,46 +867,6 @@ var AuthService = (function () {
     return AuthService;
 }());
 exports.AuthService = AuthService;
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/services/dialog.service.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
-var core_1 = __webpack_require__("../../../core/esm5/core.js");
-var auth_dialog_component_1 = __webpack_require__("../../../../../src/app/components/auth-dialog/auth-dialog.component.ts");
-var DialogsService = (function () {
-    function DialogsService(dialog) {
-        this.dialog = dialog;
-    }
-    DialogsService.prototype.confirm = function (title, message) {
-        var dialogRef;
-        dialogRef = this.dialog.open(auth_dialog_component_1.AuthDialogComponent);
-        dialogRef.componentInstance.title = title;
-        dialogRef.componentInstance.message = message;
-        return dialogRef.afterClosed();
-    };
-    DialogsService = __decorate([
-        core_1.Injectable(),
-        __metadata("design:paramtypes", [material_1.MatDialog])
-    ], DialogsService);
-    return DialogsService;
-}());
-exports.DialogsService = DialogsService;
 
 
 /***/ }),
