@@ -1,0 +1,20 @@
+.homepage-container {
+    height: 93vh;
+    width: auto;
+    background: url("/assets/1.jpeg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  .text-center {
+    padding: 50px;
+    font-family: "Orbitron", sans-serif;
+    color: #202020;
+    font-size: 75px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
