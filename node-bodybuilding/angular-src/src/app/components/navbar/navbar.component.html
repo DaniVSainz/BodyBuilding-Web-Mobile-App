@@ -37,7 +37,7 @@
       <a [routerLink]="['/home']" id="logo-container" class="brand-logo left"> Lift Tracker</a>
 
       <ul class="right">
-        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()" class='no-drop'>LOGIN</a></li>
+        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="openDialog()" class='no-drop'>LOGIN</a></li>
         <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')" class='no-drop'>REGISTER</a></li>
 
         <!-- <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/workout']">Workout History</a></li> -->
@@ -57,7 +57,7 @@
   </nav>
 
 </div>
-<div>
+<!-- <div>
   <button md-raised-button (click)="openDialog()">Open Dialog</button>
   <p>Result from dialog: {{ result }}</p>
-</div>
+</div> -->

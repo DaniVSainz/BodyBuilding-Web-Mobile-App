@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, EventEmitter} from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @Component({

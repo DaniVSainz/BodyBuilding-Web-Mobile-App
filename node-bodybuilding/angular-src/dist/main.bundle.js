@@ -103,6 +103,7 @@ var validate_service_1 = __webpack_require__("../../../../../src/app/services/va
 var auth_service_1 = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var angular2_flash_messages_1 = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
 var auth_guard_1 = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
+var form_field_1 = __webpack_require__("../../../material/esm5/form-field.es5.js");
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
@@ -132,6 +133,7 @@ var AppModule = (function () {
                 angular2_flash_messages_1.FlashMessagesModule.forRoot(),
                 animations_1.BrowserAnimationsModule,
                 dialogs_module_1.DialogsModule,
+                form_field_1.MatFormFieldModule
             ],
             providers: [validate_service_1.ValidateService, auth_service_1.AuthService, auth_guard_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]
@@ -208,7 +210,7 @@ exports.DashboardComponent = DashboardComponent;
 /***/ "../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>{{ title }}</p>\r\n<p>{{ message }}</p>\r\n<button type=\"button\" md-raised-button \r\n    (click)=\"dialogRef.close(true)\">OK</button>\r\n<button type=\"button\" md-button \r\n    (click)=\"dialogRef.close()\">Cancel</button>"
+module.exports = "<div class=\"example-container\">\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Input\">\r\n    </mat-form-field>\r\n  \r\n    <mat-form-field>\r\n      <textarea matInput placeholder=\"Textarea\"></textarea>\r\n    </mat-form-field>\r\n</div>\r\n<button type=\"button\" md-raised-button \r\n    (click)=\"dialogRef.close(true)\">OK</button>\r\n<button type=\"button\" md-button \r\n    (click)=\"dialogRef.close()\">Cancel</button>"
 
 /***/ }),
 
@@ -220,7 +222,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".example-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n.example-container > * {\n  width: 100%; }\n", ""]);
 
 // exports
 
@@ -291,7 +293,10 @@ var DialogsService = (function () {
     }
     DialogsService.prototype.confirm = function (title, message) {
         var dialogRef;
-        dialogRef = this.dialog.open(auth_dialog_component_1.AuthDialogComponent);
+        dialogRef = this.dialog.open(auth_dialog_component_1.AuthDialogComponent, {
+            height: '400px',
+            width: '600px',
+        });
         dialogRef.componentInstance.title = title;
         dialogRef.componentInstance.message = message;
         return dialogRef.afterClosed();
@@ -324,6 +329,8 @@ var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var common_1 = __webpack_require__("../../../common/esm5/common.js");
 var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var auth_dialog_component_1 = __webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.ts");
+var form_field_1 = __webpack_require__("../../../material/esm5/form-field.es5.js");
+var material_2 = __webpack_require__("../../../material/esm5/material.es5.js");
 var DialogsModule = (function () {
     function DialogsModule() {
     }
@@ -333,6 +340,8 @@ var DialogsModule = (function () {
                 common_1.CommonModule,
                 material_1.MatDialogModule,
                 material_1.MatButtonModule,
+                form_field_1.MatFormFieldModule,
+                material_2.MatInputModule
             ],
             declarations: [auth_dialog_component_1.AuthDialogComponent],
             exports: [auth_dialog_component_1.AuthDialogComponent],
@@ -498,7 +507,7 @@ exports.LoginComponent = LoginComponent;
 /***/ "../../../../../src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\r\n      <a class=\"navbar-brand\" href=\"#\">MEAN Auth App</a>\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n          <li class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/']\">Home <span></span></a>\r\n          </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">Dashboard </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/profile']\">Profile </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/login']\">Login </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\"><a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n</nav> -->\r\n<!--Navigation-->\r\n<div class=\"navbar\">\r\n\r\n  <nav role=\"navigation\">\r\n\r\n    <div class=\"nav-wrapper\">\r\n      <a [routerLink]=\"['/home']\" id=\"logo-container\" class=\"brand-logo left\"> Lift Tracker</a>\r\n\r\n      <ul class=\"right\">\r\n        <li *ngIf=\"!(authService.userSignedIn$ | async)\"> <a (click)=\"presentAuthDialog()\" class='no-drop'>LOGIN</a></li>\r\n        <li *ngIf=\"!(authService.userSignedIn$ | async)\"> <a (click)=\"presentAuthDialog('register')\" class='no-drop'>REGISTER</a></li>\r\n\r\n        <!-- <li *ngIf=\"(authService.userSignedIn$ | async)\"><a [routerLink]=\"['/workout']\">Workout History</a></li> -->\r\n        <li *ngIf=\"(authService.userSignedIn$ | async)\"><a [routerLink]=\"['/profile']\" class='no-drop'>{{authTokenService.currentUserData.email}}</a></li>\r\n        <li *ngIf=\"(authService.userSignedIn$ | async)\"><a (click)=\"logOut()\" class='no-drop'>Logout</a></li>\r\n      </ul>\r\n\r\n      <a class='dropdown-button btn right gray darken-4' data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>\r\n      <ul id='dropdown1' class='dropdown-content'>\r\n        <li><a [routerLink]=\"['/workout']\" class=\"dropdown-a\">Workout History</a></li>\r\n        <li class=\"divider\"></li>\r\n        <li><a [routerLink]=\"['/new-workout']\" class=\"dropdown-a\">New Workout</a></li>\r\n      </ul>\r\n\r\n    </div>\r\n\r\n  </nav>\r\n\r\n</div>\r\n<div>\r\n  <button md-raised-button (click)=\"openDialog()\">Open Dialog</button>\r\n  <p>Result from dialog: {{ result }}</p>\r\n</div>"
+module.exports = "<!-- <nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\r\n      <a class=\"navbar-brand\" href=\"#\">MEAN Auth App</a>\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n          <li class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/']\">Home <span></span></a>\r\n          </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">Dashboard </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/profile']\">Profile </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/login']\">Login </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\"><a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n</nav> -->\r\n<!--Navigation-->\r\n<div class=\"navbar\">\r\n\r\n  <nav role=\"navigation\">\r\n\r\n    <div class=\"nav-wrapper\">\r\n      <a [routerLink]=\"['/home']\" id=\"logo-container\" class=\"brand-logo left\"> Lift Tracker</a>\r\n\r\n      <ul class=\"right\">\r\n        <li *ngIf=\"!(authService.userSignedIn$ | async)\"> <a (click)=\"openDialog()\" class='no-drop'>LOGIN</a></li>\r\n        <li *ngIf=\"!(authService.userSignedIn$ | async)\"> <a (click)=\"presentAuthDialog('register')\" class='no-drop'>REGISTER</a></li>\r\n\r\n        <!-- <li *ngIf=\"(authService.userSignedIn$ | async)\"><a [routerLink]=\"['/workout']\">Workout History</a></li> -->\r\n        <li *ngIf=\"(authService.userSignedIn$ | async)\"><a [routerLink]=\"['/profile']\" class='no-drop'>{{authTokenService.currentUserData.email}}</a></li>\r\n        <li *ngIf=\"(authService.userSignedIn$ | async)\"><a (click)=\"logOut()\" class='no-drop'>Logout</a></li>\r\n      </ul>\r\n\r\n      <a class='dropdown-button btn right gray darken-4' data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>\r\n      <ul id='dropdown1' class='dropdown-content'>\r\n        <li><a [routerLink]=\"['/workout']\" class=\"dropdown-a\">Workout History</a></li>\r\n        <li class=\"divider\"></li>\r\n        <li><a [routerLink]=\"['/new-workout']\" class=\"dropdown-a\">New Workout</a></li>\r\n      </ul>\r\n\r\n    </div>\r\n\r\n  </nav>\r\n\r\n</div>\r\n<!-- <div>\r\n  <button md-raised-button (click)=\"openDialog()\">Open Dialog</button>\r\n  <p>Result from dialog: {{ result }}</p>\r\n</div> -->"
 
 /***/ }),
 
@@ -560,7 +569,7 @@ var NavbarComponent = (function () {
     NavbarComponent.prototype.openDialog = function () {
         var _this = this;
         this.dialogsService
-            .confirm('Confirm Dialog', 'Are you sure you want to do this?')
+            .confirm('Daniel', 'Are you sure you want to do this?')
             .subscribe(function (res) { return _this.result = res; });
     };
     NavbarComponent = __decorate([

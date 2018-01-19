@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
   }
   public openDialog() {
     this.dialogsService
-      .confirm('Confirm Dialog', 'Are you sure you want to do this?')
+      .confirm('Daniel', 'Are you sure you want to do this?')
       .subscribe(res => this.result = res);
   }
 }
