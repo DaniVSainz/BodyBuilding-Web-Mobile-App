@@ -1,3 +1,4 @@
+import { DialogsService } from './services/dialog.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,11 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialogModule, MatButtonModule } from '@angular/material';
+
 
 
 const appRoutes: Routes =  [
@@ -37,7 +43,11 @@ const appRoutes: Routes =  [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
+    AuthDialogComponent
     
+  ],
+  exports: [
+    AuthDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +55,15 @@ const appRoutes: Routes =  [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  entryComponents: [
+    AuthDialogComponent,
+    ],
+  providers: [ValidateService, AuthService, AuthGuard,DialogsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
