@@ -210,7 +210,7 @@ exports.DashboardComponent = DashboardComponent;
 /***/ "../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"example-container\">\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Input\">\r\n    </mat-form-field>\r\n  \r\n    <mat-form-field>\r\n      <textarea matInput placeholder=\"Textarea\"></textarea>\r\n    </mat-form-field>\r\n</div>\r\n<button type=\"button\" md-raised-button \r\n    (click)=\"dialogRef.close(true)\">OK</button>\r\n<button type=\"button\" md-button \r\n    (click)=\"dialogRef.close()\">Cancel</button>"
+module.exports = "<div>\r\n    <h2 class=\"page-header\">Register</h2>\r\n    <form (submit)=\"onRegisterSubmit()\" >\r\n      <div class=\"form-group\">\r\n        <label for=\"name\">Name</label>\r\n        <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\" id=\"name\" placeholder=\"Enter Name\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"username\">Username</label>\r\n        <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\" id=\"username\" placeholder=\"Enter Username\">\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"email\">Email</label>\r\n        <input type=\"email\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" id=\"email\" aria-describedby=\"emailHelp\" placeholder=\"Enter Email\">\r\n        <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.</small>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"password\">Password</label>\r\n        <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\" id=\"password\" placeholder=\" Enter Password\">\r\n      </div>\r\n      <input type=\"submit\" (click)=\"dialogRef.close(true)\" class=\"btn btn-primary\" value=\"Submit\">\r\n    </form>\r\n</div>\r\n<!-- <button type=\"button\" md-raised-button \r\n    (click)=\"dialogRef.close(true)\">OK</button>\r\n<button type=\"button\" md-button \r\n    (click)=\"dialogRef.close()\">Cancel</button> -->"
 
 /***/ }),
 
@@ -247,20 +247,63 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var validate_service_1 = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+var auth_service_1 = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var angular2_flash_messages_1 = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
 var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var AuthDialogComponent = (function () {
-    function AuthDialogComponent(dialogRef) {
+    function AuthDialogComponent(dialogRef, validateService, authService, router, flashMessage) {
         this.dialogRef = dialogRef;
+        this.validateService = validateService;
+        this.authService = authService;
+        this.router = router;
+        this.flashMessage = flashMessage;
         this.title = "Hello";
     }
+    AuthDialogComponent.prototype.onRegisterSubmit = function () {
+        var _this = this;
+        var user = {
+            name: this.name,
+            email: this.email,
+            username: this.username,
+            password: this.password
+        };
+        // Required Fields
+        if (!this.validateService.validateRegister(user)) {
+            this.flashMessage.show('Please fill in all fields', { cssClass: 'alert-danger', timeout: 3000 });
+            return false;
+        }
+        // Validate Email
+        if (!this.validateService.validateEmail(user.email)) {
+            this.flashMessage.show('Please use a valid email', { cssClass: 'alert-danger', timeout: 3000 });
+            return false;
+        }
+        // Register user
+        this.authService.registerUser(user).subscribe(function (data) {
+            _this.dialogRef.close();
+            if (data.success) {
+                _this.flashMessage.show('You are now registered and can now login', { cssClass: 'alert-success', timeout: 3000 });
+                _this.router.navigate(['/login']);
+            }
+            else {
+                _this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
+                _this.router.navigate(['/register']);
+            }
+        });
+    };
     AuthDialogComponent = __decorate([
         core_1.Component({
             selector: 'app-auth-dialog',
             template: __webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.scss")]
         }),
-        __metadata("design:paramtypes", [material_1.MatDialogRef])
+        __metadata("design:paramtypes", [material_1.MatDialogRef,
+            validate_service_1.ValidateService,
+            auth_service_1.AuthService,
+            router_1.Router,
+            angular2_flash_messages_1.FlashMessagesService])
     ], AuthDialogComponent);
     return AuthDialogComponent;
 }());
@@ -294,7 +337,7 @@ var DialogsService = (function () {
     DialogsService.prototype.confirm = function (title, message) {
         var dialogRef;
         dialogRef = this.dialog.open(auth_dialog_component_1.AuthDialogComponent, {
-            height: '400px',
+            height: '700px',
             width: '600px',
         });
         dialogRef.componentInstance.title = title;
@@ -331,6 +374,7 @@ var material_1 = __webpack_require__("../../../material/esm5/material.es5.js");
 var auth_dialog_component_1 = __webpack_require__("../../../../../src/app/components/dialogs/auth-dialog/auth-dialog.component.ts");
 var form_field_1 = __webpack_require__("../../../material/esm5/form-field.es5.js");
 var material_2 = __webpack_require__("../../../material/esm5/material.es5.js");
+var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
 var DialogsModule = (function () {
     function DialogsModule() {
     }
@@ -341,7 +385,8 @@ var DialogsModule = (function () {
                 material_1.MatDialogModule,
                 material_1.MatButtonModule,
                 form_field_1.MatFormFieldModule,
-                material_2.MatInputModule
+                material_2.MatInputModule,
+                forms_1.FormsModule
             ],
             declarations: [auth_dialog_component_1.AuthDialogComponent],
             exports: [auth_dialog_component_1.AuthDialogComponent],

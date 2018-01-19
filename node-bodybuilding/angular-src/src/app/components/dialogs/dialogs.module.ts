@@ -5,6 +5,7 @@ import { MatButtonModule, MatDialogModule } from '@angular/material';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {MatInputModule} from '@angular/material';
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule
   ],
   declarations: [AuthDialogComponent],
   exports: [AuthDialogComponent],

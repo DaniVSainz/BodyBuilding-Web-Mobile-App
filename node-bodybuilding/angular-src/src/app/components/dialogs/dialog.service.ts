@@ -13,7 +13,7 @@ export class DialogsService {
         let dialogRef: MatDialogRef<AuthDialogComponent>;
 
         dialogRef = this.dialog.open(AuthDialogComponent, {
-            height: '400px',
+            height: '700px',
             width: '600px',
           });
         dialogRef.componentInstance.title = title;
