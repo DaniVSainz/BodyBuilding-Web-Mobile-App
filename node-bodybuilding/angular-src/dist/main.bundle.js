@@ -103,13 +103,13 @@ var validate_service_1 = __webpack_require__("../../../../../src/app/services/va
 var auth_service_1 = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var angular2_flash_messages_1 = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
 var auth_guard_1 = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
-var form_field_1 = __webpack_require__("../../../material/esm5/form-field.es5.js");
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'dashboard', component: dashboard_component_1.DashboardComponent, canActivate: [auth_guard_1.AuthGuard] },
-    { path: 'profile', component: profile_component_1.ProfileComponent, canActivate: [auth_guard_1.AuthGuard] }
+    { path: 'profile', component: profile_component_1.ProfileComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: '**', component: home_component_1.HomeComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -133,7 +133,6 @@ var AppModule = (function () {
                 angular2_flash_messages_1.FlashMessagesModule.forRoot(),
                 animations_1.BrowserAnimationsModule,
                 dialogs_module_1.DialogsModule,
-                form_field_1.MatFormFieldModule
             ],
             providers: [validate_service_1.ValidateService, auth_service_1.AuthService, auth_guard_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]
