@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">MEAN Auth App</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -27,4 +27,33 @@
           </li>
         </ul>
       </div>
-    </nav>
+</nav> -->
+<!--Navigation-->
+<div class="navbar">
+
+  <nav role="navigation">
+
+    <div class="nav-wrapper">
+      <a [routerLink]="['/home']" id="logo-container" class="brand-logo left"> Lift Tracker</a>
+
+      <ul class="right">
+        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog()" class='no-drop'>LOGIN</a></li>
+        <li *ngIf="!(authService.userSignedIn$ | async)"> <a (click)="presentAuthDialog('register')" class='no-drop'>REGISTER</a></li>
+
+        <!-- <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/workout']">Workout History</a></li> -->
+        <li *ngIf="(authService.userSignedIn$ | async)"><a [routerLink]="['/profile']" class='no-drop'>{{authTokenService.currentUserData.email}}</a></li>
+        <li *ngIf="(authService.userSignedIn$ | async)"><a (click)="logOut()" class='no-drop'>Logout</a></li>
+      </ul>
+
+      <a class='dropdown-button btn right gray darken-4' data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>
+      <ul id='dropdown1' class='dropdown-content'>
+        <li><a [routerLink]="['/workout']" class="dropdown-a">Workout History</a></li>
+        <li class="divider"></li>
+        <li><a [routerLink]="['/new-workout']" class="dropdown-a">New Workout</a></li>
+      </ul>
+
+    </div>
+
+  </nav>
+
+</div>

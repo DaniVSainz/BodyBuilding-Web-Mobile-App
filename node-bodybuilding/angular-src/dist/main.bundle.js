@@ -17,7 +17,14 @@ webpackEmptyAsyncContext.id = "../../../../../src/$$_lazy_route_resource lazy re
 
 /***/ }),
 
-/***/ "../../../../../src/app/app.component.css":
+/***/ "../../../../../src/app/app.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-navbar></app-navbar>\r\n<div class=\"container-fluid\">\r\n  <flash-messages></flash-messages>\r\n  <router-outlet></router-outlet>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/app.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -25,20 +32,13 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".container-fluid {\n  background-color: #47b3e6;\n  overflow: auto; }\n\np {\n  margin: 0;\n  padding: 0; }\n", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/app.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n  <flash-messages></flash-messages>\r\n  <router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -63,7 +63,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/app.component.scss")]
         })
     ], AppComponent);
     return AppComponent;
@@ -90,6 +90,7 @@ var core_1 = __webpack_require__("../../../core/esm5/core.js");
 var forms_1 = __webpack_require__("../../../forms/esm5/forms.js");
 var http_1 = __webpack_require__("../../../http/esm5/http.js");
 var router_1 = __webpack_require__("../../../router/esm5/router.js");
+var animations_1 = __webpack_require__("../../../platform-browser/esm5/animations.js");
 var app_component_1 = __webpack_require__("../../../../../src/app/app.component.ts");
 var navbar_component_1 = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
 var login_component_1 = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
@@ -120,14 +121,15 @@ var AppModule = (function () {
                 register_component_1.RegisterComponent,
                 home_component_1.HomeComponent,
                 dashboard_component_1.DashboardComponent,
-                profile_component_1.ProfileComponent
+                profile_component_1.ProfileComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot(appRoutes),
-                angular2_flash_messages_1.FlashMessagesModule.forRoot()
+                angular2_flash_messages_1.FlashMessagesModule.forRoot(),
+                animations_1.BrowserAnimationsModule
             ],
             providers: [validate_service_1.ValidateService, auth_service_1.AuthService, auth_guard_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]
@@ -349,7 +351,14 @@ exports.LoginComponent = LoginComponent;
 
 /***/ }),
 
-/***/ "../../../../../src/app/components/navbar/navbar.component.css":
+/***/ "../../../../../src/app/components/navbar/navbar.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\r\n      <a class=\"navbar-brand\" href=\"#\">MEAN Auth App</a>\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n          <li class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/']\">Home <span></span></a>\r\n          </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">Dashboard </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/profile']\">Profile </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/login']\">Login </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\"><a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n</nav> -->\r\n<!--Navigation-->\r\n<div class=\"navbar\">\r\n\r\n  <nav role=\"navigation\">\r\n\r\n    <div class=\"nav-wrapper\">\r\n      <a [routerLink]=\"['/home']\" id=\"logo-container\" class=\"brand-logo left\"> Lift Tracker</a>\r\n\r\n      <ul class=\"right\">\r\n        <li *ngIf=\"!(authService.userSignedIn$ | async)\"> <a (click)=\"presentAuthDialog()\" class='no-drop'>LOGIN</a></li>\r\n        <li *ngIf=\"!(authService.userSignedIn$ | async)\"> <a (click)=\"presentAuthDialog('register')\" class='no-drop'>REGISTER</a></li>\r\n\r\n        <!-- <li *ngIf=\"(authService.userSignedIn$ | async)\"><a [routerLink]=\"['/workout']\">Workout History</a></li> -->\r\n        <li *ngIf=\"(authService.userSignedIn$ | async)\"><a [routerLink]=\"['/profile']\" class='no-drop'>{{authTokenService.currentUserData.email}}</a></li>\r\n        <li *ngIf=\"(authService.userSignedIn$ | async)\"><a (click)=\"logOut()\" class='no-drop'>Logout</a></li>\r\n      </ul>\r\n\r\n      <a class='dropdown-button btn right gray darken-4' data-activates='dropdown1' data-belowOrigin='true'>Workout Options</a>\r\n      <ul id='dropdown1' class='dropdown-content'>\r\n        <li><a [routerLink]=\"['/workout']\" class=\"dropdown-a\">Workout History</a></li>\r\n        <li class=\"divider\"></li>\r\n        <li><a [routerLink]=\"['/new-workout']\" class=\"dropdown-a\">New Workout</a></li>\r\n      </ul>\r\n\r\n    </div>\r\n\r\n  </nav>\r\n\r\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/navbar/navbar.component.scss":
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
@@ -357,20 +366,13 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".nav-wrapper {\n  background-color: #202020; }\n\n.btn {\n  background-color: #4389fe; }\n\n.text-center {\n  border: 1px solid white;\n  padding: 50px;\n  background-color: rgba(255, 255, 255, 0.5);\n  font-family: \"Orbitron\", sans-serif;\n  color: rgba(0, 0, 0, 0.7);\n  font-size: 75px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n\n.navbar {\n  height: 7vh;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.8); }\n\n.nav-ul {\n  height: 100%;\n  margin: 0;\n  padding: 0; }\n\n.nav-href {\n  border-right: 1px solid rgba(255, 255, 255, 0.7);\n  float: right;\n  display: inline-block;\n  width: 10%;\n  height: 100%; }\n\na {\n  height: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: rgba(255, 255, 255, 0.9); }\n\n.no-drop:hover {\n  color: #4389fe; }\n\nli .dropdown-a {\n  color: #4389fe; }\n\n#logo-container {\n  padding-left: 20px; }\n\n.dropdown-button:hover {\n  color: #ced7db; }\n", ""]);
 
 // exports
 
 
 /*** EXPORTS FROM exports-loader ***/
 module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/components/navbar/navbar.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"navbar navbar-expand-md navbar-dark bg-dark fixed-top\">\r\n      <a class=\"navbar-brand\" href=\"#\">MEAN Auth App</a>\r\n      <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n\r\n      <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n          <li class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/']\">Home <span></span></a>\r\n          </li>\r\n        </ul>\r\n        <ul class=\"navbar-nav ml-auto\">\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/dashboard']\">Dashboard </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/profile']\">Profile </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/login']\">Login </a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions] = \"{exact:true}\">\r\n            <a class=\"nav-link\" [routerLink]=\"['/register']\">Register</a>\r\n          </li>\r\n          <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\"><a class=\"nav-link\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </nav>\r\n"
 
 /***/ }),
 
@@ -413,7 +415,7 @@ var NavbarComponent = (function () {
         core_1.Component({
             selector: 'app-navbar',
             template: __webpack_require__("../../../../../src/app/components/navbar/navbar.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/navbar/navbar.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/components/navbar/navbar.component.scss")]
         }),
         __metadata("design:paramtypes", [auth_service_1.AuthService,
             router_1.Router,

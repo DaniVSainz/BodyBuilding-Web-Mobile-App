@@ -1,0 +1,64 @@
+.nav-wrapper {
+    background-color: #202020;
+  }
+  
+  .btn {
+    background-color: #4389fe;
+  }
+  
+  .text-center {
+    border: 1px solid white;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: "Orbitron", sans-serif;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 75px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .navbar {
+    height: 7vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .nav-ul {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-href {
+    border-right: 1px solid rgba(255, 255, 255, 0.7);
+    float: right;
+    display: inline-block;
+    width: 10%;
+    height: 100%;
+  }
+  
+  a {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .no-drop:hover {
+    color: #4389fe;
+  }
+  
+  li .dropdown-a {
+    color: #4389fe;
+  }
+  
+  #logo-container {
+    padding-left: 20px;
+  }
+  
+  .dropdown-button:hover {
+    color: #ced7db;
+  }
