@@ -40,7 +40,7 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 
 // Set Static Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Body Parser Middleware
 app.use(bodyParser.json());
@@ -63,6 +63,7 @@ app.get('*', (req, res) => {
 });
 
 // Start Server
-app.listen(port, () => {
-  console.log('Server started on port '+port);
-});
+// app.listen(port, () => {
+//   console.log('Server started on port '+port);
+// });
+module.exports = app;
