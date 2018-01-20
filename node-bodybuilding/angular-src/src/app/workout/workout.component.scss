@@ -1,0 +1,58 @@
+.container-fluid {
+    background-color: black;
+  }
+  
+  p {
+    margin: 0;
+    padding: 0;
+    color: black;
+  }
+  
+  span {
+    color: black;
+  }
+  
+  i {
+    color: black;
+  }
+  
+  .workout-ul {
+    padding-top: 35px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border: none;
+  }
+  .workout-ul li {
+    margin: 0 auto;
+  }
+  
+  .new-workout {
+    margin: 0 auto;
+  }
+  
+  .workout-link:hover {
+    box-shadow: inset 0 0 10px #000000;
+    text-decoration: none;
+    background-color: #2b84c3;
+    color: white;
+    border: 2px solid #4389fe;
+  }
+  .workout-link:hover p {
+    color: white;
+  }
+  .workout-link:hover span {
+    color: white;
+  }
+  .workout-link:hover i {
+    color: white;
+  }
+  
+  .btn {
+    background-color: #202020;
+  }
+  
+  .btn:hover {
+    background-color: #ced7db;
+  }
+  
