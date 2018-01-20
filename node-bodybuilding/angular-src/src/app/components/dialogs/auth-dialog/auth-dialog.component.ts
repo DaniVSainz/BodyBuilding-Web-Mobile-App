@@ -12,19 +12,27 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   templateUrl: './auth-dialog.component.html',
   styleUrls: ['./auth-dialog.component.scss']
 })
-export class AuthDialogComponent{
-  public title: string = "Hello";
-  public message: string;
+export class AuthDialogComponent implements OnInit{
   name: String;
   username: String;
   email: String;
   password: String; 
+  whatDialog: String;
+  register: Boolean;
 
   constructor(public dialogRef: MatDialogRef<AuthDialogComponent>,
     private validateService: ValidateService,
     private authService: AuthService,
     private router: Router,
     private flashMessage: FlashMessagesService) {
+  }
+
+  ngOnInit(){
+    if (this.whatDialog === 'register'){
+      this.register = true;
+    } else {
+      this.register = false ;
+    }
   }
 
   onRegisterSubmit() {
@@ -49,10 +57,10 @@ export class AuthDialogComponent{
 
     // Register user
     this.authService.registerUser(user).subscribe(data => {
-      this.dialogRef.close();
     if(data.success) {
       this.flashMessage.show('You are now registered and can now login', {cssClass: 'alert-success', timeout: 3000});
-      this.router.navigate(['/login']);
+      // this.router.navigate(['/login']);
+      this.dialogRef.close();
     } else {
       this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000});
       this.router.navigate(['/register']);

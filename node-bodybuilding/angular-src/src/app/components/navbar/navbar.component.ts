@@ -29,9 +29,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
     return false;
   }
-  public openDialog() {
+  public openDialog(whatDialog) {
     this.dialogsService
-      .confirm('Daniel', 'Are you sure you want to do this?')
+      .confirm(whatDialog)
       .subscribe(res => this.result = res);
   }
 }

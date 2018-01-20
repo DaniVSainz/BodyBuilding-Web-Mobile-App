@@ -8,16 +8,24 @@ export class DialogsService {
 
     constructor(private dialog: MatDialog) { }
 
-    public confirm(title: string, message: string): Observable<boolean> {
+    public confirm(whatDialog:string): Observable<boolean> {
 
         let dialogRef: MatDialogRef<AuthDialogComponent>;
 
-        dialogRef = this.dialog.open(AuthDialogComponent, {
-            height: '700px',
-            width: '600px',
-          });
-        dialogRef.componentInstance.title = title;
-        dialogRef.componentInstance.message = message;
+        if (whatDialog==="login"){
+            dialogRef = this.dialog.open(AuthDialogComponent, {
+                height: '400px',
+                width: '600px',
+              });
+        }else {
+            dialogRef = this.dialog.open(AuthDialogComponent, {
+                height: '650px',
+                width: '600px',
+              });
+        }
+        
+        dialogRef.componentInstance.whatDialog = whatDialog;
+        // dialogRef.componentInstance.message = message;
 
         return dialogRef.afterClosed();
     }
