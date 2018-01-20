@@ -20,6 +20,7 @@ import { AuthService } from './services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
 import { WorkoutComponent } from './workout/workout.component';
+import { NewWorkoutComponent } from './workout/new-workout/new-workout.component';
 
 
 
@@ -31,7 +32,8 @@ const appRoutes: Routes =  [
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path:'workout', component: WorkoutComponent, canActivate[AuthGuard]},
+  {path:'workout', component: WorkoutComponent, canActivate:[AuthGuard]},
+  {path: 'new-workout', component: NewWorkoutComponent,canActivate: [AuthGuard]},
   { path: '**', component: HomeComponent }
 ]
 
@@ -45,7 +47,7 @@ const appRoutes: Routes =  [
     DashboardComponent,
     ProfileComponent,
     WorkoutComponent,
-    
+    NewWorkoutComponent
   ],
 
   imports: [

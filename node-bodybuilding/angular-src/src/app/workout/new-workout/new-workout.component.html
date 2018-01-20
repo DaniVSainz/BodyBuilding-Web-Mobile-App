@@ -1,0 +1,34 @@
+<div class='container white darken-4 new-workout-container'>
+
+
+  <div>
+    <form (ngSubmit)='createWorkout(workout)' #workoutForm="ngForm" class='row new-workout-form'>
+      <div class="form-group" class='col s6 center-col'>
+        <h5 class='center-align'>
+          Create a new workout for :<br> {{d | date}}
+        </h5>
+        <label for="name">Workout Name</label>
+        <input type="text" class='form-control' id="name" placeholder="Upper/Lower" required name="name" #name='ngModel' [(ngModel)]="workout.name">
+        <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
+          Workout Name is required
+        </div>
+      </div>
+      <!--
+      <div class="form-group">
+        <label for="user_id">User id</label>
+        <input type="number" class='form-control' id="user_id" value="{{authTokenService.currentUserData.id}}" required name="user_id" #user_id='ngModel' [(ngModel)]="workout.user_id">
+        <div [hidden]="user_id.valid || user_id.pristine" class='alert alert-danger'>
+          Customer name is required
+        </div>
+      </div>-->
+      <div class='col s6 center-col'>
+        <button type='submit' class="btn btn-outline-primary btn-lg" [disabled]='!workoutForm.form.valid' [hidden]='submitted'>
+            Generate workout
+          </button>
+        <div class='alert alert-success' role='alert' [hidden]='!submitted'>
+          Your workout was successfully created!<a class='alert-link' routerLink='/workout'>View all workouts</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -8,7 +8,7 @@ const WorkoutSchema = mongoose.Schema ({
     name: {
       type: String
     },
-    belongsTo: {type: mongoose.Schema.Types.ObjectId, ref: 'User',required: true},
+    belongsTo: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     dateCreated: new Date,
   });
 
