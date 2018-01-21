@@ -1,8 +1,10 @@
+import { WorkoutService } from './../../services/workout.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Workout } from '../workout';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+
 
 
 @Component({
@@ -21,11 +23,15 @@ export class NewWorkoutComponent implements OnInit {
     // public authTokenService:Angular2TokenService,
     protected authService:AuthService,
     private router:Router,
+    private workoutService: WorkoutService
     // public workoutService: WorkoutService
   ) {}
 
   ngOnInit() {
   }
 
-
+  createWorkout(){
+    console.log('inside createWorkout from new Workout')
+    this.workoutService.postWorkout();
+  }
 }

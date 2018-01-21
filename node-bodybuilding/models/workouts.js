@@ -9,7 +9,6 @@ const WorkoutSchema = mongoose.Schema ({
       type: String
     },
     belongsTo: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-    dateCreated: new Date,
   });
 
-  const User = module.exports = mongoose.model('Workouts', WorkoutsSchema);
+module.exports = mongoose.model('Workouts', WorkoutSchema);

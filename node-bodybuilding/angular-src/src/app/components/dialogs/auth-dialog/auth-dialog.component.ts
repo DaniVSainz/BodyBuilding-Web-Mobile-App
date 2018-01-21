@@ -1,3 +1,4 @@
+import { WorkoutService } from './../../../services/workout.service';
 import { ValidateService } from './../../../services/validate.service';
 import { AuthService } from './../../../services/auth.service';
 import { Router } from '@angular/router';
@@ -5,6 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import {Component, OnInit, Input, EventEmitter} from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 @Component({
@@ -24,7 +26,8 @@ export class AuthDialogComponent implements OnInit{
     private validateService: ValidateService,
     private authService: AuthService,
     private router: Router,
-    private flashMessage: FlashMessagesService) {
+    private flashMessage: FlashMessagesService,
+    private workoutService: WorkoutService) {
   }
 
   ngOnInit(){

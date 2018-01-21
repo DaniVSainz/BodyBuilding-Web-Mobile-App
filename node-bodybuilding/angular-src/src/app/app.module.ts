@@ -1,3 +1,4 @@
+import { WorkoutService } from './services/workout.service';
 import { DialogsModule } from './components/dialogs/dialogs.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -33,7 +34,8 @@ const appRoutes: Routes =  [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'workout', component: WorkoutComponent, canActivate:[AuthGuard]},
-  {path: 'new-workout', component: NewWorkoutComponent,canActivate: [AuthGuard]},
+  // {path: 'new-workout', component: NewWorkoutComponent,canActivate: [AuthGuard]},
+  {path: 'new-workout', component: NewWorkoutComponent},
   { path: '**', component: HomeComponent }
 ]
 
@@ -62,7 +64,7 @@ const appRoutes: Routes =  [
 
   ],
 
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard,WorkoutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

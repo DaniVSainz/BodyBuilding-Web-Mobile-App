@@ -7,37 +7,50 @@ const User = require('../models/user');
 const Workout = require('../models/workouts');
 
 
-router.post()
+
+
+
+
+
+// router.post('/', function (req, res, next) {
+//     var decoded = jwt.decode(req.query.token);
+//     User.findById(decoded.user._id, function (err, user) {
+//         if (err) {
+//             return res.status(500).json({
+//                 title: 'An error occurred',
+//                 error: err
+//             });
+//         }
+//         let newWorkout = new Workout ({
+//             name: req.body.name,
+//             email: req.body.email,
+//             username: req.body.username,
+//             password: req.body.password
+//           });
+//         message.save(function (err, result) {
+//             if (err) {
+//                 return res.status(500).json({
+//                     title: 'An error occurred',
+//                     error: err
+//                 });
+//             }
+//             user.workouts.push(result);
+//             user.save();
+//             res.status(201).json({
+//                 message: 'Saved message',
+//                 obj: result
+//             });
+//         });
+//     });
+
+// router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+//     console.log('hi')
+//     console.log(req)
+// });
+
+router.post('/',(req, res, next) => {
+    console.log('hi')
+    // console.log(req)
+});
 
 module.exports = router;
-
-
-router.post('/', function (req, res, next) {
-    var decoded = jwt.decode(req.query.token);
-    User.findById(decoded.user._id, function (err, user) {
-        if (err) {
-            return res.status(500).json({
-                title: 'An error occurred',
-                error: err
-            });
-        }
-        var workout = new Workout({
-            content: req.body.content,
-            user: user
-        });
-        message.save(function (err, result) {
-            if (err) {
-                return res.status(500).json({
-                    title: 'An error occurred',
-                    error: err
-                });
-            }
-            user.workouts.push(result);
-            user.save();
-            res.status(201).json({
-                message: 'Saved message',
-                obj: result
-            });
-        });
-    });
-});
