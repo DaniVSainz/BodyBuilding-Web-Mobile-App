@@ -20,21 +20,14 @@ export class WorkoutService {
     this.authToken = token;
   }
 
-  postWorkout() {
-    // console.log('inside post Workout from workout service');
-    // let headers = new Headers();
-    // // body = 
-    // this.loadToken();
-    // headers.append('Authorization', this.authToken);
-    // headers.append('Content-Type', 'application/json');
-    // return this.http.post('workout', {headers: headers})
-    //   .map(res => res.json());
-    // this.http.post('http://localhost:3000/workout/');
-    // const body = {name: 'Brad'};
-    // this.http
-    // .post('workout', body).subscribe();
-    console.log(this.authService.getProfile().subscribe());
-
+  postWorkout(workOut:Object) {
+    let headers = new Headers();
+    // body = 
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('workout',workOut, {headers: headers})
+      .map(res => res.json());
   }
 
   // registerUser(user) {

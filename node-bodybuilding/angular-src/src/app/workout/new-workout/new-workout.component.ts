@@ -30,8 +30,9 @@ export class NewWorkoutComponent implements OnInit {
   ngOnInit() {
   }
 
-  createWorkout(){
-    console.log('inside createWorkout from new Workout')
-    this.workoutService.postWorkout();
+  createWorkout(workOut){
+    this.workoutService.postWorkout(workOut).subscribe(function(res){
+      console.log(res);
+    });
   }
 }

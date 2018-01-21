@@ -18,7 +18,10 @@ const UserSchema = mongoose.Schema ({
   password: {
     type: String,
     required: true
-  }
+  },
+  workouts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Workouts'}]
+  // workouts: [{}]
+
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);

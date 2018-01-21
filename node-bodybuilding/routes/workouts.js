@@ -43,14 +43,24 @@ const Workout = require('../models/workouts');
 //         });
 //     });
 
-// router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-//     console.log('hi')
-//     console.log(req)
-// });
+    router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 
-router.post('/',(req, res, next) => {
-    console.log('hi')
-    // console.log(req)
+        User.findById(req.user._id).then(function(user){
+            workout = new Workout({
+                name: req.body.name
+            })
+            workout.save(function (err, result) {
+                if (err) {
+                    return res.status(500).json({
+                        title: 'An error occurred',
+                        error: err
+                    });
+                }
+                user.workouts.push(workout);
+                user.update(done);
+            });
+    });
 });
+
 
 module.exports = router;

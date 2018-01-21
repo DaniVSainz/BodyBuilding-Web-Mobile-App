@@ -4,11 +4,11 @@ const config = require('../config/database');
 var User = require('./user');
 
 
-const WorkoutSchema = mongoose.Schema ({
+const workoutSchema = mongoose.Schema ({
     name: {
       type: String
     },
-    belongsTo: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   });
 
-module.exports = mongoose.model('Workouts', WorkoutSchema);
+const Workouts = module.exports = mongoose.model('Workouts', workoutSchema);
