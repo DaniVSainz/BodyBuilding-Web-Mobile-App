@@ -56,8 +56,8 @@ const Workout = require('../models/workouts');
                         error: err
                     });
                 }
-                user.workouts.push(workout);
-                user.update(done);
+                user.workouts.addToSet(workout);
+                user.save();
             });
     });
 });
