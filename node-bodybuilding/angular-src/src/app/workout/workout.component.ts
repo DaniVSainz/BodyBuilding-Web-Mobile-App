@@ -17,10 +17,8 @@ import { Workout } from './workout';
 export class WorkoutComponent implements OnInit {
   workouts: any[];
   errorMessage: string;
-  test: string = 'ASDKAJSDKJASDK'
 
   constructor(
-    // private workoutService: WorkoutService,
     private router: Router,
     private workoutService:WorkoutService,
   ) {
@@ -29,12 +27,6 @@ export class WorkoutComponent implements OnInit {
   ngOnInit(){
     this.getWorkouts();
   }
-
-  logWorkouts(){
-    console.log(this.workouts);
-  }
-
-
 
   getWorkouts(){
     this.workoutService.getWorkouts().subscribe(data => {
@@ -46,9 +38,9 @@ export class WorkoutComponent implements OnInit {
      });
   }
 
-  goToShow(workout: Workout): void{
-    // let link = ['/show-workout', workout.id ]
-    // this.router.navigate(link);
+  goToShow(workout: Workout){
+    let link = ['/show-workout', workout._id ]
+    this.router.navigate(link);
   }
 
 }

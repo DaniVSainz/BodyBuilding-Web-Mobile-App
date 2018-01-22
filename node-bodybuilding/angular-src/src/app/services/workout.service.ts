@@ -40,4 +40,13 @@ export class WorkoutService {
       .map(res => res.json());
   }
 
+  getWorkout(id:string) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('api/workout/'+ id , {headers: headers})
+      .map(res => res.json());
+  }
+
 }

@@ -42,8 +42,7 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
 router.get('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 
     User.findById(req.user._id).populate('workouts').then(function(user){
-        console.log(user.workouts);
-        return res.status(200).json({
+            return res.status(200).json({
             success: true,
             obj: user.workouts
         }); 
@@ -53,11 +52,24 @@ router.get('/', passport.authenticate('jwt', {session:false}), (req, res, next) 
                 title: 'An error occurred',
                 error: err
             });
-        })
+        });
 });
 
 router.get('/:id', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-
+    console.log("INSIDE GET BY ID WORKOUT");
+    Workout.findById(req.params.id).populate('exercises').then(function(workout){
+        return res.status(200).json({
+            success: true,
+            obj: workout
+        });
+    }).catch(function(err){
+            return res.status(500).json({
+            sucess: false,
+            title: 'An error occurred',
+            error: err
+            });
+        });
 });
+
 
 module.exports = router;

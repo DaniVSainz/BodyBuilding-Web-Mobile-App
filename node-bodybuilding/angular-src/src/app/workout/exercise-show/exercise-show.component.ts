@@ -24,6 +24,7 @@ export class ExerciseShowComponent implements OnInit {
   exerciseSets: any;
   submitted: boolean = false;
   errorMessage: string;
+  workout: Object;
 
 
   constructor(
@@ -32,7 +33,9 @@ export class ExerciseShowComponent implements OnInit {
     public workoutService: WorkoutService,
     private route: ActivatedRoute,
 
-  ){}
+  ){   
+
+  }
 
   ngOnInit() {
   }

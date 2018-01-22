@@ -4,22 +4,11 @@ const config = require('../config/database');
 
 // User Schema
 const UserSchema = mongoose.Schema ({
-  name: {
-    type: String
-  },
-  email: {
-    type: String,
-    required: true
-  },
-  username: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  workouts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Workouts',required: true}]
+  name: {type: String},
+  email: {type: String,required: true},
+  username: {type: String,required: true},
+  password: {type: String,required: true},
+  workouts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Workout',required: true}]
   // workouts: [{}]
 
 });

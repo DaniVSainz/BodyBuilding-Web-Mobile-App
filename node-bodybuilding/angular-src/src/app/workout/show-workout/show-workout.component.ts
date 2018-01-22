@@ -23,13 +23,29 @@ export class ShowWorkoutComponent implements OnInit {
     public workoutService: WorkoutService,
     private router: Router,
     private route: ActivatedRoute,
-  ){}
+  ){
+    this.route.params.subscribe( params =>
+      this.workoutId = params['id']
+     );
+     this.workoutService.getWorkout(this.workoutId).subscribe(data => {
+      this.workout = data.obj;
+      console.log(this.workout);
+    },
+     err => {
+       console.log(err);
+       return false;
+     });
+  }
 
- @Input()
+
   workout: Workout;
+  workoutId: string;
 
-  ngOnInit(){
-    let workoutRequest = this.route.params
+  ngOnInit(){   
+  }
+
+  logWorkout(){
+    console.log(this.workout)
   }
 
 }
