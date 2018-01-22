@@ -40,19 +40,31 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
 
 
 router.get('/asd', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    User.findById(req.user._id).then(function(user){
-        Workout.find({user:user._id}).then(function(workouts){
-            return res.status(200).json({
-                success: true,
-                obj: workouts
+    // User.findById(req.user._id).then(function(user){
+    //     Workout.find({user:user._id}).then(function(workouts){
+    //         return res.status(200).json({
+    //             success: true,
+    //             obj: workouts
+    //         });
+    //     })
+    // }).catch(function(err){
+    //     return res.status(500).json({
+    //         title: 'An error occurred',
+    //         error: err
+    //     });
+    // })
+    User.findById(req.user._id).populate('workouts').then(function(user){
+        console.log(user.workouts);
+        return res.status(200).json({
+            success: true,
+            obj: user.workouts
+        }); 
+    }).catch(function(err){
+            return res.status(500).json({
+                title: 'An error occurred',
+                error: err
             });
         })
-    }).catch(function(err){
-        return res.status(500).json({
-            title: 'An error occurred',
-            error: err
-        });
-    })
 });
 
 
