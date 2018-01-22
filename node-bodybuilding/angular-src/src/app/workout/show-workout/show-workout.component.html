@@ -1,0 +1,71 @@
+<div class='show-workout'>
+  <div class='something row'>
+
+
+    <!--<timer></timer>-->
+    <div class='col s6'>
+      <h3 class='header-exercise center-align' *ngIf="workouts">
+        Add Exercises to : {{workouts[0].name}}
+      </h3>
+      <form (ngSubmit)='createExercise(exercise)' #exerciseForm="ngForm" class='exercise-form'>
+        <!--NAME-->
+        <div class="form-group col s5">
+          <label for="name">Exercise Name</label>
+          <input type="text" class='form-control' id="name" placeholder="Squat,Deadlift,etc" required name="name" #name='ngModel' [(ngModel)]="exercise.name">
+          <div [hidden]="name.valid || name.pristine" class='alert alert-danger'>
+            Exercise is Required
+          </div>
+        </div>
+        <!-- SET 1  -->
+        <div class="form-group col s3">
+          <label for="rest">Rest Time</label>
+          <input type="text" class='form-control' id="name" placeholder="60s" name="rest" required #rest='ngModel' [(ngModel)]="exercise.rest">
+          <div [hidden]="rest.valid || rest.pristine" class='alert alert-danger'>
+            Rest Time is required
+          </div>
+        </div>
+
+        <!--<a (click)='reloadExercise(workouts[0].id)'>-->
+        <div class='col s6'>
+          <button type='submit' class=" btn btn-outline-primary btn-lg submit-button" [disabled]='!exerciseForm.form.valid' [hidden]='submitted'>
+            Add Exercise
+        </button>
+          <a [routerLink]="[ '/workout'] " class='btn right'>Back</a>
+          <!--</a>-->
+          <div class='alert alert-success' role='alert' [hidden]='!submitted'>
+            Your exercise was successfully added!
+          </div>
+        </div>
+
+
+
+      </form>
+
+    </div>
+    <div class='col s6 exercise-div'>
+
+      <h3 class='center-align'>
+        Exercises Done for Workout
+      </h3>
+      <ul class="collection col s6 exercise-ul" *ngIf="workouts ">
+        <li class="collection-item avatar valign-wrapper" *ngFor='let exercise of workouts[1]'>
+          <a (click)='goToShowExerciseSet(exercise)'>
+            <div class="exercise-a">
+              <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
+              <div class='exercise-text center-align'>
+                <p *ngIf="workouts">
+                  {{exercise.name}} <br> Rest: {{exercise.rest}} <br> Weight: {{exercise.weight1}} <br>
+                </p>
+                <div class="row center-align exercise-buttons">
+                  <i class="fa fa-plus fa-lg add-exercise" aria-hidden="true"></i>
+                  <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

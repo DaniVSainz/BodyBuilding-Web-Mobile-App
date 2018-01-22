@@ -1,0 +1,66 @@
+.show-workout {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.something {
+  background-color: white;
+  margin-bottom: 0;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.header-exercise {
+  color: black;
+}
+
+.exercise-form {
+  display: flex;
+  flex-direction: column;
+}
+.exercise-form .form-group {
+  margin: 0 auto;
+}
+.exercise-form .submit-button {
+  margin: 0 auto;
+}
+
+.exercise-div {
+  display: flex;
+  flex-direction: column;
+}
+.exercise-div .exercise-ul {
+  margin: 0 auto;
+}
+.exercise-div .exercise-text {
+  width: 100%;
+}
+.exercise-div .exercise-text .exercise-buttons {
+  margin-bottom: 0;
+}
+
+.exercise-text {
+  margin: 0 auto;
+}
+
+.add-exercise:hover {
+  color: blue;
+}
+
+.exercise-a {
+  color: black;
+  margin: 0 auto;
+}
+
+.exercise-div a {
+  width: 100%;
+}
+.exercise-div ul {
+  padding: 0;
+}
+
+.exercise-div li:hover {
+  background-color: #57acec;
+}

@@ -1,0 +1,69 @@
+<!---->
+<!---->
+<!---->
+<div class="container exercise-container">
+
+  <div class="row exercise-row">
+    <timer></timer>
+    <div class='col s6'>
+      <h3 class='header-exercise' *ngIf="exercise">
+        Add Sets to : {{exercise.name}}
+      </h3>
+
+      <form (ngSubmit)='createExerciseSet(exerciseSet)' #exerciseSetForm="ngForm" class='exerciseSet-form'>
+
+        <div class="form-group col s5">
+          <label for="reps">Reps:</label>
+          <input type="text" class='form-control' id="name" placeholder="1..15" required name="reps" #reps='ngModel' [(ngModel)]="exerciseSet.reps">
+          <div [hidden]="reps.valid || reps.pristine" class='alert alert-danger'>
+            Reps are required
+          </div>
+        </div>
+
+        <div class="form-group col s3">
+          <label for="weight">Weight is required</label>
+          <input type="text" class='form-control' id="name" placeholder="150lbs" name="weight" required #weight='ngModel' [(ngModel)]="exerciseSet.weight">
+          <div [hidden]="weight.valid || weight.pristine" class='alert alert-danger'>
+            Weight is required
+          </div>
+        </div>
+
+
+        <div class='col s6'>
+          <button type='submit' class=" btn btn-outline-primary submit-button" [disabled]='!exerciseSetForm.form.valid' [hidden]='submitted'>
+            Add Set
+        </button>
+          <a [routerLink]="[ '/show-workout/' + exercise.workout_id] " class='btn right' *ngIf='exercise'>Back</a>
+
+          <div class='alert alert-success' role='alert' [hidden]='!submitted'>
+            Your Set was successfully added!
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class='col s6 exercise-div'>
+
+      <h3 class='center-align'>
+        Exercises Done for Workout
+      </h3>
+
+      <ul class="collection col s6 exercise-ul" *ngIf="exerciseSets">
+        <li class="collection-item avatar valign-wrapper" *ngFor='let sets of exerciseSets'>
+
+          <div class="exercise-a">
+            <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
+            <div class='exercise-text center-align'>
+
+              <p *ngIf="exerciseSets" id="exerciseSets">
+                Reps: {{sets.reps}} <br> Weight: {{sets.weight}} <br>
+              </p>
+            </div>
+          </div>
+
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

@@ -36,7 +36,7 @@ export class WorkoutService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('api/workout/asd', {headers: headers})
+    return this.http.get('api/workout/', {headers: headers})
       .map(res => res.json());
   }
 
