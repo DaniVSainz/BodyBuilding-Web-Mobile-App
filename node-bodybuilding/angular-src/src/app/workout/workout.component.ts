@@ -1,3 +1,4 @@
+import { WorkoutService } from './../services/workout.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
@@ -20,16 +21,23 @@ export class WorkoutComponent implements OnInit {
   constructor(
     // private workoutService: WorkoutService,
     private router: Router,
+    private workoutService:WorkoutService
 
   ) {}
 
   ngOnInit(){
-    // this.getWorkouts();
+    this.workoutService.getWorkouts().subscribe(function(data){
+      console.log(data);
+      console.log('after data on init')
+    });
   }
 
-  // getWorkouts(){
-  //   this.workoutService.getWorkouts().subscribe(workout=> this.workout= workout,error=> this.errorMessage = <any>error );
-  // }
+  getWorkouts(){
+    this.workoutService.getWorkouts().subscribe(function(data){
+      console.log(data);
+      console.log('after data on init')
+    });
+  }
 
   goToShow(workout: Workout): void{
     let link = ['/show-workout', workout.id ]

@@ -19,7 +19,7 @@ const UserSchema = mongoose.Schema ({
     type: String,
     required: true
   },
-  workouts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Workouts'}]
+  workouts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Workouts',required: true}]
   // workouts: [{}]
 
 });

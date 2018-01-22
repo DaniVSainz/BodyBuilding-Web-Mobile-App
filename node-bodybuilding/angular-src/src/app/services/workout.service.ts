@@ -26,15 +26,18 @@ export class WorkoutService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.post('workout',workOut, {headers: headers})
-      .map(res => res.json());
+    return this.http.post('api/workout/',workOut, {headers: headers})
+      .map(res => res);
   }
 
-  // registerUser(user) {
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   return this.http.post('users/register', user, {headers: headers})
-  //     .map(res => res.json());
-  // }
+  getWorkouts() {
+    let headers = new Headers();
+    // body = 
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('api/workout/asd', {headers: headers})
+      .map(res => res.json());
+  }
 
 }

@@ -8,7 +8,7 @@ const workoutSchema = mongoose.Schema ({
     name: {
       type: String
     },
-    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
   });
 
 const Workouts = module.exports = mongoose.model('Workouts', workoutSchema);
