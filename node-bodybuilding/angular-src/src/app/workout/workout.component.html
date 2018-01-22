@@ -13,10 +13,8 @@
       <li class="collection-item avatar col s12 m6 center-align workout-link" *ngFor='let workout of workouts'>
         <a (click)='goToShow(workout)'>
           <img src="http://cdn.cultofmac.com/wp-content/uploads/2016/09/workout-app.png" alt="" class="circle">
-          <span class="title">Workout {{workout.date}}</span>
-          <p>
-            {{workout.name}} 
-          </p>
+          <span class="title">Workout Name: {{workout.name}} </span>
+          <p>{{workout.date}}</p>
           <i class="material-icons">View Workout Details</i>
         </a>
       </li>

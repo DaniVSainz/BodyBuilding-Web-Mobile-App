@@ -1,8 +1,9 @@
 export class Exercise {
-  user_id: number;
   name: string;
-  id: number;
-  rest: number;
+  rest:number;
+  user:string;
+  workout:string;
+  date:string;
 }
 
 

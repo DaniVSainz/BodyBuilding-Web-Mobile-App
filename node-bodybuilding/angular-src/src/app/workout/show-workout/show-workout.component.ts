@@ -1,3 +1,4 @@
+import { Workout } from './../workout';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -6,7 +7,6 @@ import {AuthService} from "../../services/auth.service";
 import { Router } from '@angular/router';
 
 
-import { Workout } from '../workout';
 import { WorkoutService } from '../../services/workout.service';
 import {Exercise} from './exercise';
 
@@ -16,6 +16,9 @@ import {Exercise} from './exercise';
   styleUrls: ['./show-workout.component.scss'],
 })
 export class ShowWorkoutComponent implements OnInit {
+  workout: any;
+  workoutId: string;
+  exercise = new Exercise;
 
   constructor(
     private http: Http,
@@ -24,6 +27,13 @@ export class ShowWorkoutComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ){
+
+  }
+
+
+
+
+  ngOnInit(){  
     this.route.params.subscribe( params =>
       this.workoutId = params['id']
      );
@@ -34,18 +44,20 @@ export class ShowWorkoutComponent implements OnInit {
      err => {
        console.log(err);
        return false;
-     });
-  }
-
-
-  workout: Workout;
-  workoutId: string;
-
-  ngOnInit(){   
+     }); 
   }
 
   logWorkout(){
     console.log(this.workout)
+  }
+
+  createExercise(exercise){
+    console.log('submitted');
+    exercise.user = this.workout.user;
+    exercise.workout = this.workoutId;
+    this.workoutService.postExercise(exercise).subscribe(function(res){
+      console.log(res);
+    });
   }
 
 }

@@ -49,4 +49,17 @@ export class WorkoutService {
       .map(res => res.json());
   }
 
+  //EXERCISE SECTION BEWLOW
+  //EXERCISE SECTION BEWLOW
+  //EXERCISE SECTION BEWLOW
+
+  postExercise(exercise:Object) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('api/exercise/',exercise, {headers: headers})
+      // .map(res => res);
+  }
+
 }
