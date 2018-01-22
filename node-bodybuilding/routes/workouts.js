@@ -4,12 +4,12 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
-const Workouts = require('../models/workouts');
+const Workout = require('../models/workouts');
 
 router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 
             User.findById(req.user._id).then(function(user){
-                workout = new Workout({
+               let workout = new Workout({
                     name: req.body.name,
                     user: user._id
                 })
@@ -40,23 +40,21 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
 
 
 router.get('/asd', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    console.log('hi')
     User.findById(req.user._id).then(function(user){
-        console.log(user);
-        Workouts.find({'user': user._id}).then(function(err, workouts){
-            if (err) {
-                return res.status(500).json({
-                    title: 'An error occurred',
-                    error: err
-                });
-            }
-            console.log("SAVED Workout");
+        Workout.find({user:user._id}).then(function(workouts){
+            console.log(workouts);
             return res.status(200).json({
                 success: true,
-                obj: result
+                obj: workouts
             });
         })
+    }).catch(function(err){
+        return res.status(500).json({
+            title: 'An error occurred',
+            error: err
+        });
     })
-    
 });
 
 

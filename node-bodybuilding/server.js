@@ -18,6 +18,9 @@ var logger = require('morgan');
 //.then(() => console.log('MongoDB Connected...'))
 //.catch(err => console.log(err));
 
+mongoose.Promise = require('bluebird');
+// // Use q. Note that you **must** use `require('q').Promise`.
+// mongoose.Promise = require('q').Promise;
 
 // Connect To Database (OLD CODE)
 mongoose.connect(config.database, { useMongoClient: true});
