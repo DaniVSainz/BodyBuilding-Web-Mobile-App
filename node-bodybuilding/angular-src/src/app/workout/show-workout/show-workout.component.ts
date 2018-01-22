@@ -28,6 +28,13 @@ export class ShowWorkoutComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ){
+
+  }
+
+
+
+
+  ngOnInit(){  
     this.route.params.subscribe( params =>
       this.workoutId = params['id']
      );
@@ -38,17 +45,6 @@ export class ShowWorkoutComponent implements OnInit {
        console.log(err);
        return false;
      }); 
-  }
-
-
-
-
-  ngOnInit(){  
-
-  }
-
-  logWorkout(){
-    console.log(this.workout)
   }
 
   createExercise(exercise){
@@ -62,6 +58,11 @@ export class ShowWorkoutComponent implements OnInit {
     });
     this.workout.exercises.push(exercise);
     console.log(this.workout);
+  }
+
+  goToShowExerciseSet(exercise){
+    let link = ['/show-exercise', exercise._id ]
+    this.router.navigate(link);
   }
 
 }
