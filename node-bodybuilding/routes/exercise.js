@@ -22,7 +22,7 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
         workout.save().then(function(workout){
             return res.status(200).json({
                 success: true,
-                obj: workout
+                obj: exercise
             }); 
         })
     }).catch(function(err){

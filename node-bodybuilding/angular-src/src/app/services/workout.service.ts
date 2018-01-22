@@ -58,8 +58,7 @@ export class WorkoutService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.post('api/exercise/',exercise, {headers: headers})
-      // .map(res => res);
+    return this.http.post('api/exercise/',exercise, {headers: headers}).map(res => res.json());
   }
 
 }
