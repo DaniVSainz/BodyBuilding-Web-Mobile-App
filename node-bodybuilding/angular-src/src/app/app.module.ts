@@ -35,7 +35,6 @@ const appRoutes: Routes =  [
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'workout', component: WorkoutComponent, canActivate:[AuthGuard]},
   {path: 'new-workout', component: NewWorkoutComponent,canActivate: [AuthGuard]},
-  // {path: 'new-workout', component: NewWorkoutComponent},
   { path: '**', component: HomeComponent }
 ]
 

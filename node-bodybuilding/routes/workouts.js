@@ -40,10 +40,8 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
 
 
 router.get('/asd', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    console.log('hi')
     User.findById(req.user._id).then(function(user){
         Workout.find({user:user._id}).then(function(workouts){
-            console.log(workouts);
             return res.status(200).json({
                 success: true,
                 obj: workouts

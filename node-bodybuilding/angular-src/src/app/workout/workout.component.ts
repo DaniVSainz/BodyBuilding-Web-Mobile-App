@@ -11,37 +11,44 @@ import { Workout } from './workout';
   selector: 'app-workout',
   templateUrl: './workout.component.html',
   styleUrls: ['./workout.component.scss'],
-  // providers: [WorkoutService]
+  providers: [WorkoutService]
 
 })
 export class WorkoutComponent implements OnInit {
-  workout: Workout[];
+  workouts: any[];
   errorMessage: string;
+  test: string = 'ASDKAJSDKJASDK'
 
   constructor(
     // private workoutService: WorkoutService,
     private router: Router,
-    private workoutService:WorkoutService
-
-  ) {}
-
-  ngOnInit(){
-    this.workoutService.getWorkouts().subscribe(function(data){
-      console.log(data);
-      console.log('after data on init')
-    });
+    private workoutService:WorkoutService,
+  ) {
   }
 
+  ngOnInit(){
+    this.getWorkouts();
+  }
+
+  logWorkouts(){
+    console.log(this.workouts);
+  }
+
+
+
   getWorkouts(){
-    this.workoutService.getWorkouts().subscribe(function(data){
-      console.log(data);
-      console.log('after data on init')
-    });
+    this.workoutService.getWorkouts().subscribe(data => {
+      this.workouts = data.obj;
+    },
+     err => {
+       console.log(err);
+       return false;
+     });
   }
 
   goToShow(workout: Workout): void{
-    let link = ['/show-workout', workout.id ]
-    this.router.navigate(link);
+    // let link = ['/show-workout', workout.id ]
+    // this.router.navigate(link);
   }
 
 }

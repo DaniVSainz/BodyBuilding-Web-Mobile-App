@@ -9,6 +9,7 @@ const workoutSchema = mongoose.Schema ({
       type: String
     },
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    date : { type : Date, default: Date.now }
   });
 
 const Workouts = module.exports = mongoose.model('Workouts', workoutSchema);

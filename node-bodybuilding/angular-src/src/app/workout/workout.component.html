@@ -1,27 +1,9 @@
-<div class='container'>
-
-  <!--<div class="row">
-    <div class="col s12 m6">
-      <a [routerLink]="['/new-workout']" class='btn center-align'>New Workout</a>
-    </div>
-  </div>-->
-
-  <div class='row'>
-    <h1>TSESTSTASTASFHKASFJNBASFD</h1>
-    <button (click)="getWorkouts()">Test Button</button>
-    <ul class='collection workout-ul'>
-      <!--<li class="col s6"><a [routerLink]="['/new-workout']" class='btn'>New Workout</a></li>-->
-      <li class="collection-item avatar col s12 m6 center-align workout-link" *ngFor='let workout of workout'>
-        <a (click)='goToShow(workout)'>
-          <img src="http://cdn.cultofmac.com/wp-content/uploads/2016/09/workout-app.png" alt="" class="circle">
-          <span class="title">Workout #{{workout.id}}</span>
-          <p>
-            {{workout.name}} <br> User id: {{workout.user_id}}
-            <br> {{workout.created_at | date}}
-          </p>
-          <i class="material-icons">View Workout Details</i>
-        </a>
-      </li>
-    </ul>
-  </div>
+<div>
+  <p>Hi</p>
+  <ul>
+    <li *ngFor="let workout of workouts"> 
+      {{ workout.name }}
+    </li>
+   </ul>
+   <button (click)="logWorkouts()">Log workouts</button>
 </div>
