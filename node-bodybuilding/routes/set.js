@@ -18,7 +18,8 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
             rest: req.body.rest,
             reps: req.body.reps,
             weight: req.body.weight,
-            workout: exercise.workout
+            workout: exercise.workout,
+            exercise: req.body.exercise
         })
         set.save();
         exercise.sets.addToSet(exercise)

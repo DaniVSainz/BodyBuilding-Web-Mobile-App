@@ -16,7 +16,7 @@ import {Exercise} from './exercise';
   styleUrls: ['./show-workout.component.scss'],
 })
 export class ShowWorkoutComponent implements OnInit {
- @Input() workout: any;
+  @Input() workout: any;
 
   workoutId: string;
   exercise = new Exercise;
@@ -45,6 +45,7 @@ export class ShowWorkoutComponent implements OnInit {
        console.log(err);
        return false;
      }); 
+     console.log(this.workout)
   }
 
   createExercise(exercise){

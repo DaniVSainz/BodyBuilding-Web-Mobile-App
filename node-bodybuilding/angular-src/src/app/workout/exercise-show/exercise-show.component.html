@@ -1,7 +1,6 @@
-<!---->
-<!---->
-<!---->
+
 <div class="container exercise-container">
+  <button (click)="logExercise()">Log Exercise</button>
 
   <div class="row exercise-row">
     <!-- <timer></timer> -->
@@ -48,15 +47,15 @@
         Exercises Done for Workout
       </h3>
 
-      <ul class="collection col s6 exercise-ul" *ngIf="exerciseSets">
-        <li class="collection-item avatar valign-wrapper" *ngFor='let sets of exerciseSets'>
+      <ul class="collection col s6 exercise-ul" *ngIf="exercise">
+        <li class="collection-item avatar valign-wrapper" *ngFor='let set of exercise'>
 
           <div class="exercise-a">
             <img src="https://cdn3.iconfinder.com/data/icons/forall/1062/gym-512.png" alt=" " class="circle ">
             <div class='exercise-text center-align'>
 
-              <p *ngIf="exerciseSets" id="exerciseSets">
-                Reps: {{sets.reps}} <br> Weight: {{sets.weight}} <br>
+              <p *ngIf="exercise" id="exerciseSets">
+                Reps: {{set.reps}} <br> Weight: {{set.weight}} <br>
               </p>
             </div>
           </div>

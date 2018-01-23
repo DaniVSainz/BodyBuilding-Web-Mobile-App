@@ -19,9 +19,10 @@ import {AuthService} from "../../services/auth.service";
 })
 
 export class ExerciseShowComponent implements OnInit {
+  @Input()   exercise: any;
   exerciseId: string;
-  exercise: Exercise
-
+  exerciseSet = new Set;
+  data: any;
 
   constructor(
     private http: Http,
@@ -30,24 +31,27 @@ export class ExerciseShowComponent implements OnInit {
     private route: ActivatedRoute,
 
   ){   
-
-  }
-
-  ngOnInit() {
     this.route.params.subscribe( params =>
       this.exerciseId = params['id']
      );
      this.workoutService.getExercise(this.exerciseId).subscribe(data => {
-      this.exercise = data.obj;
+       this.exercise = data.obj;
     },
      err => {
-       console.log(err);
+      //  console.log(err);
        return false;
      }); 
+     console.log(this.exercise)
+  }
+
+  ngOnInit() {
+  }
+
+  logExercise(){
+    console.log(this.exercise);
   }
 
   postSet(set){
-    // console.log(this.workout); this one shows next one dosent
     set.user = this.exercise.user;
     set.exercise = this.exerciseId;
     this.workoutService.postSet(set).subscribe(function(res){

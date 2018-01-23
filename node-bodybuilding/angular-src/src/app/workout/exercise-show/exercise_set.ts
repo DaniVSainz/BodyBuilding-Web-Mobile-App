@@ -1,5 +1,8 @@
 export class Exercise_set {
-  reps: number;
   weight: number;
-  exercise_id: number;
+  reps: number;
+  rest: number;
+  user: string;
+  workout: string;
+  exercise: string;  
 }
