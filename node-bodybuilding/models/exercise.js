@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const config = require('../config/database');
 
 var User = require('./user');
-
+var Set = require('./set');
+var Workout = require('./workout')
 
 const excerciseSchema = mongoose.Schema ({
     name: {type: String},

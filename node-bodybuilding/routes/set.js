@@ -4,7 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
-const Workout = require('../models/workouts');
+const Workout = require('../models/workout');
 const Exercise = require('../models/exercise');
 const Set = require('../models/set');
 
@@ -22,7 +22,7 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
             exercise: req.body.exercise
         })
         set.save();
-        exercise.sets.addToSet(exercise)
+        exercise.sets.addToSet(set)
         exercise.save()
         Workout.findById(exercise.workout).then(function(workout){
             workout.sets.addToSet(set)

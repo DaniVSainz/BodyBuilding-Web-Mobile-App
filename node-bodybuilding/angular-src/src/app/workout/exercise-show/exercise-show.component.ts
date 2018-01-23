@@ -19,7 +19,7 @@ import {AuthService} from "../../services/auth.service";
 })
 
 export class ExerciseShowComponent implements OnInit {
-  @Input()   exercise: any;
+  exercise: any;
   exerciseId: string;
   exerciseSet = new Set;
   data: any;
@@ -35,13 +35,13 @@ export class ExerciseShowComponent implements OnInit {
       this.exerciseId = params['id']
      );
      this.workoutService.getExercise(this.exerciseId).subscribe(data => {
+       console.log(data.obj);
        this.exercise = data.obj;
     },
      err => {
       //  console.log(err);
        return false;
      }); 
-     console.log(this.exercise)
   }
 
   ngOnInit() {

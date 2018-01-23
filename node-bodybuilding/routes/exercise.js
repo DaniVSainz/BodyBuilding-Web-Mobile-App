@@ -4,8 +4,9 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
-const Workout = require('../models/workouts');
+const Workout = require('../models/workout');
 const Exercise = require('../models/exercise');
+const Set = require('../models/set');
 
 
 router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
@@ -55,11 +56,13 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
 router.get('/:id', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 
     Exercise.findById(req.params.id).populate('sets').then(function(exercise){
+        console.log(exercise);
         return res.status(200).json({
             success: true,
             obj: exercise
         });
     }).catch(function(err){
+        console.log(err)
             return res.status(500).json({
             sucess: false,
             title: 'An error occurred',

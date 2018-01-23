@@ -4,7 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
-const Workout = require('../models/workouts');
+const Workout = require('../models/workout');
 
 router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 

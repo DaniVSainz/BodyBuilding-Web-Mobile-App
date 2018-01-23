@@ -3,6 +3,7 @@ const config = require('../config/database');
 
 var User = require('./user');
 var Exercise = require('./exercise');
+var Workout = require('./workout')
 
 const setSchema = mongoose.Schema ({
     weight: {type:Number},
@@ -13,6 +14,6 @@ const setSchema = mongoose.Schema ({
     exercise: {type: mongoose.Schema.Types.ObjectId, ref: 'Exercise', required: true},
   });
 
-const Set = module.exports = mongoose.model('Set', setSchema);
+const Set = module.exports = mongoose.model('Set', setSchema,'sets');
 
 
