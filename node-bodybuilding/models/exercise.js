@@ -9,6 +9,7 @@ const excerciseSchema = mongoose.Schema ({
     rest: {type: Number, required:true },
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     workout: {type: mongoose.Schema.Types.ObjectId, ref: 'Workout', required: true},
+    sets: [{type: mongoose.Schema.Types.ObjectId, ref: 'Set', required: true}],
     date : { type : Date, default: Date.now }
   });
 

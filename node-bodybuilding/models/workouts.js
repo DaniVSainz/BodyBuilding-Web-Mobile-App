@@ -9,6 +9,7 @@ const workoutSchema = mongoose.Schema ({
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     date : { type : Date, default: Date.now },
     exercises: [{type: mongoose.Schema.Types.ObjectId, ref: 'Exercise', required: true}],
+    sets: [{type: mongoose.Schema.Types.ObjectId, ref: 'Set', required: true}],
   });
 
 const Workout = module.exports = mongoose.model('Workout', workoutSchema);

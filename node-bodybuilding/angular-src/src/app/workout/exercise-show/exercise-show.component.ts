@@ -15,7 +15,7 @@ import {AuthService} from "../../services/auth.service";
 @Component({
   selector: 'app-exercise-show',
   templateUrl: './exercise-show.component.html',
-  styleUrls: ['./exercise-show.component.sass'],
+  styleUrls: ['./exercise-show.component.scss'],
 })
 
 export class ExerciseShowComponent implements OnInit {
