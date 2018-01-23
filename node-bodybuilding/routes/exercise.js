@@ -54,7 +54,7 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next)
 
 router.get('/:id', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 
-    Exerecise.findById(req.params.id).populate('sets').then(function(exercise){
+    Exercise.findById(req.params.id).populate('sets').then(function(exercise){
         return res.status(200).json({
             success: true,
             obj: exercise

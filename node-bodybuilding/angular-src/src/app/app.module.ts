@@ -1,3 +1,4 @@
+import { ExerciseShowComponent } from './workout/exercise-show/exercise-show.component';
 import { ShowWorkoutComponent } from './workout/show-workout/show-workout.component';
 import { WorkoutService } from './services/workout.service';
 import { DialogsModule } from './components/dialogs/dialogs.module';
@@ -37,6 +38,7 @@ const appRoutes: Routes =  [
   {path:'workout', component: WorkoutComponent, canActivate:[AuthGuard]},
   {path: 'new-workout', component: NewWorkoutComponent,canActivate: [AuthGuard]},
   {path: 'show-workout/:id',component: ShowWorkoutComponent,canActivate: [AuthGuard]},
+  {path: 'show-exercise/:id',component: ExerciseShowComponent,canActivate: [AuthGuard]},
   { path: '**', component: HomeComponent }
 ]
 
@@ -51,7 +53,8 @@ const appRoutes: Routes =  [
     ProfileComponent,
     WorkoutComponent,
     NewWorkoutComponent,
-    ShowWorkoutComponent
+    ShowWorkoutComponent,
+    ExerciseShowComponent
   ],
 
   imports: [

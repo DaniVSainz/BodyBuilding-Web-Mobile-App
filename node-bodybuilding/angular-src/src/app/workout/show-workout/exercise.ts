@@ -3,6 +3,7 @@ export class Exercise {
   rest:number;
   user:string;
   workout:string;
+  sets: any[];
   date:string;
 }
 

@@ -61,4 +61,24 @@ export class WorkoutService {
     return this.http.post('api/exercise/',exercise, {headers: headers}).map(res => res.json());
   }
 
+  getExercise(id:string) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('api/exercise/'+ id , {headers: headers})
+      .map(res => res.json());
+  }
+
+  //SETS
+  //SETS
+  //SETS
+  postSet(set:Object) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('api/set/',set, {headers: headers}).map(res => res.json());
+  }
+
 }

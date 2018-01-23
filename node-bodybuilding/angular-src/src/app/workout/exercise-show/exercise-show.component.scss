@@ -1,20 +1,26 @@
-.container-fluid
-  height: 100%
+.container-fluid {
+  height: 100%;
+}
 
-.exercise-container
-  background-color: white
-  border-radius: 25px
-  height: auto
-  // overflow: auto;
+.exercise-container {
+  background-color: white;
+  border-radius: 25px;
+  height: auto;
+}
 
-.exercise-div
-  display: flex
-  flex-direction: column
-  .exercise-ul
-    margin: 0 auto
-  .exercise-a
-    width: 100%
-  .exercise-text
-    width: 100%
-    .exercise-buttons
-      margin-bottom: 0
+.exercise-div {
+  display: flex;
+  flex-direction: column;
+}
+.exercise-div .exercise-ul {
+  margin: 0 auto;
+}
+.exercise-div .exercise-a {
+  width: 100%;
+}
+.exercise-div .exercise-text {
+  width: 100%;
+}
+.exercise-div .exercise-text .exercise-buttons {
+  margin-bottom: 0;
+}

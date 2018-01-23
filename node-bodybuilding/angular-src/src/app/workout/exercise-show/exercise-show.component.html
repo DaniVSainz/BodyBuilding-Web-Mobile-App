@@ -4,13 +4,13 @@
 <div class="container exercise-container">
 
   <div class="row exercise-row">
-    <timer></timer>
+    <!-- <timer></timer> -->
     <div class='col s6'>
       <h3 class='header-exercise' *ngIf="exercise">
         Add Sets to : {{exercise.name}}
       </h3>
 
-      <form (ngSubmit)='createExerciseSet(exerciseSet)' #exerciseSetForm="ngForm" class='exerciseSet-form'>
+      <form (ngSubmit)='postSet(exerciseSet)' #exerciseSetForm="ngForm" class='exerciseSet-form'>
 
         <div class="form-group col s5">
           <label for="reps">Reps:</label>

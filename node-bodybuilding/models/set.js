@@ -13,6 +13,6 @@ const setSchema = mongoose.Schema ({
     exercise: {type: mongoose.Schema.Types.ObjectId, ref: 'Exercise', required: true},
   });
 
-const Exercise = module.exports = mongoose.model('Set', setSchema);
+const Set = module.exports = mongoose.model('Set', setSchema);
 
 

@@ -65,5 +65,10 @@ export class ShowWorkoutComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  // goToShow(workout: Workout){
+  //   let link = ['/show-workout', workout._id ]
+  //   this.router.navigate(link);
+  // }
+
 }
 
