@@ -1,60 +1,60 @@
 import { Injectable } from '@angular/core';
-import {Angular2TokenService} from "angular2-token";
-import {Subject, Observable} from "rxjs";
-import {Response} from "@angular/http";
+import { Http, Headers } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
+  authToken: any;
+  user: any;
 
-  userSignedIn$:Subject<boolean> = new Subject();
+  constructor(private http: Http) {
+      // this.isDev = true;  // Change to false before deployment
+      }
 
-  constructor(private authService:Angular2TokenService) {
-
-    // this.authService.validateToken().subscribe(
-    //     res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
-    // )
+  registerUser(user) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('users/register', user, {headers: headers})
+      .map(res => res.json());
   }
 
-
-// MOVED CODE FROM CONSTRUCTOR INTO IONVIEWCANENTER
-// Reason: had a issue constucting angular2tokenserv and auth serv at the same time this spaced it out works fine no known issues currently
-//  Maybe take a look when you have more knowledge in the future
-ionViewCanEnter(){
-      this.authService.validateToken().subscribe(
-        res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
-    )
-}
-
-  logOutUser():Observable<Response>{
-
-    return this.authService.signOut().map(
-        res => {
-          this.userSignedIn$.next(false);
-          // this.router.navigate(['profile']);
-          console.log("Am I working??")
-          return res;
-        }
-    );
-
+  authenticateUser(user) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('users/authenticate', user, {headers: headers})
+      .map(res => res.json());
   }
 
-  registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
-    return this.authService.registerAccount(signUpData).map(
-        res => {
-          this.userSignedIn$.next(true);
-          return res
-        }
-    );
+  getProfile() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('users/profile', {headers: headers})
+      .map(res => res.json());
   }
 
-  logInUser(signInData: {email:string, password:string}):Observable<Response>{
-
-    return this.authService.signIn(signInData).map(
-        res => {
-          this.userSignedIn$.next(true);
-          return res
-        }
-    );
+  storeUserData(token, user) {
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
   }
 
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
+
+  loggedIn() {
+    return tokenNotExpired('id_token');
+  }
+
+  logout() {
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
 }

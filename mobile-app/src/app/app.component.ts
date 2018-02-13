@@ -70,7 +70,7 @@ export class MyApp {
   }
 
   logoutAndGoToHomePage(){
-    this.authService.logOutUser();
+    this.authService.logout();
     // window.location.reload();
     this.nav.popToRoot();
   }

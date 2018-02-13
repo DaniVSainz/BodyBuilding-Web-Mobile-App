@@ -26,7 +26,7 @@ export class LoginPage {
 
   onSignInSubmit(){
 
-    this.authService.logInUser(this.signInUser).subscribe(
+    this.authService.authenticateUser(this.signInUser).subscribe(
         res => {
           if(res.status == 200){
             this.onFormResult.emit({signedIn: true, res});
@@ -42,7 +42,7 @@ export class LoginPage {
   }
 
   logUserOut(){
-    this.authService.logOutUser();
+    this.authService.logout();
     console.log("Sup mom, im not logging out")
     window.location.reload();
   }

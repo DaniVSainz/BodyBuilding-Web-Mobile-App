@@ -26,7 +26,7 @@ export class TabsPage {
   }
 
   logUserOut(){
-    this.authService.logOutUser();
+    this.authService.logout();
     console.log("Sup mom, im not logging out")
   }
 }
