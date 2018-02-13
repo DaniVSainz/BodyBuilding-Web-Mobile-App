@@ -24,21 +24,37 @@ export class LoginPage {
     this.authGuard.canActivate();
   }
 
+  // onSignInSubmit(){
+
+  //   this.authService.authenticateUser(this.signInUser).subscribe(
+  //       res => {
+  //         console.log(res);
+  //         if(res.success == true){
+  //           this.onFormResult.emit({signedIn: true, res});
+  //           window.location.reload();
+  //           }
+  //       },
+  //       err => {
+  //         console.log('err:', err);
+  //         this.onFormResult.emit({signedIn: false, err});
+  //       }
+
+  //   );
+  // }
+
   onSignInSubmit(){
 
-    this.authService.authenticateUser(this.signInUser).subscribe(
-        res => {
-          if(res.status == 200){
-            this.onFormResult.emit({signedIn: true, res});
-            window.location.reload();
-            }
-        },
-        err => {
-          console.log('err:', err);
-          this.onFormResult.emit({signedIn: false, err});
-        }
-
-    );
+    this.authService.authenticateUser(this.signInUser).subscribe(data => {
+      if(data.success) {
+        this.authService.storeUserData(data.token, data.user);
+        this.onFormResult.emit({signedIn: true, data});
+        window.location.reload();
+      } else {
+        console.log('error');
+        // this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
+        // this.router.navigate(['login']);
+      }
+  });
   }
 
   logUserOut(){

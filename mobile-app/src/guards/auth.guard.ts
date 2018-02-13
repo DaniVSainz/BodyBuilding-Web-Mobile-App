@@ -1,19 +1,20 @@
-import { Injectable }     from '@angular/core';
-import {CanActivate} from "@angular/router";
-import {Angular2TokenService} from "angular2-token";
+import { Injectable } from '@angular/core';
+import { CanActivate } from '@angular/router';
+import { AuthService } from '../providers/auth-service/auth-service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  constructor (private authService:AuthService){
 
-  constructor(private authTokenService:Angular2TokenService,
-              ){}
+  }
 
   canActivate() {
-    if(this.authTokenService.userSignedIn()){
+    if(this.authService.loggedIn()) {
       return true;
-    }else{
+    } else {
+
       return false;
     }
   }
-
 }
+
