@@ -25,6 +25,7 @@
         "@ionic-native/splash-screen": "3.10.2",
         "@ionic-native/status-bar": "3.10.2",
         "@ionic/storage": "2.0.1",
+        "angular2-jwt": "^0.2.3",
         "angular2-token": "^0.2.0-beta.12",
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
