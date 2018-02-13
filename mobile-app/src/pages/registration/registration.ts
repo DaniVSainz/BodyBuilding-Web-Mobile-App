@@ -52,8 +52,8 @@ export class RegistrationPage {
     console.log(registration);
     this.authService.registerUser(registration).subscribe(
         (res) => {
-
-          if (res.status == 200){
+          console.log(res);
+          if (res.success == true){
             this.onFormResult.emit({signedUp: true, res})
             this.rForm.reset();
             this.navCtrl.push(HomePage);
