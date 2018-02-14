@@ -28,6 +28,9 @@ export class WorkoutService {
   // private templateUrl = 'https://lift-tracker--api.herokuapp.com/workout_templates';
   // private exerciseTemplateUrl = 'https://lift-tracker--api.herokuapp.com/exercise_templates/';
 
+  authToken: any;
+  user: any;
+  
   constructor(private http:Http,
     public authTokenService:Angular2TokenService,
     protected authService:AuthService,
@@ -38,64 +41,72 @@ export class WorkoutService {
 //     WORKOUTS    |
 // =================
 
-  getWorkouts(): Observable<Workout[]> {
-    return this.http.get(this.workoutsUrl+'user/'+this.authTokenService.currentUserData.id).map((response: Response) => <Workout[]>response.json()).catch(this.handleError);
+loadToken() {
+  const token = localStorage.getItem('id_token');
+  this.authToken = token;
+}
 
-  }
+postWorkout(workOut:Object) {
+  let headers = new Headers();
+  // body = 
+  this.loadToken();
+  headers.append('Authorization', this.authToken);
+  headers.append('Content-Type', 'application/json');
+  return this.http.post('api/workout/',workOut, {headers: headers})
+    // .map(res => res);
+}
 
-  getShowWorkouts(id: number){
-    return this.http.get(this.workoutsUrl + id);
-  }
+getWorkouts() {
+  let headers = new Headers();
+  // body = 
+  this.loadToken();
+  headers.append('Authorization', this.authToken);
+  headers.append('Content-Type', 'application/json');
+  return this.http.get('api/workout/', {headers: headers})
+    .map(res => res.json());
+}
 
+getWorkout(id:string) {
+  let headers = new Headers();
+  this.loadToken();
+  headers.append('Authorization', this.authToken);
+  headers.append('Content-Type', 'application/json');
+  return this.http.get('api/workout/'+ id , {headers: headers})
+    .map(res => res.json());
+}
 
+//EXERCISE SECTION BEWLOW
+//EXERCISE SECTION BEWLOW
+//EXERCISE SECTION BEWLOW
+postExercise(exercise:Object) {
+  let headers = new Headers();
+  this.loadToken();
+  headers.append('Authorization', this.authToken);
+  headers.append('Content-Type', 'application/json');
+  return this.http.post('api/exercise/',exercise, {headers: headers}).map(res => res.json());
+}
 
-  createWorkout(workout) {
-  let headers = new Headers({'Content-Type': 'application/json' });
-  let options = new RequestOptions({headers: headers});
-  return this.http.post(this.workoutsUrl, JSON.stringify(workout), {
-    headers: headers}).map((res: Response)=> res.json());
-  }
+getExercise(id:string) {
+  let headers = new Headers();
+  this.loadToken();
+  headers.append('Authorization', this.authToken);
+  headers.append('Content-Type', 'application/json');
+  return this.http.get('api/exercise/'+ id , {headers: headers})
+    .map(res => res.json());
+}
 
-// =================
-//   END  WORKOUTS    |
-// =================
+//SETS
+//SETS
+//SETS
+postSet(set:Object) {
+  let headers = new Headers();
+  this.loadToken();
+  headers.append('Authorization', this.authToken);
+  headers.append('Content-Type', 'application/json');
+  return this.http.post('api/set/',set, {headers: headers}).map(res => res.json());
+}
 
-// =================
-//   EXERCISE      |
-// =================
-  createExercise(exercise) {
-  let headers = new Headers({'Content-Type': 'application/json' });
-  let options = new RequestOptions({headers: headers});
-  return this.http.post(this.exerciseUrl, JSON.stringify(exercise), {
-    headers: headers}).map((res: Response)=> res.json());
-  }
-
-
-  getShowExercise(id: number){
-    return this.http.get(this.exerciseUrl  + id);
-  }
-
-
-// =================
-//  END  EXERCISE  |
-// =================
-// =================
-//   EXERCISE  SETs|
-// =================
-
-  createExerciseSet(exerciseSet) {
-    let headers = new Headers({'Content-Type': 'application/json' });
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(this.exerciseSetUrl, JSON.stringify(exerciseSet), {
-      headers: headers}).map((res: Response)=> res.json());
-  }
-
-  getShowExerciseSet(id: number){
-    return this.http.get(this.exerciseSetsUrl  + id)
-  }
-
-
-  private handleError (error: Response | any) {
+private handleError (error: Response | any) {
   // In a real world app, we might use a remote logging infrastructure
   let errMsg: string;
   if (error instanceof Response) {
@@ -108,8 +119,6 @@ export class WorkoutService {
   console.error(errMsg);
   return Observable.throw(errMsg);
   }
-
-
 
 
 // =================
@@ -154,22 +163,5 @@ export class WorkoutService {
     return this.http.delete(this.exerciseUrl + exercise.id)
     .map((response: Response) => response.json());
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

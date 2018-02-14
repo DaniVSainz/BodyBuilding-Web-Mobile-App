@@ -39,11 +39,11 @@ export class ShowWorkoutPage implements OnInit {
   ngOnInit(){
     this.workout = this.navParams.data;
     console.log(this.workout)
-    this.workoutService.getShowWorkouts(this.workout.id).subscribe(response => this.workouts = response.json());;
+    this.workoutService.getWorkout(this.workout.id).subscribe(response => this.workouts = response.json());;
   }
 
   reloadExercise(workout){
-    this.workoutService.getShowWorkouts(workout).subscribe(response => this.workouts = response.json());;
+    this.workoutService.getWorkout(workout).subscribe(response => this.workouts = response.json());;
   }
 
 
@@ -53,7 +53,7 @@ export class ShowWorkoutPage implements OnInit {
     exercise.user_id = this.authTokenService.currentUserData.id
     exercise.workout_id = this.workouts[0].id
     this.submitted = true;
-    this.workoutService.createExercise(exercise)
+    this.workoutService.postExercise(exercise)
     // this.workoutService.getShowWorkouts(this.workouts[0].id).subscribe(response => this.workouts = response.json())
         .subscribe(
           data => {
