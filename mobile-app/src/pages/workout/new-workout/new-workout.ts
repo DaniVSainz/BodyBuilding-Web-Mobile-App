@@ -44,15 +44,15 @@ export class NewWorkoutPage implements OnInit   {
 
 
   ngOnInit() {
-    this.getTemplates();
+    // this.getTemplates();
   }
   ionViewDidEnter(){
     console.log(this.workoutTemplates)
   }
 
-  getTemplates(){
-    this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
-  }
+  // getTemplates(){
+  //   this.workoutService.getTemplates().subscribe(workoutTemplates=> this.workoutTemplates= workoutTemplates,error=> this.errorMessage = <any>error );
+  // }
 
   d = new Date();
 
