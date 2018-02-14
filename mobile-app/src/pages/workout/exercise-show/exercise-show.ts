@@ -39,26 +39,26 @@ export class ExerciseShowPage {
 
 
   getShowExerciseSet(exercise){
-    this.workoutService.getShowExerciseSet(exercise).subscribe(response => this.exerciseSets = response.json());;
+    // this.workoutService.getShowExerciseSet(exercise).subscribe(response => this.exerciseSets = response.json());;
   }
 
   createExerciseSet(exerciseSet){
 
     // exerciseSet.user_id = this.authTokenService.currentUserData.id
-    exerciseSet.exercise_id = this.exercise.id
-    this.submitted = true;
-    this.workoutService.createExerciseSet(exerciseSet)
-        .subscribe(
-          data => {
-            this.workoutService.getShowExerciseSet(this.exercise.id).subscribe(response => this.exerciseSets = response.json());
-            return true },
-          error => {
-            console.log("Error saving proposal");
-            return Observable.throw(error);
-          }
-        )
-    this.timerService.resetTimer();
-    this.timerService.playTimer();
+    // exerciseSet.exercise_id = this.exercise.id
+    // this.submitted = true;
+    // this.workoutService.createExerciseSet(exerciseSet)
+    //     .subscribe(
+    //       data => {
+    //         this.workoutService.getShowExerciseSet(this.exercise.id).subscribe(response => this.exerciseSets = response.json());
+    //         return true },
+    //       error => {
+    //         console.log("Error saving proposal");
+    //         return Observable.throw(error);
+    //       }
+    //     )
+    // this.timerService.resetTimer();
+    // this.timerService.playTimer();
   }
 
   // alarm(){

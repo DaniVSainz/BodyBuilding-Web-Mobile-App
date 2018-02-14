@@ -78,9 +78,9 @@ export class TimerComponent implements OnInit, OnDestroy {
               }
 
     ngOnInit() {
-      this.playPauseStopUnsubscribe = this.timerService.playPauseStop$.subscribe((res: any) => this.playPauseStop(res));
-      let workoutRequest =  this.workoutService.getShowExercise(this.navParmas.data.id);
-      workoutRequest.subscribe(response => this.exercise = response.json());
+    //   this.playPauseStopUnsubscribe = this.timerService.playPauseStop$.subscribe((res: any) => this.playPauseStop(res));
+    //   let workoutRequest =  this.workoutService.getShowExercise(this.navParmas.data.id);
+    //   workoutRequest.subscribe(response => this.exercise = response.json());
     }
 
     ngOnDestroy() {

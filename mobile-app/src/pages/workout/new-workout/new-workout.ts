@@ -57,18 +57,18 @@ export class NewWorkoutPage implements OnInit   {
   d = new Date();
 
   createWorkout(workout){
-    workout.user_id = this.authTokenService.currentUserData.id
-    this.submitted = true;
-    this.workoutService.createWorkout(workout)
-        .subscribe(
-          data => {
-            this.navCtrl.push(ShowWorkoutPage, data)
-            return true },
-          error => {
-            console.log("Error saving proposal");
-            return Observable.throw(error);
-          }
-        )
+    // workout.user_id = this.authTokenService.currentUserData.id
+    // this.submitted = true;
+    // this.workoutService.createWorkout(workout)
+    //     .subscribe(
+    //       data => {
+    //         this.navCtrl.push(ShowWorkoutPage, data)
+    //         return true },
+    //       error => {
+    //         console.log("Error saving proposal");
+    //         return Observable.throw(error);
+    //       }
+    //     )
   }
 
 //
@@ -80,28 +80,28 @@ export class NewWorkoutPage implements OnInit   {
 
   createWorkoutFromTemplate(workout){
 
-    this.workoutTemplates.forEach(function (template) {
-      if (template.id == workout.id){
-        workout.name = template.title;
-        workout.id = null;
-      }
-    })
+  //   this.workoutTemplates.forEach(function (template) {
+  //     if (template.id == workout.id){
+  //       workout.name = template.title;
+  //       workout.id = null;
+  //     }
+  //   })
 
 
 
-    workout.user_id = this.authTokenService.currentUserData.id
-    this.submitted = true;
-    console.log(workout)
-    this.workoutService.createWorkout(workout)
-        .subscribe(
-          data => {
-            this.navCtrl.push(ShowWorkoutPage, data)
-            return true },
-          error => {
-            console.log("Error saving proposal");
-            return Observable.throw(error);
-          }
-        )
+  //   workout.user_id = this.authTokenService.currentUserData.id
+  //   this.submitted = true;
+  //   console.log(workout)
+  //   this.workoutService.createWorkout(workout)
+  //       .subscribe(
+  //         data => {
+  //           this.navCtrl.push(ShowWorkoutPage, data)
+  //           return true },
+  //         error => {
+  //           console.log("Error saving proposal");
+  //           return Observable.throw(error);
+  //         }
+  //       )
   }
 
 }
