@@ -16,8 +16,9 @@ import {Exercise} from './exercise';
   styleUrls: ['./show-workout.component.scss'],
 })
 export class ShowWorkoutComponent implements OnInit {
-  @Input() workout: any;
+  @Input() workout: Workout;
 
+  data:Object;
   workoutId: string;
   exercise = new Exercise;
 
@@ -32,8 +33,6 @@ export class ShowWorkoutComponent implements OnInit {
   }
 
 
-
-
   ngOnInit(){  
     this.route.params.subscribe( params =>
       this.workoutId = params['id']
@@ -45,23 +44,33 @@ export class ShowWorkoutComponent implements OnInit {
        console.log(err);
        return false;
      }); 
-     console.log(this.workout)
   }
 
-  createExercise(exercise){
-    // console.log(this.workout); this one shows next one dosent
+  createExercise2(exercise){
+    let data;
     exercise.user = this.workout.user;
     exercise.workout = this.workoutId;
     this.workoutService.postExercise(exercise).subscribe(function(res){
       // console.log(res);
-      exercise = res.obj;
+      this.data = res.obj;
+      console.log(this.data);
       // this.workout.exercises.push(res.obj);
     });
-    this.workout.exercises.push(exercise);
-    console.log(this.workout);
+    console.log(data);
+    this.workout.exercises.push(data);
+  }
+
+  createExercise(exercise){
+
+    exercise.user = this.workout.user;
+    exercise.workout = this.workoutId;
+    this.workoutService.postExercise(exercise).subscribe((res) => {
+      this.workout.exercises.push(res.obj);
+    });
   }
 
   goToShowExerciseSet(exercise){
+    console.log(exercise);
     let link = ['/show-exercise', exercise._id ]
     this.router.navigate(link);
   }
