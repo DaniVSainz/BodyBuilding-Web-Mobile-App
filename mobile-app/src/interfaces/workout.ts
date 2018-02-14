@@ -1,6 +1,8 @@
 export class Workout {
   name: string;
-  user_id: number;
-  id: number;
-  template: boolean;
+  date: string;
+  _id: string;
+  exercises: any[];
+  sets:any[];
+  user: string;
 }

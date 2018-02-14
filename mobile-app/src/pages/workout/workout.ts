@@ -32,10 +32,22 @@ export class WorkoutPage {
 
   ngOnInit(){
     this.getWorkouts();
+    console.log(this.workouts);
   }
 
+  // getWorkouts(){
+  //   this.workoutService.getWorkouts().subscribe(workout=> this.workouts= workout,error=> this.errorMessage = <any>error );
+  // }
+
   getWorkouts(){
-    this.workoutService.getWorkouts().subscribe(workout=> this.workouts= workout,error=> this.errorMessage = <any>error );
+    this.workoutService.getWorkouts().subscribe(data => {
+      this.workouts = data.obj;
+    },
+     err => {
+      this.errorMessage= err;
+       console.log(err);
+       return false;
+     });
   }
 
   goToWorkout(workout: Workout): void{
