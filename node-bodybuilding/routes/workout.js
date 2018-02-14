@@ -7,7 +7,7 @@ const User = require('../models/user');
 const Workout = require('../models/workout');
 
 router.post('/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-
+    console.log(req);
             User.findById(req.user._id).then(function(user){
                let workout = new Workout({
                     name: req.body.name,

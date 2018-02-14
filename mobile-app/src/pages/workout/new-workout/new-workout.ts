@@ -56,19 +56,25 @@ export class NewWorkoutPage implements OnInit   {
 
   d = new Date();
 
-  createWorkout(workout){
-    // workout.user_id = this.authTokenService.currentUserData.id
-    // this.submitted = true;
-    // this.workoutService.createWorkout(workout)
-    //     .subscribe(
-    //       data => {
-    //         this.navCtrl.push(ShowWorkoutPage, data)
-    //         return true },
-    //       error => {
-    //         console.log("Error saving proposal");
-    //         return Observable.throw(error);
-    //       }
-    //     )
+  // createWorkout(workout){
+  //   workout.user_id = this.authTokenService.currentUserData.id
+  //   this.submitted = true;
+  //   this.workoutService.createWorkout(workout)
+  //       .subscribe(
+  //         data => {
+  //           this.navCtrl.push(ShowWorkoutPage, data)
+  //           return true },
+  //         error => {
+  //           console.log("Error saving proposal");
+  //           return Observable.throw(error);
+  //         }
+  //       )
+  // }
+
+  createWorkout(workOut){
+    this.workoutService.postWorkout(workOut).subscribe(function(res){
+      console.log(res);
+    });
   }
 
 //

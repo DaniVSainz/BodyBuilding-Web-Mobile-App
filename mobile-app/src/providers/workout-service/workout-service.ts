@@ -30,13 +30,13 @@ export class WorkoutService {
 
   authToken: any;
   user: any;
-  
+  url:string = "http://localhost:3000/";
   constructor(private http:Http,
     public authTokenService:Angular2TokenService,
     protected authService:AuthService,
   ){}
 
-
+ 
 // =================
 //     WORKOUTS    |
 // =================
@@ -52,7 +52,7 @@ postWorkout(workOut:Object) {
   this.loadToken();
   headers.append('Authorization', this.authToken);
   headers.append('Content-Type', 'application/json');
-  return this.http.post('api/workout/',workOut, {headers: headers})
+  return this.http.post(`${this.url}api/workout/`,workOut, {headers: headers})
     // .map(res => res);
 }
 
@@ -62,7 +62,7 @@ getWorkouts() {
   this.loadToken();
   headers.append('Authorization', this.authToken);
   headers.append('Content-Type', 'application/json');
-  return this.http.get('api/workout/', {headers: headers})
+  return this.http.get(`${this.url}api/workout/`, {headers: headers})
     .map(res => res.json());
 }
 
@@ -71,7 +71,7 @@ getWorkout(id:string) {
   this.loadToken();
   headers.append('Authorization', this.authToken);
   headers.append('Content-Type', 'application/json');
-  return this.http.get('api/workout/'+ id , {headers: headers})
+  return this.http.get(`${this.url}api/workout/` + id , {headers: headers})
     .map(res => res.json());
 }
 
@@ -83,7 +83,7 @@ postExercise(exercise:Object) {
   this.loadToken();
   headers.append('Authorization', this.authToken);
   headers.append('Content-Type', 'application/json');
-  return this.http.post('api/exercise/',exercise, {headers: headers}).map(res => res.json());
+  return this.http.post(`${this.url}api/exercise/`,exercise, {headers: headers}).map(res => res.json());
 }
 
 getExercise(id:string) {
@@ -91,7 +91,7 @@ getExercise(id:string) {
   this.loadToken();
   headers.append('Authorization', this.authToken);
   headers.append('Content-Type', 'application/json');
-  return this.http.get('api/exercise/'+ id , {headers: headers})
+  return this.http.get(`${this.url}api/exercise/`+ id , {headers: headers})
     .map(res => res.json());
 }
 
@@ -103,7 +103,7 @@ postSet(set:Object) {
   this.loadToken();
   headers.append('Authorization', this.authToken);
   headers.append('Content-Type', 'application/json');
-  return this.http.post('api/set/',set, {headers: headers}).map(res => res.json());
+  return this.http.post(`${this.url}api/set/`,set, {headers: headers}).map(res => res.json());
 }
 
 private handleError (error: Response | any) {
