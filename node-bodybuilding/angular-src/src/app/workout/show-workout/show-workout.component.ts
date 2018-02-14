@@ -61,7 +61,6 @@ export class ShowWorkoutComponent implements OnInit {
   }
 
   createExercise(exercise){
-
     exercise.user = this.workout.user;
     exercise.workout = this.workoutId;
     this.workoutService.postExercise(exercise).subscribe((res) => {

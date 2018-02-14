@@ -47,10 +47,6 @@ export class ExerciseShowComponent implements OnInit {
   ngOnInit() {
   }
 
-  logExercise(){
-    console.log(this.exercise);
-  }
-
   postSet(set){
     set.user = this.exercise.user;
     set.exercise = this.exerciseId;

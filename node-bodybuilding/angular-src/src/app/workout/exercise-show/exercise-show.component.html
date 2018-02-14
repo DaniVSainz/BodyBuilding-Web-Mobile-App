@@ -1,7 +1,5 @@
 
 <div class="container exercise-container">
-  <button (click)="logExercise()">Log Exercise</button>
-
   <div class="row exercise-row">
     <!-- <timer></timer> -->
     <div class='col s6'>
@@ -47,7 +45,7 @@
         Exercises Done for Workout
       </h3>
 
-      <ul class="collection col s6 exercise-ul" *ngIf="exercise.sets">
+      <ul class="collection col s6 exercise-ul" *ngIf="exercise">
         <li class="collection-item avatar valign-wrapper" *ngFor='let set of exercise.sets'>
 
           <div class="exercise-a">
