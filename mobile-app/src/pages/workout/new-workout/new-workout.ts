@@ -5,7 +5,8 @@ import { Observable } from 'rxjs/Rx';
 import { Workout } from '../../../interfaces/workout';
 import {AuthService} from "../../../providers/auth-service/auth-service";
 import {Angular2TokenService} from "angular2-token";
-import {ShowWorkoutPage} from '../show-workout/show-workout';
+// import {ShowWorkoutPage} from '../show-workout/show-workout';
+import {WorkoutPage} from '../workout';
 import {WorkoutTemplate} from '../../../interfaces/workoutTemplate'
 import {FormBuilder,FormGroup,Validators,AbstractControl} from '@angular/forms';
 
@@ -72,8 +73,8 @@ export class NewWorkoutPage implements OnInit   {
   // }
 
   createWorkout(workOut){
-    this.workoutService.postWorkout(workOut).subscribe(function(res){
-      console.log(res);
+    this.workoutService.postWorkout(workOut).subscribe(res =>{
+      this.navCtrl.push(WorkoutPage);
     });
   }
 
